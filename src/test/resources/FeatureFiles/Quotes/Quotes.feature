@@ -253,7 +253,7 @@ Feature: This User story covers the Firm quotes related scenarios
     And User clicks on "Search Button" in Admin UI
     And User validates all quotes are displayed in quotes table on admin UI
 
-  #[US-97 TC01(SCA-2594) & TC02(SCA-2595)]
+  #[US-97 TC01(SCA-2594) & TC02(SCA-2595) & TC03(SCA-2596) & TC04(SCA-2597)]
   @confidence
   Scenario: TC_Verify buyers must be able to reach the Manage quotes page by selecting My account from and able to see their created quotes firm and Indicative
     #API Steps
@@ -271,6 +271,7 @@ Feature: This User story covers the Firm quotes related scenarios
     #And User create "Indicative" quote
     And User clicks on "Raise quote" in buyers UI
     Then User get message "Quote raised successfully" on screen
+    And User adds the supplier2 product with VAT20 into the basket
     And User validates the new Quote refrence no
     And User enters the new Quote refrence in Quote reference textbox in buyers UI
     And User clicks on "Manage quote Search button" in buyers UI
@@ -305,3 +306,35 @@ Feature: This User story covers the Firm quotes related scenarios
     And User clicks on "Add to basket button on Indicative quote" in buyers UI
     And User Validates the message "The quote was successfully converted into the basket."
     And User validates the supplier1 product total delivery total VAT and grand Total in basket for Standard UK Mainland
+    
+    
+  #[US-97 TC09(SCA-2602)]
+  @confidence
+  Scenario: TC_Verify if basket already contains any products it must remain in the basket and the products of Indicative quote will be added to basket
+    #API Steps
+    Given user clears the basket
+    And User gets products IDs for supplier1 and supplier2
+    And User adds two products from supplier1 in to the basket with one having VAT0 and second having VAT20 percentage
+    #Buyers UI Steps
+    And User navigates to BuyerUI
+    And User login to buyerUI with API User
+    And User clicks on "Basket Link" in buyers UI
+    And User select the Delivery option "Standard UK Mainland (3-5 days)"
+    And User clicks on "Quote" in buyers UI
+    And User enter Quote name as "Indicativequote"
+    And User create "Indicative" quote
+    And User clicks on "Raise quote" in buyers UI
+    Then User get message "Quote raised successfully" on screen
+    And User adds the supplier2 product with VAT20 into the basket
+    And User validates the new Quote refrence no
+    And User enters the new Quote refrence in Quote reference textbox in buyers UI
+    And User clicks on "Manage quote Search button" in buyers UI
+    And User clicks on "Quote refrence link" in buyers UI
+    And User validates the Add to basket button
+    And User clicks on "Add to basket button on Indicative quote" in buyers UI
+    And User Validates the message "The quote was successfully converted into the basket."
+    And User validates the products in Indicative quote is added with the product already present in the basket
+    
+    
+    
+  

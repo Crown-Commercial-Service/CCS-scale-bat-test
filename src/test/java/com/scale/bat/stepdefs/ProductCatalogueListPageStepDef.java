@@ -312,6 +312,26 @@ public class ProductCatalogueListPageStepDef {
 		objectManager.getBuyersUIBasketpage().validateSupplier1Product1and2VATAndOtherDetailsForStandardUKMainland(jObj1,jObj2);
 	}
 	
+	
+	@Then("User validates the products in Indicative quote is added with the product already present in the basket")
+	public void user_validates_the_products_in_Indicative_quote_is_added_with_the_product_already_present_in_the_basket() {
+	    
+		JSONObject jObj1 = new JSONObject(new JsonParser().convertJsonToString(scenarioContext.ScenarioDataFilePathSCA223Sup1))
+				.getJSONObject("Product1");
+		
+		JSONObject jObj2 = new JSONObject(new JsonParser().convertJsonToString(scenarioContext.ScenarioDataFilePathSCA223Sup1))
+				.getJSONObject("Product2").getJSONObject("FromUi");
+		
+		JSONObject jObj3 = new JSONObject(new JsonParser().convertJsonToString(scenarioContext.ScenarioDataFilePathSCA223Sup2))
+				.getJSONObject("Product1");
+		
+		
+		objectManager.getBuyersUIBasketpage().validateIndicativeQuoteForStandardUKMainland(jObj1,jObj2,jObj3);
+		
+		
+	}
+	
+	
 	@Given("User validates the supplier{int} product total delivery total VAT and grand Total in basket for Next Business Day")
 	public void user_validates_the_supplier_product_total_delivery_total_VAT_and_grand_Total_in_basket_for_Next_Business_Day(Integer int1) {
 	

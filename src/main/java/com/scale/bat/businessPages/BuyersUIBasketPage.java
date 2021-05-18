@@ -69,10 +69,10 @@ public class BuyersUIBasketPage extends Actions {
 
 	@FindBy(xpath = "//*[@class='bat-basket__footer__right']/ul/li[2]/span[2]")
 	private WebElement deliveryTotal;
-	
+
 	@FindBy(xpath = "//*[@class='bat-basket__footer__right']/ul/li[3]/span[2]")
 	private WebElement vatTotal;
-		
+
 	@FindBy(xpath = "//*[@class='bat-basket__footer__right']/ul/li[4]/span[2]")
 	private WebElement grandTotal;
 
@@ -167,32 +167,55 @@ public class BuyersUIBasketPage extends Actions {
 
 	@FindBy(xpath = "//input[@name='quantity']")
 	private WebElement productQuantityOnBasket;
-	
+
 	@FindBy(xpath = "//*[@class='govuk-list bat-basket-items-by-supplier']/li[1]/div/div/ul/li[1]/span[2]")
 	private WebElement supplier1ProductsTotal;
-				
+
+	@FindBy(xpath = "//*[@class='govuk-list bat-basket-items-by-supplier']/li/div/ul/li[1]/div/form/div/div[4]/div/label/following-sibling::input")
+	private WebElement supplier1P1Qty;
+
+	@FindBy(xpath = "//*[@class='govuk-list bat-basket-items-by-supplier']/li/div/ul/li[2]/div/form/div/div[4]/div/label/following-sibling::input")
+	private WebElement supplier1P2Qty;
+
+	@FindBy(xpath = "//*[@class='govuk-list bat-basket-items-by-supplier']/li/div/ul/li[1]/div/form/div/div[3]")
+	private WebElement supplier1P1Price;
+
+	@FindBy(xpath = "//*[@class='govuk-list bat-basket-items-by-supplier']/li/div/ul/li[2]/div/form/div/div[3]")
+	private WebElement supplier1P2Price;
+
 	@FindBy(xpath = "//*[@class='govuk-list bat-basket-items-by-supplier']/li[1]/div/div/ul/li[2]/span[2]")
 	private WebElement supplier1DeliveryTotal;
-				
+
 	@FindBy(xpath = "//*[@class='govuk-list bat-basket-items-by-supplier']/li[1]/div/div/ul/li[3]/span[2]")
 	private WebElement supplier1VatTotal;
-				
+
 	@FindBy(xpath = "//*[@class='govuk-list bat-basket-items-by-supplier']/li[1]/div/div/ul/li[4]/span[2]")
 	private WebElement supplier1GrandTotal;
-	
-	//Supplier2 details
+
+	// Supplier2 details
 	@FindBy(xpath = "//*[@class='govuk-list bat-basket-items-by-supplier']/li[2]/div/div/ul/li[1]/span[2]")
 	private WebElement supplier2ProductsTotal;
-	
+
 	@FindBy(xpath = "//*[@class='govuk-list bat-basket-items-by-supplier']/li[2]/div/div/ul/li[2]/span[2]")
 	private WebElement supplier2DeliveryTotal;
-	
+
 	@FindBy(xpath = "//*[@class='govuk-list bat-basket-items-by-supplier']/li[2]/div/div/ul/li[3]/span[2]")
 	private WebElement supplier2VatTotal;
-		
+
 	@FindBy(xpath = "//*[@class='govuk-list bat-basket-items-by-supplier']/li[2]/div/div/ul/li[4]/span[2]")
 	private WebElement supplier2GrandTotal;
-	
+
+	@FindBy(xpath = "//*[@class='govuk-list bat-basket-items-by-supplier']/li[2]/div/ul/li[1]/div/form/div/div[4]/div/label/following-sibling::input")
+	private WebElement supplier2P1Qty;
+
+	@FindBy(xpath = "//*[@class='govuk-list bat-basket-items-by-supplier']/li[2]/div/ul/li[2]/div/form/div/div[4]/div/label/following-sibling::input")
+	private WebElement supplier2P2Qty;
+
+	@FindBy(xpath = "//*[@class='govuk-list bat-basket-items-by-supplier']/li[2]/div/ul/li[1]/div/form/div/div[3]")
+	private WebElement supplier2P1Price;
+
+	@FindBy(xpath = "//*[@class='govuk-list bat-basket-items-by-supplier']/li[2]/div/ul/li[2]/div/form/div/div[3]")
+	private WebElement supplier2P2Price;
 
 	// Declare Variables
 	String productsTotalSplit[];
@@ -743,37 +766,38 @@ public class BuyersUIBasketPage extends Actions {
 		assertEquals(getText(allProductsWereAddedToYourBasket), "All products were added to your basket");
 	}
 
-	public void validateSupplier1Product1and2VATAndOtherDetailsForStandardUKMainland(JSONObject jObj1, JSONObject jObj2) {
+	public void validateSupplier1Product1and2VATAndOtherDetailsForStandardUKMainland(JSONObject jObj1,
+			JSONObject jObj2) {
 		waitForSeconds(2);
 
 		// Get Supplier1 Product1 Price value from Json
 		String Sup1P1Price = jObj1.get("Price").toString();
 		double intSup1P1Price = Double.parseDouble(Sup1P1Price);
-		
+
 		// Get Supplier1 Product1 StandardChargeProductUKMainland value from Json
 		String Sup1P1StandUKMainlandDeliveryCharges = jObj1.get("StandardChargeProductUKMainland").toString();
 		double intSup1P1StandUKMainlandDeliveryCharges = Double.parseDouble(Sup1P1StandUKMainlandDeliveryCharges);
-		
+
 		// Calculate Supplier1 Product1 VAT
 		double Sup1P1ProductVAT = intSup1P1Price * 20 / 100;
-		
+
 		// Calculate Supplier1 Product1 DeliveryCharge
 		double Sup1P1ProductDeliveryChargesVAT = intSup1P1StandUKMainlandDeliveryCharges * 20 / 100;
-		
+
 		// Get Supplier1 Product2 Price value from Json
 		String Sup1P2Price = jObj2.get("Price").toString();
 		double intSup1P2Price = Double.parseDouble(Sup1P2Price);
-		
+
 		// Get Supplier1 Product2 StandardChargeProductUKMainland value from Json
 		String Sup1P2StandUKMainlandDeliveryCharges = jObj2.get("StandardChargeProductUKMainland").toString();
 		double intSup1P2StandUKMainlandDeliveryCharges = Double.parseDouble(Sup1P2StandUKMainlandDeliveryCharges);
-	
+
 		// Calculate Supplier1 Product2 VAT
 		double Sup1P2ProductVAT = intSup1P2Price * 0 / 100;
-		
+
 		// Calculate Supplier1 Product2 DeliveryCharge
 		double Sup1P2ProductDeliveryChargesVAT = intSup1P2StandUKMainlandDeliveryCharges * 20 / 100;
-		
+
 		// Calculate Products total, Delivery total and VAT from Json
 		double productsTotalDbl = intSup1P1Price + intSup1P2Price;
 		System.out.println(productsTotalDbl);
@@ -784,55 +808,185 @@ public class BuyersUIBasketPage extends Actions {
 		System.out.println(vatTotalDbl);
 		double grandTotalDbl = productsTotalDbl + deliveryTotalDbl + vatTotalDbl;
 		System.out.println(grandTotalDbl);
-		
-		//Now get the value of Supplier1 productsTotal, deliveryTotal, vatTotal and GrandTotal from Buyers UI
-		assertTrue(getText(supplier1ProductsTotal).equals("£"+String.valueOf(productsTotalDbl)+ "0 ex. VAT"));
-		assertTrue(getText(supplier1DeliveryTotal).equals("£"+String.valueOf(deliveryTotalDbl)+ "0 ex. VAT"));
-		assertTrue(getText(supplier1VatTotal).equals("£"+String.valueOf(vatTotalDbl).substring(0, 4)));
-		assertTrue(getText(supplier1GrandTotal).equals("£"+String.valueOf(grandTotalDbl)+"0 inc. VAT"));
-		
-		//Now get the value of footer productsTotal, deliveryTotal, vatTotal and GrandTotal from Buyers UI
-		assertTrue(getText(productsTotal).equals("£"+String.valueOf(productsTotalDbl)+ "0 ex. VAT"));
-		assertTrue(getText(deliveryTotal).equals("£"+String.valueOf(deliveryTotalDbl)+ "0 ex. VAT"));
-		assertTrue(getText(vatTotal).equals("£"+String.valueOf(vatTotalDbl).substring(0, 4)));
-		assertTrue(getText(grandTotal).equals("£"+String.valueOf(grandTotalDbl)+"0 inc. VAT"));
-		
+
+		// Now get the value of Supplier1 productsTotal, deliveryTotal, vatTotal and
+		// GrandTotal from Buyers UI
+		assertTrue(getText(supplier1ProductsTotal).equals("£" + String.valueOf(productsTotalDbl) + "0 ex. VAT"));
+		assertTrue(getText(supplier1DeliveryTotal).equals("£" + String.valueOf(deliveryTotalDbl) + "0 ex. VAT"));
+		assertTrue(getText(supplier1VatTotal).equals("£" + String.valueOf(vatTotalDbl).substring(0, 4)));
+		assertTrue(getText(supplier1GrandTotal).equals("£" + String.valueOf(grandTotalDbl) + "0 inc. VAT"));
+
+		// Now get the value of footer productsTotal, deliveryTotal, vatTotal and
+		// GrandTotal from Buyers UI
+		assertTrue(getText(productsTotal).equals("£" + String.valueOf(productsTotalDbl) + "0 ex. VAT"));
+		assertTrue(getText(deliveryTotal).equals("£" + String.valueOf(deliveryTotalDbl) + "0 ex. VAT"));
+		assertTrue(getText(vatTotal).equals("£" + String.valueOf(vatTotalDbl).substring(0, 4)));
+		assertTrue(getText(grandTotal).equals("£" + String.valueOf(grandTotalDbl) + "0 inc. VAT"));
+
+		// Product qty Check (Plz Not add qty more than 1)
+		assertTrue(getAttributeValue(supplier1P1Qty).equals("1"));
+		assertTrue(getAttributeValue(supplier1P2Qty).equals("1"));
+
+		// Product Price for qty 1
+		String[] supplier1P1PriceSplit = getText(supplier1P1Price).split(" ");
+		String[] supplier1P2PriceSplit = getText(supplier1P2Price).split(" ");
+		assertTrue(supplier1P1PriceSplit[0].equals("£" + jObj1.get("Price").toString()));
+		assertTrue(supplier1P2PriceSplit[0].equals("£" + jObj2.get("Price").toString()));
 
 	}
+
+	public void validateIndicativeQuoteForStandardUKMainland(JSONObject jObj1, JSONObject jObj2, JSONObject jObj3) {
+		waitForSeconds(2);
+
+		// Get Supplier2 Product1 Price value from Json
+		String Sup1P1Price = jObj1.get("Price").toString();
+		double intSup1P1Price = Double.parseDouble(Sup1P1Price);
+
+		// Get Supplier2 Product1 StandardChargeProductUKMainland value from Json
+		String Sup1P1StandUKMainlandDeliveryCharges = jObj1.get("StandardChargeProductUKMainland").toString();
+		double intSup1P1StandUKMainlandDeliveryCharges = Double.parseDouble(Sup1P1StandUKMainlandDeliveryCharges);
+
+		// Calculate Supplier2 Product1 VAT
+		double Sup1P1ProductVAT = intSup1P1Price * 20 / 100;
+
+		// Calculate Supplier2 Product1 DeliveryCharge
+		double Sup1P1ProductDeliveryChargesVAT = intSup1P1StandUKMainlandDeliveryCharges * 20 / 100;
+
+		// Get Supplier2 Product2 Price value from Json
+		String Sup1P2Price = jObj2.get("Price").toString();
+		double intSup1P2Price = Double.parseDouble(Sup1P2Price);
+
+		// Get Supplier2 Product2 StandardChargeProductUKMainland value from Json
+		String Sup1P2StandUKMainlandDeliveryCharges = jObj2.get("StandardChargeProductUKMainland").toString();
+		double intSup1P2StandUKMainlandDeliveryCharges = Double.parseDouble(Sup1P2StandUKMainlandDeliveryCharges);
+
+		// Calculate Supplier2 Product2 VAT
+		double Sup1P2ProductVAT = intSup1P2Price * 0 / 100;
+
+		// Calculate Supplier2 Product2 DeliveryCharge
+		double Sup1P2ProductDeliveryChargesVAT = intSup1P2StandUKMainlandDeliveryCharges * 20 / 100;
+
+		// Supplier2 "testsupplier039" Calculate Products total, Delivery total and VAT from Json
+		double productsTotalDbl = intSup1P1Price + intSup1P2Price;
+		System.out.println(productsTotalDbl);
+		double deliveryTotalDbl = intSup1P1StandUKMainlandDeliveryCharges + intSup1P2StandUKMainlandDeliveryCharges;
+		System.out.println(deliveryTotalDbl);
+		double vatTotalDbl = Sup1P1ProductVAT + Sup1P1ProductDeliveryChargesVAT + Sup1P2ProductVAT	+ Sup1P2ProductDeliveryChargesVAT;
+		System.out.println(vatTotalDbl);
+		double grandTotalDbl = productsTotalDbl + deliveryTotalDbl + vatTotalDbl;
+		System.out.println(grandTotalDbl);
+
+		// Now get the value of Supplier2 productsTotal, deliveryTotal, vatTotal and
+		// GrandTotal from Buyers UI
+		assertTrue(getText(supplier2ProductsTotal).equals("£" + String.valueOf(productsTotalDbl) + "0 ex. VAT"));
+		assertTrue(getText(supplier2DeliveryTotal).equals("£" + String.valueOf(deliveryTotalDbl) + "0 ex. VAT"));
+		assertTrue(getText(supplier2VatTotal).equals("£" + String.valueOf(vatTotalDbl).substring(0, 4)));
+		assertTrue(getText(supplier2GrandTotal).equals("£" + String.valueOf(grandTotalDbl) + "0 inc. VAT"));
+		// Product qty Check (Plz Not add qty more than 1)
+		assertTrue(getAttributeValue(supplier2P1Qty).equals("1"));
+		assertTrue(getAttributeValue(supplier2P2Qty).equals("1"));
+
+		// Product Price for qty 1
+		String[] supplier2P1PriceSplit = getText(supplier2P1Price).split(" ");
+		assertTrue(supplier2P1PriceSplit[0].equals("£" + jObj1.get("Price").toString()));
+
+		String[] supplier2P2PriceSplit = getText(supplier2P2Price).split(" ");
+		assertTrue(supplier2P2PriceSplit[0].equals("£" + jObj2.get("Price").toString()));
+
 	
+		// supplier1 "testsupplier040" Product 1
+		// Get Supplier1 Product1 Price value from Json
+		String Sup2P1Price = jObj3.get("Price").toString();
+		double intSup2P1Price = Double.parseDouble(Sup2P1Price);
+
+		// Get Supplier1 Product1 StandardChargeProductUKMainland value from Json
+		String Sup2P1StandUKMainlandDeliveryCharges = jObj3.get("StandardChargeProductUKMainland").toString();
+		double intSup2P1StandUKMainlandDeliveryCharges = Double.parseDouble(Sup2P1StandUKMainlandDeliveryCharges);
+
+		// Calculate Supplier1 Product1 VAT
+		double Sup2P1ProductVAT = intSup2P1Price * 20 / 100;
+		System.out.println(Sup2P1ProductVAT);
+
+		// Calculate Supplier1 Product1 DeliveryCharge
+		double Sup2P1ProductDeliveryChargesVAT = intSup2P1StandUKMainlandDeliveryCharges * 20 / 100;
+
+		System.out.println(Sup2P1ProductDeliveryChargesVAT);
+		
+		
+		// Supplier2 "testsupplier039" Calculate Products total, Delivery total and VAT from Json
+				double productsTotalDblSup1 = intSup2P1Price;
+				System.out.println(productsTotalDblSup1);
+				double deliveryTotalDblSup1 = intSup2P1StandUKMainlandDeliveryCharges;
+				System.out.println(deliveryTotalDblSup1);
+				double vatTotalDblSup1 = Sup2P1ProductVAT + Sup2P1ProductDeliveryChargesVAT;
+				System.out.println(vatTotalDblSup1);
+				double grandTotalDblSup1 = productsTotalDblSup1 + deliveryTotalDblSup1 + vatTotalDblSup1;
+				System.out.println(grandTotalDblSup1);
+		
+		
+		// Now get the value of Supplier1 productsTotal, deliveryTotal, vatTotal and
+		assertTrue(getText(supplier1ProductsTotal).equals("£" + String.valueOf(productsTotalDblSup1) + "0 ex. VAT"));
+		assertTrue(getText(supplier1DeliveryTotal).equals("£" + String.valueOf(deliveryTotalDblSup1) + "0 ex. VAT"));
+		assertTrue(getText(supplier1VatTotal).equals("£" + String.valueOf(vatTotalDblSup1)+"0" ));
+		assertTrue(getText(supplier1GrandTotal).equals("£" + String.valueOf(grandTotalDblSup1) + "0 inc. VAT"));
 	
-	
+			
+
+		// Calculate Grand Total Products total, Delivery total and VAT from Json
+		double productsTotalDblGrandTotal = intSup1P1Price + intSup1P2Price + intSup2P1Price;
+		System.out.println(productsTotalDblGrandTotal);
+		double deliveryTotalDblGrandTotal = intSup1P1StandUKMainlandDeliveryCharges
+				+ intSup1P2StandUKMainlandDeliveryCharges + intSup2P1StandUKMainlandDeliveryCharges;
+		System.out.println(deliveryTotalDblGrandTotal);
+		double vatTotalDblGrandTotal = Sup1P1ProductVAT + Sup1P1ProductDeliveryChargesVAT + Sup1P2ProductVAT
+				+ Sup1P2ProductDeliveryChargesVAT + Sup2P1ProductVAT + Sup2P1ProductDeliveryChargesVAT;
+		System.out.println(vatTotalDblGrandTotal);
+		double grandTotalDblGrandTotal = productsTotalDblGrandTotal + deliveryTotalDblGrandTotal
+				+ vatTotalDblGrandTotal;
+		System.out.println(grandTotalDblGrandTotal);
+
+		// Grand Total
+		// Now get the value of footer productsTotal, deliveryTotal, vatTotal and
+		// GrandTotal from Buyers UI
+		assertTrue(getText(productsTotal).equals("£" + String.valueOf(productsTotalDblGrandTotal) + "0 ex. VAT"));
+		assertTrue(getText(deliveryTotal).equals("£" + String.valueOf(deliveryTotalDblGrandTotal) + "0 ex. VAT"));
+		assertTrue(getText(vatTotal).equals("£" + String.valueOf(vatTotalDblGrandTotal)+"0"));
+		assertTrue(getText(grandTotal).equals("£" + String.valueOf(grandTotalDblGrandTotal) + "0 inc. VAT"));
+
+		 
+	}
+
 	public void validateSupplier1Product1and2VATAndOtherDetailsForNextBusinessDay(JSONObject jObj1, JSONObject jObj2) {
 		waitForSeconds(2);
 
 		// Get Supplier1 Product1 Price value from Json
 		String Sup1P1Price = jObj1.get("Price").toString();
 		double intSup1P1Price = Double.parseDouble(Sup1P1Price);
-		
+
 		// Get Supplier1 Product1 StandardChargeProductUKMainland value from Json
 		String Sup1P1NextDayChargeProduct = jObj1.get("nextDayChargeProduct").toString();
 		double intSup1P1NextDayChargeProduct = Double.parseDouble(Sup1P1NextDayChargeProduct);
-		
+
 		// Calculate Supplier1 Product1 VAT
 		double Sup1P1ProductVAT = intSup1P1Price * 20 / 100;
-		
+
 		// Calculate Supplier1 Product1 DeliveryCharge
 		double Sup1P1ProductDeliveryChargesVAT = intSup1P1NextDayChargeProduct * 20 / 100;
-		
+
 		// Get Supplier1 Product2 Price value from Json
 		String Sup1P2Price = jObj2.get("Price").toString();
 		double intSup1P2Price = Double.parseDouble(Sup1P2Price);
-		
+
 		// Get Supplier1 Product2 StandardChargeProductUKMainland value from Json
 		String Sup1P2NextDayChargeProduct = jObj2.get("nextDayChargeProduct").toString();
 		double intSup1P2NextDayChargeProduct = Double.parseDouble(Sup1P2NextDayChargeProduct);
-	
+
 		// Calculate Supplier1 Product2 VAT
 		double Sup1P2ProductVAT = intSup1P2Price * 20 / 100;
-		
+
 		// Calculate Supplier1 Product2 DeliveryCharge
 		double Sup1P2ProductDeliveryChargesVAT = intSup1P2NextDayChargeProduct * 20 / 100;
-		
+
 		// Calculate Products total, Delivery total and VAT from Json
 		double productsTotalDbl = intSup1P1Price + intSup1P2Price;
 		System.out.println(productsTotalDbl);
@@ -843,53 +997,55 @@ public class BuyersUIBasketPage extends Actions {
 		System.out.println(vatTotalDbl);
 		double grandTotalDbl = productsTotalDbl + deliveryTotalDbl + vatTotalDbl;
 		System.out.println(grandTotalDbl);
-		
-		//Now get the value of Supplier1 productsTotal, deliveryTotal, vatTotal and GrandTotal from Buyers UI
-		assertTrue(getText(supplier1ProductsTotal).equals("£"+String.valueOf(productsTotalDbl)+ "0 ex. VAT"));
-		assertTrue(getText(supplier1DeliveryTotal).equals("£"+String.valueOf(deliveryTotalDbl)+ "0 ex. VAT"));
-		assertTrue(getText(supplier1VatTotal).equals("£"+String.valueOf(vatTotalDbl)+ "0"));
-		assertTrue(getText(supplier1GrandTotal).equals("£"+String.valueOf(grandTotalDbl)+"0 inc. VAT"));
-		
-		//Now get the value of footer productsTotal, deliveryTotal, vatTotal and GrandTotal from Buyers UI
-		assertTrue(getText(productsTotal).equals("£"+String.valueOf(productsTotalDbl)+ "0 ex. VAT"));
-		assertTrue(getText(deliveryTotal).equals("£"+String.valueOf(deliveryTotalDbl)+ "0 ex. VAT"));
-		assertTrue(getText(vatTotal).equals("£"+String.valueOf(vatTotalDbl)+ "0"));
-		assertTrue(getText(grandTotal).equals("£"+String.valueOf(grandTotalDbl)+"0 inc. VAT"));
+
+		// Now get the value of Supplier1 productsTotal, deliveryTotal, vatTotal and
+		// GrandTotal from Buyers UI
+		assertTrue(getText(supplier1ProductsTotal).equals("£" + String.valueOf(productsTotalDbl) + "0 ex. VAT"));
+		assertTrue(getText(supplier1DeliveryTotal).equals("£" + String.valueOf(deliveryTotalDbl) + "0 ex. VAT"));
+		assertTrue(getText(supplier1VatTotal).equals("£" + String.valueOf(vatTotalDbl) + "0"));
+		assertTrue(getText(supplier1GrandTotal).equals("£" + String.valueOf(grandTotalDbl) + "0 inc. VAT"));
+
+		// Now get the value of footer productsTotal, deliveryTotal, vatTotal and
+		// GrandTotal from Buyers UI
+		assertTrue(getText(productsTotal).equals("£" + String.valueOf(productsTotalDbl) + "0 ex. VAT"));
+		assertTrue(getText(deliveryTotal).equals("£" + String.valueOf(deliveryTotalDbl) + "0 ex. VAT"));
+		assertTrue(getText(vatTotal).equals("£" + String.valueOf(vatTotalDbl) + "0"));
+		assertTrue(getText(grandTotal).equals("£" + String.valueOf(grandTotalDbl) + "0 inc. VAT"));
 
 	}
-	
-	
-	public void validateSupplier1Product1and2VATAndOtherDetailsForStandardUKNonMainland(JSONObject jObj1, JSONObject jObj2) {
+
+	public void validateSupplier1Product1and2VATAndOtherDetailsForStandardUKNonMainland(JSONObject jObj1,
+			JSONObject jObj2) {
 		waitForSeconds(2);
 
 		// Get Supplier1 Product1 Price value from Json
 		String Sup1P1Price = jObj1.get("Price").toString();
 		double intSup1P1Price = Double.parseDouble(Sup1P1Price);
-		
+
 		// Get Supplier1 Product1 StandardChargeProductUKMainland value from Json
 		String Sup1P1NextDayChargeProduct = jObj1.get("StandardChargeProductUKNonMainland").toString();
 		double intSup1P1NextDayChargeProduct = Double.parseDouble(Sup1P1NextDayChargeProduct);
-		
+
 		// Calculate Supplier1 Product1 VAT
 		double Sup1P1ProductVAT = intSup1P1Price * 0 / 100;
-		
+
 		// Calculate Supplier1 Product1 DeliveryCharge
 		double Sup1P1ProductDeliveryChargesVAT = intSup1P1NextDayChargeProduct * 20 / 100;
-		
+
 		// Get Supplier1 Product2 Price value from Json
 		String Sup1P2Price = jObj2.get("Price").toString();
 		double intSup1P2Price = Double.parseDouble(Sup1P2Price);
-		
+
 		// Get Supplier1 Product2 StandardChargeProductUKMainland value from Json
 		String Sup1P2NextDayChargeProduct = jObj2.get("StandardChargeProductUKNonMainland").toString();
 		double intSup1P2NextDayChargeProduct = Double.parseDouble(Sup1P2NextDayChargeProduct);
-	
+
 		// Calculate Supplier1 Product2 VAT
 		double Sup1P2ProductVAT = intSup1P2Price * 20 / 100;
-		
+
 		// Calculate Supplier1 Product2 DeliveryCharge
 		double Sup1P2ProductDeliveryChargesVAT = intSup1P2NextDayChargeProduct * 20 / 100;
-		
+
 		// Calculate Products total, Delivery total and VAT from Json
 		double productsTotalDbl = intSup1P1Price + intSup1P2Price;
 		System.out.println(productsTotalDbl);
@@ -900,21 +1056,21 @@ public class BuyersUIBasketPage extends Actions {
 		System.out.println(vatTotalDbl);
 		double grandTotalDbl = productsTotalDbl + deliveryTotalDbl + vatTotalDbl;
 		System.out.println(grandTotalDbl);
-		
-		//Now get the value of Supplier1 productsTotal, deliveryTotal, vatTotal and GrandTotal from Buyers UI
-		assertTrue(getText(supplier1ProductsTotal).equals("£"+String.valueOf(productsTotalDbl)+ "0 ex. VAT"));
-		assertTrue(getText(supplier1DeliveryTotal).equals("£"+String.valueOf(deliveryTotalDbl)+ "0 ex. VAT"));
-		assertTrue(getText(supplier1VatTotal).equals("£"+String.valueOf(vatTotalDbl)+ "0"));
-		assertTrue(getText(supplier1GrandTotal).equals("£"+String.valueOf(grandTotalDbl)+"0 inc. VAT"));
-		
-		//Now get the value of footer productsTotal, deliveryTotal, vatTotal and GrandTotal from Buyers UI
-		assertTrue(getText(productsTotal).equals("£"+String.valueOf(productsTotalDbl)+ "0 ex. VAT"));
-		assertTrue(getText(deliveryTotal).equals("£"+String.valueOf(deliveryTotalDbl)+ "0 ex. VAT"));
-		assertTrue(getText(vatTotal).equals("£"+String.valueOf(vatTotalDbl)+ "0"));
-		assertTrue(getText(grandTotal).equals("£"+String.valueOf(grandTotalDbl)+"0 inc. VAT"));
+
+		// Now get the value of Supplier1 productsTotal, deliveryTotal, vatTotal and
+		// GrandTotal from Buyers UI
+		assertTrue(getText(supplier1ProductsTotal).equals("£" + String.valueOf(productsTotalDbl) + "0 ex. VAT"));
+		assertTrue(getText(supplier1DeliveryTotal).equals("£" + String.valueOf(deliveryTotalDbl) + "0 ex. VAT"));
+		assertTrue(getText(supplier1VatTotal).equals("£" + String.valueOf(vatTotalDbl) + "0"));
+		assertTrue(getText(supplier1GrandTotal).equals("£" + String.valueOf(grandTotalDbl) + "0 inc. VAT"));
+
+		// Now get the value of footer productsTotal, deliveryTotal, vatTotal and
+		// GrandTotal from Buyers UI
+		assertTrue(getText(productsTotal).equals("£" + String.valueOf(productsTotalDbl) + "0 ex. VAT"));
+		assertTrue(getText(deliveryTotal).equals("£" + String.valueOf(deliveryTotalDbl) + "0 ex. VAT"));
+		assertTrue(getText(vatTotal).equals("£" + String.valueOf(vatTotalDbl) + "0"));
+		assertTrue(getText(grandTotal).equals("£" + String.valueOf(grandTotalDbl) + "0 inc. VAT"));
 
 	}
-	
-	
 
 }

@@ -251,11 +251,22 @@ public class WishListServiceStepDefs {
 		String strjson ="{\"variant_id\":"+Supp1SecondProductVariantID+",\"quantity\": 1}";
 		apibase.Requestpost("/api/v2/storefront/cart/add_item", strjson);
 						
-		//Add Supplier1 Product3 with VAT 20%
+		//Add Supplier2 Product3 with VAT 20%
 		String strjson1 ="{\"variant_id\":"+Supp2FirstProductVariantID+",\"quantity\": 1}";
 		apibase.Requestpost("/api/v2/storefront/cart/add_item", strjson1);
 
 	}
+	
+	
+	@Then("User adds the supplier{int} product with VAT{int} into the basket")
+	public void user_adds_the_supplier_product_with_VAT_into_the_basket(Integer int1, Integer int2) {
+	    
+		//Add Supplier2 Product3 with VAT 20%
+		String strjson1 ="{\"variant_id\":"+Supp2FirstProductVariantID+",\"quantity\": 1}";
+		apibase.Requestpost("/api/v2/storefront/cart/add_item", strjson1);
+	}
+
+
 
 	
 
