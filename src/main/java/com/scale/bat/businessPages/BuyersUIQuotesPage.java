@@ -193,6 +193,9 @@ public class BuyersUIQuotesPage extends Actions{
 	@FindBy(xpath = "//div[@class='govuk-notification-banner__content']")
 	private WebElement successMsg;
 	
+	@FindBy(xpath = "//div[@class='govuk-error-summary__body']/ul/li")
+	private WebElement errorMsgInsufficientStockQuotes;
+	
 	private String manageQuoteColumHeaderSize = "//table[@class='govuk-table bat-quotes__table']/thead/tr/th";
 	private String firmQuote = "//*[@id='kind']";
 	private String indicativeQuote = "//*[@id='kind-2']";
@@ -363,6 +366,14 @@ public class BuyersUIQuotesPage extends Actions{
 		
 		assertEquals(getText(successMsg), successMessage);
 		log.info("Validated success message: "+ successMessage);
+		
+	}
+	
+  public void validateTheErrorMessageOfInsufficientStockOnQuotes() {
+	  
+		System.out.println(getText(errorMsgInsufficientStockQuotes));
+		assertEquals(getText(errorMsgInsufficientStockQuotes), configReaderObj.get("errorMsgInsufficientStockQuotePage"));
+		log.info("Validated success error message on quotes page: "+ configReaderObj.get("errorMsgInsufficientStockQuotePage"));
 		
 	}
 	

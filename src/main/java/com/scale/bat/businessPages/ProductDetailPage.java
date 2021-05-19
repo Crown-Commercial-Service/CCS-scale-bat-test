@@ -113,6 +113,16 @@ public class ProductDetailPage extends Actions {
 		clickButton(updateButton);
 		existsElement(successfulMessage);
 	}
+	
+	
+	public void updateStockQuantityAsPerJson(Map<String, Object> pDetails) {
+		clickByLinkText(stock);
+		clearTextBox(StockTextField);
+		String localVolumeStock = pDetails.get("LocalStockVolume").toString();
+		enterText(StockTextField, localVolumeStock);
+		clickButton(updateButton);
+		existsElement(successfulMessage);
+	}
 
 	public void checkWarningMessageOnStockField(String inputType) {
 		clickByLinkText(stock);

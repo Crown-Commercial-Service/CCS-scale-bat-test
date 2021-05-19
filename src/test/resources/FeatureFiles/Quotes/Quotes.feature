@@ -336,5 +336,124 @@ Feature: This User story covers the Firm quotes related scenarios
     And User validates the products in Indicative quote is added with the product already present in the basket
     
     
+   #[US-97 TC05(SCA-2598) & TC06(SCA-2599)]
+   @confidence
+   Scenario: TC_Verify if quantity contained on a Firm Quote for any product is not available a warning message should display on basket.
+    #API Steps
+    And user clears the basket
+    #Buyers UI Steps
+    Given User logged in as "supplier" in admin panel
+    And User click on "productcatalogues" link on main sidebar
+    And User clicks on show link to view products
+    And Check if the product is present in a catalogue if yes then delete
+    And User click on "productcatalogues" link on main sidebar
+    And User clicks on show link to view products
+    When User creates a product
+    And User enters the buyers UI
+    And User login to buyerUI with API User
+    When User search a product with SKU number
+    And User clicks on "PLP image" in buyers UI
+    And User clicks on "Add to basket" in buyers UI
+    And User adjust the products quantity on the Added to wishlist page
+    And User clicks on "Update Link" in buyers UI
+    And User validates the OOS message
+    And User clicks on "Proceed to basket" in buyers UI
+    #Basket page
+    And User validates the generic message "Your basket has been updated."
+    And User select the Delivery option "Standard UK Mainland (3-5 days)"
+    #Quotes page
+    And User clicks on "Quote" in buyers UI
+    And User enter Quote name as "Firmquote"
+    And User create "Firm" quote
+    And User clicks on "Raise quote" in buyers UI
+    Then User get message "Quote raised successfully" on screen
+    #Admin UI
+    And User enters the Admin UI url
+    And User click on "productcatalogues" link on main sidebar
+    And User clicks on show link to view products
+    When User clicks on edit button to view product details
+   	And User reduces the stock of the product
+    Then A successful message should be displayed
+    #Buyers UI Quotes
+    And User enters the buyers UI
+    And User clicks on "My Account link" in buyers UI
+    And User clicks on "Manage quotes Visit link" in buyers UI
+    And User validates the new Quote refrence no
+    And User enters the new Quote refrence in Quote reference textbox in buyers UI
+    And User clicks on "Manage quote Search button" in buyers UI
+    And User clicks on "Quote refrence link" in buyers UI
+    And User validates the Clear my Basket and add these items button & a text message is visible on above that button
+    And User clicks on "Clear my basket and add these items" in buyers UI
+    #Quotes page
+    And User validets the error message of insufficient stock on quotes page
+    #Admin UI
+    And User enters the Admin UI url
+    And User click on "productcatalogues" link on main sidebar
+    And User clicks on show link to view products
+    When User clicks on edit button to view product details
+   	And User update the stock with actual previous stock
+    Then A successful message should be displayed
+    
+    
+    #[US-97 TC11(SCA-2604) & TC12(SCA-2606)]
+   @confidence
+   Scenario: TC_Verify if quantity conta	ined on a Indicative Quote for any product is not available a warning message should display on basket.
+    #API Steps
+    And user clears the basket
+    #Buyers UI Steps
+    Given User logged in as "supplier" in admin panel
+    And User click on "productcatalogues" link on main sidebar
+    And User clicks on show link to view products
+    And Check if the product is present in a catalogue if yes then delete
+    And User click on "productcatalogues" link on main sidebar
+    And User clicks on show link to view products
+    When User creates a product
+    And User enters the buyers UI
+    And User login to buyerUI with API User
+    When User search a product with SKU number
+    And User clicks on "PLP image" in buyers UI
+    And User clicks on "Add to basket" in buyers UI
+    And User adjust the products quantity on the Added to wishlist page
+    And User clicks on "Update Link" in buyers UI
+    And User validates the OOS message
+    And User clicks on "Proceed to basket" in buyers UI
+    #Basket page
+    And User validates the generic message "Your basket has been updated."
+    And User select the Delivery option "Standard UK Mainland (3-5 days)"
+    #Quotes page
+    And User clicks on "Quote" in buyers UI
+    And User enter Quote name as "Indicativequote"
+    And User create "Indicative" quote
+    And User clicks on "Raise quote" in buyers UI
+    Then User get message "Quote raised successfully" on screen
+    #Admin UI
+    And User enters the Admin UI url
+    And User click on "productcatalogues" link on main sidebar
+    And User clicks on show link to view products
+    When User clicks on edit button to view product details
+   	And User reduces the stock of the product
+    Then A successful message should be displayed
+    #Buyers UI Quotes
+    And User enters the buyers UI
+    And User clicks on "My Account link" in buyers UI
+    And User clicks on "Manage quotes Visit link" in buyers UI
+    And User validates the new Quote refrence no
+    And User enters the new Quote refrence in Quote reference textbox in buyers UI
+    And User clicks on "Manage quote Search button" in buyers UI
+    And User clicks on "Quote refrence link" in buyers UI
+    And User validates the Add to basket button
+    And User clicks on "Add to basket button on Indicative quote" in buyers UI
+    #Quotes page
+    And User validets the error message of insufficient stock on quotes page
+    #Admin UI
+    And User enters the Admin UI url
+    And User click on "productcatalogues" link on main sidebar
+    And User clicks on show link to view products
+    When User clicks on edit button to view product details
+   	And User update the stock with actual previous stock
+    Then A successful message should be displayed
+    
+    
+    
     
   
