@@ -34,7 +34,7 @@ public class APIBase extends ConfigurationReader {
 
     public RequestSpecification setBaseURI() {
     	
-    	System.out.println("inside");
+    	//System.out.println("inside");
     	// 1 point
     	//setting basic url link
         RequestSpecification  requestspec = new RequestSpecBuilder().setBaseUri(configread.get("BaseURL")).build();

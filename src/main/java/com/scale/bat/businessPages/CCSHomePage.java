@@ -93,10 +93,12 @@ public class CCSHomePage extends Actions {
 	
 	public void enterSupplierName(String nameSupplier) {
 		enterText(supplierFilterNameTextbox,nameSupplier);
+		
 	}
 	
 	public void clickOnFilterResultButton() {
 		clickElement(filterResultButton);
+		
 	}
 	
 	public void clickOnEditButton() {

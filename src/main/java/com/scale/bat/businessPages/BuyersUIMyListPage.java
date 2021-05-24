@@ -186,7 +186,7 @@ public class BuyersUIMyListPage extends Actions  {
 	public void validateDisclaimerMessageOnMyList() {
 		
 		assertTrue(getText(disclaimerMessage).equals(configReaderObj.get("disclaimerMessage")));
-		log.info("Disclaimer message: "+ configReaderObj.get("disclaimerMessage") + " is displayed successful");
+		log.info("Buyer is able to see the disclaimer message: "+ configReaderObj.get("disclaimerMessage") + " is displayed successful");
 		
 	}
 	

@@ -219,7 +219,7 @@ public class TestContext extends BrowserFactory {
 		this.driver = initiateDriver(configReader.getBrowserName(),scenario);
 		launchURL(configReader.buyerUIUrl());
 		objectManager = new PageObjectManager(this.driver, scenario);
-		System.out.println("Buyer UI 1 Driver Instance: " + driver);
+		//System.out.println("Buyer UI 1 Driver Instance: " + driver);
 		//TakeScreenShotAndAddToWordDoc.createWordFile();
 		//TakeScreenShotAndAddToWordDoc.captureScreenShotNew();
 	}

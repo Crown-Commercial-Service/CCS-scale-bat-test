@@ -153,7 +153,7 @@ public class BuyersUIpage extends Actions {
 		waitForSeconds(1);
 		//TakeScreenShotAndAddToWordDoc.captureScreenShotNew();
 		clickButton(logInButton);
-		log.info("Logged in to buyers Ui");
+		log.info("Logged in to buyers UI");
 	}
 	
 	public void searchProduct(String product) {
@@ -198,6 +198,8 @@ public class BuyersUIpage extends Actions {
 	
 	public void clickOnMyListVisitButton() {
 		clickElement(myAccountMyListVisitButton);
+		log.info("Click on Visit button");
+		
 	}
 
 	public void navigateToPDPPage() {

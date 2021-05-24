@@ -20,7 +20,7 @@ public class PostgresSqlConnection {
 		user = reader.postgressqlUser();
 		server = reader.postgressqlServer();
 		password = reader.postgressqlPassword();
-		log.info("Trying to connect postgresDb....");
+		//log.info("Trying to connect postgresDb....");
 	}
 
 	public Connection getConnections() {

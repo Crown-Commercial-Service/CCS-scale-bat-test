@@ -68,7 +68,7 @@ public class WishListServiceStepDefs {
 	public void user_access_the_webservice_of_GetWishList() {
 		jsonResponse=apibase.getRequest("/api/v2/storefront/wishlists/default?include=wished_products,wished_products.variant,wished_products.variant.product,wished_products.variant.product.manufacturer");
 		access_hash = apibase.getvaluefromresponse("data.attributes.access_hash",jsonResponse);
-        System.out.println("access_hash: "+ access_hash);
+        //System.out.println("access_hash: "+ access_hash);
      
 	}
 	
@@ -78,6 +78,7 @@ public class WishListServiceStepDefs {
 		
 		String strjson ="{\"wished_product\":{\"variant_id\":"+firstProductVariantID+",\"quantity\":1,\"remark\":\"test\"}}";
 		apibase.Requestpost("/api/v2/storefront/wishlists/{access_hash}/wished_products", strjson, access_hash);
+		log.info("Product is added to My List page successfully through API");
 	}
 
 	@Then("user retrive the value from the response")
@@ -97,7 +98,7 @@ public class WishListServiceStepDefs {
 	    
 		jsonResponse = apibase.getRequest("/api/v2/storefront/products?filter[in_stock]=true&sort_by=available_on");
 		String anc = jsonResponse.getBody().asString();
-		System.out.println(anc);
+		//System.out.println(anc);
 		jsonAllProductsResponse=jsonResponse;
 		statusCode = apibase.getStatusCode(jsonResponse);
 	} 

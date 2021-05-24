@@ -192,7 +192,7 @@ public class Actions {
 		String XPATH = ".//*[contains(text(),'" + elementName + "')]";
 		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(XPATH)));
 		element.click();
-		log.info("Clicked on " + elementName + " element");
+		//log.info("Clicked on " + elementName + " element");
 		scenario.write("User Clicked on " + elementName + " option");
 
 	}

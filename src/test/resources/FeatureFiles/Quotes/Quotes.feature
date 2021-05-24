@@ -337,6 +337,8 @@ Feature: This User story covers the Firm quotes related scenarios
     
     
    #[US-97 TC05(SCA-2598) & TC06(SCA-2599)]
+   #[US-332 TC02(SCA-2677)]
+   #[US-331 TC01(SCA-2684)]
    @confidence
    Scenario: TC_Verify if quantity contained on a Firm Quote for any product is not available a warning message should display on basket.
     #API Steps
@@ -452,6 +454,55 @@ Feature: This User story covers the Firm quotes related scenarios
     When User clicks on edit button to view product details
    	And User update the stock with actual previous stock
     Then A successful message should be displayed
+    
+    
+    
+   
+   #[US-332 TC01(SCA-2676)]
+   @confidenceNotComplete
+   Scenario: TC_ Verify when buyers converts the firm quote into an order and stock is available then quote will be converted into order
+    #API Steps
+    And user clears the basket
+    And User gets products IDs for supplier1 and supplier2
+    And User adds two products from supplier1 in to the basket with one having VAT0 and second having VAT20 percentage
+    And User adds a product with mpn "MPN" of supplier1 in to the basket
+    #Buyers UI Steps
+    Given User logged in as "supplier" in admin panel
+    #UI Steps
+    And User navigates to BuyerUI
+    And User login to buyerUI with API User
+    And User clicks on "Basket Link" in buyers UI
+    #Basket page
+    And User validates the generic message "Your basket has been updated."
+    And User select the Delivery option "Standard UK Mainland (3-5 days)"
+    And User get the supplier name and total amount of the products on Buyers UI
+    And User clicks on "Quote" in buyers UI
+    And User validated the Firm and Indicative quote label
+    And User enter Quote name as "AutoFirmquote"
+    And User create "Firm" quote
+    And User clicks on "Raise quote" in buyers UI
+    Then User get message "Quote raised successfully" on screen
+    And User validates the new Quote refrence no
+    And User enters the new Quote refrence in Quote reference textbox in buyers UI
+    And User clicks on "Manage quote Search button" in buyers UI
+    And User validates the new "Firm" Quote details in quotes table with default status as "Accepted" in Buyers UI
+    And User clicks on "Quote refrence link" in buyers UI
+    And User validates the Clear my Basket and add these items button & a text message is visible on above that button
+    And User clicks on "Clear my basket and add these items" in buyers UI
+    And User Validates the message "The quote was successfully converted into the basket."
+    #And User validates the supplier1 product total delivery total VAT and grand Total in basket for Standard UK Mainland
+   	#CheckOut
+   	And User clicks on "Checkout" in buyers UI
+   	And User navigates to checkout payments page
+   	And User validates the Order summary of supplier1
+   	And User enters the PO number in the PO number textbox
+   	And User clicks on "Save and continue" in buyers UI
+   	And User navigates to checkout summary page
+   	And User validates the product details on checkout summary page
+   	And User click on Terms & Conditions checkbox
+   	And User clicks on "Place order" in buyers UI
+   	And User validates the order
+      
     
     
     

@@ -397,8 +397,7 @@ public class BuyersUIBasketPage extends Actions {
 		int mpnlength = getText(mpn).length();
 		String mpns = getText(mpn).substring(5, mpnlength);
 
-		System.out.println(
-				"JSON Body Validation: " + WishListServiceStepDefs.jsonAllProductsResponse.getBody().asString());
+		//System.out.println("JSON Body Validation: " + WishListServiceStepDefs.jsonAllProductsResponse.getBody().asString());
 		// Product Price UI
 		assertTrue(productPriceSplit.equals(apiBase.getvaluefromresponse("data[0].attributes.display_price",
 				WishListServiceStepDefs.jsonAllProductsResponse)));
@@ -411,7 +410,7 @@ public class BuyersUIBasketPage extends Actions {
 		assertTrue(mpns.equals(apiBase.getvaluefromresponse("data[0].attributes.mpn_number",
 				WishListServiceStepDefs.jsonAllProductsResponse)));
 
-		log.info("Validation completed on Basket Page UI");
+		log.info("Product is successfully added and validated on Basket Page");
 
 		// TakeScreenShotAndAddToWordDoc.captureScreenShotNew();
 

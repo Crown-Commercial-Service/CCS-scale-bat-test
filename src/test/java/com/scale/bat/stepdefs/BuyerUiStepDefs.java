@@ -102,6 +102,7 @@ public class BuyerUiStepDefs {
 			break;
 		case "My Account link":
 			objectManager.getBuyersUIpage().clickElement(objectManager.getBuyersUIpage().getMyAccountLink());
+			log.info("User clicks on 'My Account link' ");
 			break;
 		case "Clear basket":
 			//TakeScreenShotAndAddToWordDoc.captureScreenShotNew();

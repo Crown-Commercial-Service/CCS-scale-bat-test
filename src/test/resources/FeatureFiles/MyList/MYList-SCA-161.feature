@@ -12,7 +12,6 @@ Feature: My List related scenarios Testcases
     And get the products variant ids
     And user access the webservice of GetWishList
     And user add the WishList
-    #And deletes the products from the WishList
     #UI Steps
     And User navigates to BuyerUI
     And User login to buyerUI with API User
@@ -21,7 +20,6 @@ Feature: My List related scenarios Testcases
     And User validates the disclaimer if product is present in Wish List page
     And User Clicks on AddToBasket button of the selected product on My List page
     And User validates the product message Product added to your basket
-    #And User Validated the product details on basket page
     And User Validated a product details on basket page
 
   #[US-161 (TC06)]
