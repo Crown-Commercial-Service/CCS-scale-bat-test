@@ -118,6 +118,7 @@ public class BuyersUIpage extends Actions {
 	private String getTotalProductsInMyList="//*[@id='main-content']/div[1]/div/ul/li";
 	private String quote = "Quote";
 	private String update = "Update";
+	private String checkout = "Checkout";
 	 
 	@FindBy(xpath = "//*[@href='/account/quotes']")
 	private WebElement manageQuotesVisit;
@@ -404,6 +405,10 @@ public class BuyersUIpage extends Actions {
 
 	public String getUpdateLinkAddToList() {
 		return update;
+	}
+	
+	public String getCheckout() {
+		return checkout;
 	}
 	
 	

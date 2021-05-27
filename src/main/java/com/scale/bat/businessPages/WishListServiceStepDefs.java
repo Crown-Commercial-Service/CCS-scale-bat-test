@@ -155,6 +155,24 @@ public class WishListServiceStepDefs {
 		
 		
 	}
+	
+	@Given("User gets a products ID for supplier{int} with MPN {string}")
+	public void user_gets_a_products_ID_for_supplier_with_MPN(Integer int1, String mpn) {
+	    
+		// Get Supplier1 Product1 Product ID
+		jsonResponse = apibase.getRequest("/api/v2/storefront/products?filter[in_stock]=true&sort_by=available_on&filter[name]="+mpn);
+		// String anc = jsonResponse.getBody().asString();
+		// System.out.println(anc);
+		String sup1firstProduct = apibase.getvaluefromresponse("data[0].id");
+		// System.out.println("Supplier1 Product1 ID: "+ Sup1firstProduct);
+		// Get Variant ID
+		jsonResponse = apibase.getRequest("/api/v2/storefront/products/" + sup1firstProduct
+				+ "?include=default_variant,default_variant.vendor,variants,variants.option_values,documents,variants.delivery_charges,variants.vendor,variants.catalog,option_types,product_properties,images,manufacturer");
+		statusCode = apibase.getStatusCode(jsonResponse);
+		Supp1FirstProductVariantID = apibase.getvaluefromresponse("data.relationships.default_variant.data.id");
+
+	}
+	
 
 	@Given("identify products which needs to be add in the list.")
 	public void identify_products_which_needs_to_be_add_in_the_list() {
@@ -217,6 +235,14 @@ public class WishListServiceStepDefs {
 		System.out.println(anc);
 		allQuotesQtyApi= apibase.getvaluefromresponseAsInterger("meta.total_count");
 		System.out.println(allQuotesQtyApi);
+	}
+	
+	@Given("User adds a product with MPN {string} of supplier{int} in to the basket")
+	public void user_adds_a_product_with_MPN_of_supplier_in_to_the_basket(String string, Integer int1) {
+	    
+		//Add Supplier1 Product1 with VAT 20%
+		String strjson ="{\"variant_id\":"+Supp1FirstProductVariantID+",\"quantity\": 1}";
+		apibase.Requestpost("/api/v2/storefront/cart/add_item", strjson);
 	}
 	
 	@Given("User adds two products from supplier{int} in to the basket with one having VAT{int} and second having VAT{int} percentage")

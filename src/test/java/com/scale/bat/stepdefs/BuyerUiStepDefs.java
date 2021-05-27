@@ -192,6 +192,17 @@ public class BuyerUiStepDefs {
 			objectManager.getBuyersUIpage().clickElement(objectManager.getBuyersUIQuotespage().addtoBasketBtnOnIndicative());
 		break;
 		
+		case "Checkout":
+			objectManager.getBuyersUIpage().clickElement(objectManager.getBuyersUIpage().getCheckout());
+		break;
+		
+		case "Save and continue":
+			objectManager.getBuyersUIpage().clickElement(objectManager.getBuyersUIQuotespage().saveAndContinueBtnOnPayentCheckout());
+		break;
+		
+		case "Place order":
+			objectManager.getBuyersUIpage().clickElement(objectManager.getBuyersUIQuotespage().placeOrderCheckout());
+		break;
 		
 		
 		}

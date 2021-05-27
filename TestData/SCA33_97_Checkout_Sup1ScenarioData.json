@@ -1,0 +1,20 @@
+{
+  "Product1": {
+    "LocalStockVolume": "100",
+    "StandardChargeProductUKMainland": "2.00",
+    "ManufacturerName": "Compaq",
+    "ProductName": "Compaq - Storage controller - Fast SCSI - 10 MBps - ISA",
+    "StandardChargeBasket": "5.00",
+    "StandardChargeProductUKNonMainland": "5.00",
+    "nextDayChargeBasket": "8",
+    "MPN": "187749-001",
+    "taxCategory": "Standard",
+    "Price": "4.00",
+    "LastUpdatedTestCase": "",
+    "StandardDeliveryTimeIndays": "5",
+    "UNSPSC": "",
+    "nextDayChargeProduct": "4.00",
+    "SKU": "SKU109",
+    "PublishedFromDate": ""
+  }
+}

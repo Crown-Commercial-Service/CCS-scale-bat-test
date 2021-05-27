@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -23,6 +24,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.scale.bat.framework.utility.Actions;
 import com.scale.bat.framework.utility.ConfigurationReader;
+import com.scale.bat.framework.utility.DateTimeUtils;
 import com.scale.bat.framework.utility.JsonParser;
 import com.scale.bat.framework.utility.Log;
 import com.scale.bat.framework.utility.TakeScreenShotAndAddToWordDoc;
@@ -37,6 +39,7 @@ public class BuyersUIBasketPage extends Actions {
 	private Logger log = Log.getLogger(BuyersUIPDPPage.class);
 	private ConfigurationReader configReaderObj;
 	APIBase apiBase = new APIBase();
+	public static Map<String, String> productDetailsCheckout = new HashMap<String, String>();
 	// WishListServiceStepDefs wishListServiceStepDefs=new
 	// WishListServiceStepDefs();
 
@@ -216,12 +219,56 @@ public class BuyersUIBasketPage extends Actions {
 
 	@FindBy(xpath = "//*[@class='govuk-list bat-basket-items-by-supplier']/li[2]/div/ul/li[2]/div/form/div/div[3]")
 	private WebElement supplier2P2Price;
-
+	
+	@FindBy(xpath = "//h2[@class='govuk-heading-m']")
+	private WebElement paymentCheckOutTextUI;
+	
+	//Payment Checkout page Order Summary Locator
+	@FindBy(xpath = "//table[@class='govuk-table bat-prices-summary__price-table']/tbody/tr[1]/td[2]")
+	private WebElement paymentCheckOutOrderSummaryProducts;
+	
+	@FindBy(xpath = "//table[@class='govuk-table bat-prices-summary__price-table']/tbody/tr[2]/td[2]")
+	private WebElement paymentCheckOutOrderSummaryDeliveryTotal;
+	
+	@FindBy(xpath = "//table[@class='govuk-table bat-prices-summary__price-table']/tbody/tr[3]/td[2]")
+	private WebElement paymentCheckOutOrderSummaryVAT;
+	
+	@FindBy(xpath = "//table[@class='govuk-table bat-prices-summary__price-table']/tbody/tr[4]/td[2]")
+	private WebElement paymentCheckOutOrderSummaryTotalValue;
+	
+	@FindBy(xpath = "//input[@name='poNumber184']")
+	private WebElement paymentCheckOutPoNumberTextbox;
+	
+	String PoNumberWithCurrenntday;
+	
+	//Checkout Summary Page
+	@FindBy(xpath = "//h1[@class='govuk-heading-l']")
+	private WebElement checkOutOrderSummaryPageHeader;
+	
+	@FindBy(xpath = "//div[@class='bat-checkout-summary__total govuk-!-margin-top-9 govuk-!-margin-bottom-6']/ul/li[1]/span[2]")
+	private WebElement checkOutOrderSummaryAllProductsTotal;
+	
+	@FindBy(xpath = "//div[@class='bat-checkout-summary__total govuk-!-margin-top-9 govuk-!-margin-bottom-6']/ul/li[2]/span[2]")
+	private WebElement checkOutOrderSummaryAllProductsDeliveryTotal;
+	
+	@FindBy(xpath = "//div[@class='bat-checkout-summary__total govuk-!-margin-top-9 govuk-!-margin-bottom-6']/ul/li[3]/span[2]")
+	private WebElement checkOutOrderSummaryAllProductsVAT;
+	
+	@FindBy(xpath = "//div[@class='bat-checkout-summary__total govuk-!-margin-top-9 govuk-!-margin-bottom-6']/ul/li[4]/span[2]")
+	private WebElement checkOutOrderSummaryAllProductsGrandTotal;
+	
+	@FindBy(xpath = "//input[@class='govuk-checkboxes__input']")
+	private WebElement checksOnTermsAndConditions;
+	
+	String checksOnTermsAndConditionsStr="//input[@class='govuk-checkboxes__input']";
+	
+	
 	// Declare Variables
 	String productsTotalSplit[];
 	String productsTotalSplitActual;
 	String deliveryTotalSplit[];
 	String deliveryTotalSplitActual;
+	
 
 	// public void verifyProductDetailsOnBasketPage(Map<String, Object> pDetails) {
 	public void verifyProductDetailsOnBasketPage(String path) {
@@ -833,6 +880,63 @@ public class BuyersUIBasketPage extends Actions {
 		assertTrue(supplier1P2PriceSplit[0].equals("£" + jObj2.get("Price").toString()));
 
 	}
+	
+	
+	public void validateSupplier1Product1DetailsForStandardUKMainland(JSONObject jObj1) {
+		waitForSeconds(2);
+
+		// Get Supplier1 Product1 Price value from Json
+		String Sup1P1Price = jObj1.get("Price").toString();
+		double intSup1P1Price = Double.parseDouble(Sup1P1Price);
+
+		// Get Supplier1 Product1 StandardChargeProductUKMainland value from Json
+		String Sup1P1StandUKMainlandDeliveryCharges = jObj1.get("StandardChargeProductUKMainland").toString();
+		double intSup1P1StandUKMainlandDeliveryCharges = Double.parseDouble(Sup1P1StandUKMainlandDeliveryCharges);
+
+		// Calculate Supplier1 Product1 VAT
+		double Sup1P1ProductVAT = intSup1P1Price * 20 / 100;
+
+		// Calculate Supplier1 Product1 DeliveryCharge
+		double Sup1P1ProductDeliveryChargesVAT = intSup1P1StandUKMainlandDeliveryCharges * 20 / 100;
+
+		// Calculate Products total, Delivery total and VAT from Json
+		double productsTotalDbl = intSup1P1Price;
+		System.out.println(productsTotalDbl);
+		double deliveryTotalDbl = intSup1P1StandUKMainlandDeliveryCharges;
+		System.out.println(deliveryTotalDbl);
+		double vatTotalDbl = Sup1P1ProductVAT + Sup1P1ProductDeliveryChargesVAT;
+		System.out.println(vatTotalDbl);
+		double grandTotalDbl = productsTotalDbl + deliveryTotalDbl + vatTotalDbl;
+		System.out.println(grandTotalDbl);
+
+		// Now get the value of Supplier1 productsTotal, deliveryTotal, vatTotal and
+		// GrandTotal from Buyers UI
+		assertTrue(getText(supplier1ProductsTotal).equals("£" + String.valueOf(productsTotalDbl) + "0 ex. VAT"));
+		assertTrue(getText(supplier1DeliveryTotal).equals("£" + String.valueOf(deliveryTotalDbl) + "0 ex. VAT"));
+		assertTrue(getText(supplier1VatTotal).equals("£" + String.valueOf(vatTotalDbl).substring(0, 4)));
+		assertTrue(getText(supplier1GrandTotal).equals("£" + String.valueOf(grandTotalDbl) + "0 inc. VAT"));
+
+		// Now get the value of footer productsTotal, deliveryTotal, vatTotal and
+		// GrandTotal from Buyers UI
+		assertTrue(getText(productsTotal).equals("£" + String.valueOf(productsTotalDbl) + "0 ex. VAT"));
+		assertTrue(getText(deliveryTotal).equals("£" + String.valueOf(deliveryTotalDbl) + "0 ex. VAT"));
+		assertTrue(getText(vatTotal).equals("£" + String.valueOf(vatTotalDbl).substring(0, 4)));
+		assertTrue(getText(grandTotal).equals("£" + String.valueOf(grandTotalDbl) + "0 inc. VAT"));
+
+		// Product qty Check (Plz Not add qty more than 1)
+		assertTrue(getAttributeValue(supplier1P1Qty).equals("1"));
+		
+		// Product Price for qty 1
+		String[] supplier1P1PriceSplit = getText(supplier1P1Price).split(" ");
+		assertTrue(supplier1P1PriceSplit[0].equals("£" + jObj1.get("Price").toString()));
+		
+		productDetailsCheckout.put("productTotal", getText(productsTotal));
+		productDetailsCheckout.put("deliveryTotal", getText(deliveryTotal));
+		productDetailsCheckout.put("vatTotal", getText(vatTotal));
+		productDetailsCheckout.put("grandTotal", getText(grandTotal));
+
+	}
+
 
 	public void validateIndicativeQuoteForStandardUKMainland(JSONObject jObj1, JSONObject jObj2, JSONObject jObj3) {
 		waitForSeconds(2);
@@ -1071,5 +1175,69 @@ public class BuyersUIBasketPage extends Actions {
 		assertTrue(getText(grandTotal).equals("£" + String.valueOf(grandTotalDbl) + "0 inc. VAT"));
 
 	}
+	
+	public void verifyPaymentCheckOutPage() {
+
+		assertEquals(getText(paymentCheckOutTextUI), "Payment by invoice");
+		log.info("Validated Payment checkout page");
+		
+	}
+	
+	
+	public void verifyOrderSummaryInPaymentCheckoutPage() {
+
+		assertEquals(getText(paymentCheckOutOrderSummaryProducts), productDetailsCheckout.get("productTotal"));
+		assertEquals(getText(paymentCheckOutOrderSummaryDeliveryTotal), productDetailsCheckout.get("deliveryTotal"));
+		assertEquals(getText(paymentCheckOutOrderSummaryVAT), productDetailsCheckout.get("vatTotal"));
+		assertEquals(getText(paymentCheckOutOrderSummaryTotalValue), productDetailsCheckout.get("grandTotal"));
+		log.info("Order summary details validated sucessfully");
+		
+	}
+	
+	public void enterPONumber() {
+
+		String Currenntday = new DateTimeUtils().dateWithSpecificFormatt("dd/MM/yyyy HH:mm:ss");
+		PoNumberWithCurrenntday = "PONumber".concat("-").concat(Currenntday);
+		enterText(paymentCheckOutPoNumberTextbox, PoNumberWithCurrenntday);
+		log.info("PO Numner is entered as: " + PoNumberWithCurrenntday);
+		
+	}
+	
+	
+	public void verifyCheckOutSummaryPage() {
+
+		assertEquals(getText(checkOutOrderSummaryPageHeader), "Checkout");
+		log.info("Validated Payment checkout summary page");
+		
+	}
+	
+	public void verifyProductDetailsOnCheckoutSummaryPage() {
+
+		assertEquals(getText(checkOutOrderSummaryAllProductsTotal), productDetailsCheckout.get("productTotal"));
+		assertEquals(getText(checkOutOrderSummaryAllProductsDeliveryTotal), productDetailsCheckout.get("deliveryTotal"));
+		assertEquals(getText(checkOutOrderSummaryAllProductsVAT), productDetailsCheckout.get("vatTotal"));
+		assertEquals(getText(checkOutOrderSummaryAllProductsGrandTotal), productDetailsCheckout.get("grandTotal"));
+		log.info("Product details validated sucessfully on checkout summary page");
+		
+	}
+	
+	public void checksOnTermsAndConditions() {
+		
+		clickElementWithJavaScript(checksOnTermsAndConditionsStr);
+		log.info("Sucessfully clicked on Terms And Conditions checkbox");
+		
+	}
+	
+	public void verifyProductDetailsOnOrderPage() {
+
+		log.info("Product details validated sucessfully on Order page");
+		/*assertEquals(getText(checkOutOrderSummaryAllProductsTotal), productDetailsCheckout.get("productTotal"));
+		assertEquals(getText(checkOutOrderSummaryAllProductsDeliveryTotal), productDetailsCheckout.get("deliveryTotal"));
+		assertEquals(getText(checkOutOrderSummaryAllProductsVAT), productDetailsCheckout.get("vatTotal"));
+		assertEquals(getText(checkOutOrderSummaryAllProductsGrandTotal), productDetailsCheckout.get("grandTotal"));
+		log.info("Product details validated sucessfully on checkout summary page");*/
+		
+	}
+	
 
 }

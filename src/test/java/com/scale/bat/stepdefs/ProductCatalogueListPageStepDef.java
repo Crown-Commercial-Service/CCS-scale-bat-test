@@ -318,6 +318,15 @@ public class ProductCatalogueListPageStepDef {
 		objectManager.getBuyersUIBasketpage().validateSupplier1Product1and2VATAndOtherDetailsForStandardUKMainland(jObj1,jObj2);
 	}
 	
+	@Then("User validates the total delivery total VAT and grand Total of supplier{int} in basket for {string}")
+	public void user_validates_the_total_delivery_total_VAT_and_grand_Total_of_supplier_in_basket_for(Integer int1, String string) {
+	    
+		JSONObject jObj1 = new JSONObject(new JsonParser().convertJsonToString(scenarioContext.ScenarioDataFilePathSCA332Checkout))
+				.getJSONObject("Product1");
+		
+		objectManager.getBuyersUIBasketpage().validateSupplier1Product1DetailsForStandardUKMainland(jObj1);
+	}
+	
 	
 	@Then("User validates the products in Indicative quote is added with the product already present in the basket")
 	public void user_validates_the_products_in_Indicative_quote_is_added_with_the_product_already_present_in_the_basket() {
@@ -364,5 +373,52 @@ public class ProductCatalogueListPageStepDef {
 		objectManager.getBuyersUIBasketpage().validateSupplier1Product1and2VATAndOtherDetailsForStandardUKNonMainland(jObj1,jObj2);
 		
 	}
+	
+	
+	@Then("User navigates to checkout payments page")
+	public void user_navigates_to_checkout_payments_page() {
+	 
+		objectManager.getBuyersUIBasketpage().verifyPaymentCheckOutPage();
+		
+	}
+
+	@Then("User validates the Order summary of supplier{int}")
+	public void user_validates_the_Order_summary_of_supplier(Integer int1) {
+	   
+		objectManager.getBuyersUIBasketpage().verifyOrderSummaryInPaymentCheckoutPage();
+		
+	}
+
+	@Then("User enters the PO number in the PO number textbox")
+	public void user_enters_the_PO_number_in_the_PO_number_textbox() {
+	    
+		objectManager.getBuyersUIBasketpage().enterPONumber();
+	}
+
+	@Then("User navigates to checkout summary page")
+	public void user_navigates_to_checkout_summary_page() {
+	    
+		objectManager.getBuyersUIBasketpage().verifyCheckOutSummaryPage();
+	}
+
+	@Then("User validates the product details on checkout summary page")
+	public void user_validates_the_product_details_on_checkout_summary_page() {
+	    
+		objectManager.getBuyersUIBasketpage().verifyProductDetailsOnCheckoutSummaryPage();
+	}
+
+	@Then("User click on Terms & Conditions checkbox")
+	public void user_click_on_Terms_Conditions_checkbox() {
+	    
+		objectManager.getBuyersUIBasketpage().checksOnTermsAndConditions();
+	}
+
+	@Then("User validates the order")
+	public void user_validates_the_order() {
+	    
+		objectManager.getBuyersUIBasketpage().verifyProductDetailsOnOrderPage();
+	}
+
+
 
 }

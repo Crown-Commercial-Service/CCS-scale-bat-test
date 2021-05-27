@@ -196,6 +196,14 @@ public class BuyersUIQuotesPage extends Actions{
 	@FindBy(xpath = "//div[@class='govuk-error-summary__body']/ul/li")
 	private WebElement errorMsgInsufficientStockQuotes;
 	
+	@FindBy(xpath = "//button[@class='govuk-button bat-checkout-next']")
+	private WebElement saveAndContinueBtnOnPayentCheckout;
+	
+	@FindBy(xpath = "//button[@class='govuk-button bat-checkout-summary__actions__action']")
+	private WebElement placeOrderCheckout;
+	
+	
+	
 	private String manageQuoteColumHeaderSize = "//table[@class='govuk-table bat-quotes__table']/thead/tr/th";
 	private String firmQuote = "//*[@id='kind']";
 	private String indicativeQuote = "//*[@id='kind-2']";
@@ -585,5 +593,15 @@ public class BuyersUIQuotesPage extends Actions{
 	public WebElement addtoBasketBtnOnIndicative() {
 		return addtoBasketBtnOnIndicative;
 	}
+	
+	
+	public WebElement saveAndContinueBtnOnPayentCheckout() {
+		return saveAndContinueBtnOnPayentCheckout;
+	}
+	
+	public WebElement placeOrderCheckout() {
+		return placeOrderCheckout;
+	}
+	
 	
 }

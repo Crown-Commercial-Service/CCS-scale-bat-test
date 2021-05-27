@@ -15,6 +15,7 @@ public class ScenarioContext {
 	public String SCA161TwoProductsFilePathNew = System.getProperty("user.dir") + "\\TestData\\SCA161\\SCA161MyListTwoProducts.json";
 	public String ScenarioDataFilePathSCA223Sup1 = System.getProperty("user.dir") + "\\TestData\\SCA223Sup1ScenarioData.json";
 	public String ScenarioDataFilePathSCA223Sup2 = System.getProperty("user.dir") + "\\TestData\\SCA223Sup2ScenarioData.json";
+	public String ScenarioDataFilePathSCA332Checkout = System.getProperty("user.dir") + "\\TestData\\SCA33_97_Checkout_Sup1ScenarioData.json";
 	public Map<String, Object> productDetails;
     private Map<String, Object> scenarioContext;
     public JsonParser jsonParser;

@@ -459,15 +459,12 @@ Feature: This User story covers the Firm quotes related scenarios
     
    
    #[US-332 TC01(SCA-2676)]
-   @confidenceNotComplete
+   @confidence
    Scenario: TC_ Verify when buyers converts the firm quote into an order and stock is available then quote will be converted into order
     #API Steps
     And user clears the basket
-    And User gets products IDs for supplier1 and supplier2
-    And User adds two products from supplier1 in to the basket with one having VAT0 and second having VAT20 percentage
-    And User adds a product with mpn "MPN" of supplier1 in to the basket
-    #Buyers UI Steps
-    Given User logged in as "supplier" in admin panel
+    And User gets a products ID for supplier1 with MPN "187749-001"
+    And User adds a product with MPN "187749-001" of supplier1 in to the basket
     #UI Steps
     And User navigates to BuyerUI
     And User login to buyerUI with API User
@@ -491,6 +488,7 @@ Feature: This User story covers the Firm quotes related scenarios
     And User clicks on "Clear my basket and add these items" in buyers UI
     And User Validates the message "The quote was successfully converted into the basket."
     #And User validates the supplier1 product total delivery total VAT and grand Total in basket for Standard UK Mainland
+    And User validates the total delivery total VAT and grand Total of supplier1 in basket for "Standard UK Mainland"
    	#CheckOut
    	And User clicks on "Checkout" in buyers UI
    	And User navigates to checkout payments page
