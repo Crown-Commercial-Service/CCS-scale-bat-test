@@ -44,5 +44,12 @@ public class LogInAdminPanel extends Actions{
     	clickElement(loginButton);
 
     }
+    
+    public void loginToCheckOutSupplierAdminPanel(String role) {
+    	enterText(enterUsername, configReaderObj.adminPanelCheckoutUserName(role));
+    	enterText(enterPassword, configReaderObj.adminPanelCheckoutUserPassword(role));
+    	clickElement(loginButton);
+
+    }
 
 }

@@ -16,5 +16,23 @@
     "nextDayChargeProduct": "4.00",
     "SKU": "SKU109",
     "PublishedFromDate": ""
+  },
+  "Product2": {
+    "LocalStockVolume": "100",
+    "StandardChargeProductUKMainland": "2.00",
+    "ManufacturerName": "HP Inc.",
+    "ProductName": "SmartStart - Upgrade advantage - 1 user - UNIX, Win, OS/2, NW",
+    "StandardChargeBasket": "5.00",
+    "StandardChargeProductUKNonMainland": "5.00",
+    "nextDayChargeBasket": "8",
+    "MPN": "195654-002",
+    "taxCategory": "Standard",
+    "Price": "4.00",
+    "LastUpdatedTestCase": "",
+    "StandardDeliveryTimeIndays": "5",
+    "UNSPSC": "",
+    "nextDayChargeProduct": "4.00",
+    "SKU": "SKU110",
+    "PublishedFromDate": ""
   }
 }

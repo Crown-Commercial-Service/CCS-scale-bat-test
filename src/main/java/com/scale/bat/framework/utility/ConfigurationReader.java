@@ -123,6 +123,8 @@ public class ConfigurationReader {
 	            throw new RuntimeException(" Key not specified in the ApplicationConfig.properties file.");
 	    }
 	    
+	    
+	    
 	    public String adminPanelPassword(String role)
 	    {
 	        String value = properties.getProperty("ccs.admin.panel.password.userrole."+role.toLowerCase());
@@ -238,6 +240,26 @@ public class ConfigurationReader {
 	    }
 	    //API User Password
 	    public String apiUserPassword(String role)
+	    {
+	        String value = properties.getProperty("ccs.admin.panel.password.userrole."+role.toLowerCase());
+	        if(value!= null)
+	            return value;
+	        else
+	            throw new RuntimeException(" Key not specified in the ApplicationConfig.properties file.");
+	    }
+	    
+	    //Checkout user
+	    public String adminPanelCheckoutUserName(String role)
+	    {
+	        String value = properties.getProperty("ccs.admin.panel.username.userrole."+role.toLowerCase());
+	        if(value!= null)
+	            return value;
+	        else
+	            throw new RuntimeException(" Key not specified in the ApplicationConfig.properties file.");
+	    }
+	    
+	  //Checkout User Password
+	    public String adminPanelCheckoutUserPassword(String role)
 	    {
 	        String value = properties.getProperty("ccs.admin.panel.password.userrole."+role.toLowerCase());
 	        if(value!= null)

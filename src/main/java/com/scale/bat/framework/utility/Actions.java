@@ -288,6 +288,16 @@ public class Actions {
 	
 	
 
+	public boolean isElementPresentByXpath(WebElement element) {
+		//waitForLoad();
+		try {
+			element.isDisplayed();
+			return true;
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+	}
+	
 	public boolean isElementPresentByXpath(String xpath) {
 		waitForLoad();
 		try {

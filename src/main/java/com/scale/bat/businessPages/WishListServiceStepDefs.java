@@ -159,17 +159,34 @@ public class WishListServiceStepDefs {
 	@Given("User gets a products ID for supplier{int} with MPN {string}")
 	public void user_gets_a_products_ID_for_supplier_with_MPN(Integer int1, String mpn) {
 	    
-		// Get Supplier1 Product1 Product ID
-		jsonResponse = apibase.getRequest("/api/v2/storefront/products?filter[in_stock]=true&sort_by=available_on&filter[name]="+mpn);
-		// String anc = jsonResponse.getBody().asString();
-		// System.out.println(anc);
-		String sup1firstProduct = apibase.getvaluefromresponse("data[0].id");
-		// System.out.println("Supplier1 Product1 ID: "+ Sup1firstProduct);
-		// Get Variant ID
-		jsonResponse = apibase.getRequest("/api/v2/storefront/products/" + sup1firstProduct
-				+ "?include=default_variant,default_variant.vendor,variants,variants.option_values,documents,variants.delivery_charges,variants.vendor,variants.catalog,option_types,product_properties,images,manufacturer");
-		statusCode = apibase.getStatusCode(jsonResponse);
-		Supp1FirstProductVariantID = apibase.getvaluefromresponse("data.relationships.default_variant.data.id");
+		if (mpn.equals("187749-001")) {
+
+			// Get Supplier1 Product1 Product ID
+			jsonResponse = apibase.getRequest(
+					"/api/v2/storefront/products?filter[in_stock]=true&sort_by=available_on&filter[name]=" + mpn);
+			String sup1firstProduct = apibase.getvaluefromresponse("data[0].id");
+
+			// Get Variant ID
+			jsonResponse = apibase.getRequest("/api/v2/storefront/products/" + sup1firstProduct
+					+ "?include=default_variant,default_variant.vendor,variants,variants.option_values,documents,variants.delivery_charges,variants.vendor,variants.catalog,option_types,product_properties,images,manufacturer");
+			statusCode = apibase.getStatusCode(jsonResponse);
+			Supp1FirstProductVariantID = apibase.getvaluefromresponse("data.relationships.default_variant.data.id");
+
+		} else if (mpn.equals("195654-002")) {
+
+			// Get Supplier1 Product1 Product ID
+			jsonResponse = apibase.getRequest(
+					"/api/v2/storefront/products?filter[in_stock]=true&sort_by=available_on&filter[name]=" + mpn);
+			String sup1firstProduct = apibase.getvaluefromresponse("data[0].id");
+
+			// Get Variant ID
+			jsonResponse = apibase.getRequest("/api/v2/storefront/products/" + sup1firstProduct
+					+ "?include=default_variant,default_variant.vendor,variants,variants.option_values,documents,variants.delivery_charges,variants.vendor,variants.catalog,option_types,product_properties,images,manufacturer");
+			statusCode = apibase.getStatusCode(jsonResponse);
+			Supp1FirstProductVariantID = apibase.getvaluefromresponse("data.relationships.default_variant.data.id");
+
+		}
+		
 
 	}
 	

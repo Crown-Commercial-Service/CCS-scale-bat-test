@@ -24,7 +24,7 @@ public class CommonValidations extends APIBase{
     private void responseTypeValidator(Response response) {
         if (response.contentType().contains("json") || response.contentType().contains("Json")) {
             jsonObject = new JSONObject(response.jsonPath().prettyPrint());
-            System.out.println((response.jsonPath().prettyPrint()));
+            //System.out.println((response.jsonPath().prettyPrint()));
         } else {
             scenario.write("Response type is not json, please verify the result in console");
             fail("Content type is not json");
@@ -34,7 +34,7 @@ public class CommonValidations extends APIBase{
 
     public void getResponse() {
         response = apiUtil.getRequest(scenarioContext.getContext("Endpoint"));
-        System.out.println("Response code is "+ response.prettyPrint());
+        //System.out.println("Response code is "+ response.prettyPrint());
         responseTypeValidator(response);
     }
 

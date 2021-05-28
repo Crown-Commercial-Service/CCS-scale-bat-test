@@ -501,6 +501,7 @@ public class BuyersUIBasketPage extends Actions {
 	public void verifyBasketGenericMessageOnBasketPage(String genericMsg) throws IOException {
 		waitForSeconds(2);
 		assertTrue(getText(basketPageMsgAfterClearBasket).equals(genericMsg));
+		isElementPresentByXpath(basketPageMsgAfterClearBasket);
 		waitForSeconds(2);
 	}
 
@@ -901,13 +902,13 @@ public class BuyersUIBasketPage extends Actions {
 
 		// Calculate Products total, Delivery total and VAT from Json
 		double productsTotalDbl = intSup1P1Price;
-		System.out.println(productsTotalDbl);
+		//System.out.println(productsTotalDbl);
 		double deliveryTotalDbl = intSup1P1StandUKMainlandDeliveryCharges;
-		System.out.println(deliveryTotalDbl);
+		//System.out.println(deliveryTotalDbl);
 		double vatTotalDbl = Sup1P1ProductVAT + Sup1P1ProductDeliveryChargesVAT;
-		System.out.println(vatTotalDbl);
+		//System.out.println(vatTotalDbl);
 		double grandTotalDbl = productsTotalDbl + deliveryTotalDbl + vatTotalDbl;
-		System.out.println(grandTotalDbl);
+		//System.out.println(grandTotalDbl);
 
 		// Now get the value of Supplier1 productsTotal, deliveryTotal, vatTotal and
 		// GrandTotal from Buyers UI
@@ -1231,6 +1232,7 @@ public class BuyersUIBasketPage extends Actions {
 	public void verifyProductDetailsOnOrderPage() {
 
 		log.info("Product details validated sucessfully on Order page");
+		assertEquals(getText(checkOutOrderSummaryAllProductsTotal), productDetailsCheckout.get("productTotal"));
 		/*assertEquals(getText(checkOutOrderSummaryAllProductsTotal), productDetailsCheckout.get("productTotal"));
 		assertEquals(getText(checkOutOrderSummaryAllProductsDeliveryTotal), productDetailsCheckout.get("deliveryTotal"));
 		assertEquals(getText(checkOutOrderSummaryAllProductsVAT), productDetailsCheckout.get("vatTotal"));

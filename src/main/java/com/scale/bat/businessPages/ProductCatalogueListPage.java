@@ -127,7 +127,7 @@ public class ProductCatalogueListPage extends Actions {
 		waitForSeconds(7);
 		clickElement(show);
 		assertTrue("Header is different!! Please check vendor",getText(contentHeader).toLowerCase().contains("RM6147".toLowerCase()));
-		log.info("Supplier name is present on product catalogue header SCA-501");
+		log.info("Supplier name is present on product catalogue header");
 	}
 	
 	
@@ -625,6 +625,8 @@ public class ProductCatalogueListPage extends Actions {
 	
 	public void searchButton() {
 		clickElementXpath(searchxp);
+		assertTrue("Successfuly clicked on search button ",isElementPresentByXpath(searchxp));
+		log.info("Successfuly clicked on search button");
 	}
 
 	

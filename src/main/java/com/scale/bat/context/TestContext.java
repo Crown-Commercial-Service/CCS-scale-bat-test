@@ -78,6 +78,15 @@ public class TestContext extends BrowserFactory {
 		log.info(userRole + " logged in to admin panel");
 	}
 	
+	@Given("User logged in as supplier {string} in admin panel")
+	public void user_logged_in_as_supplier_in_admin_panel(String userRole) throws MalformedURLException {
+		objectManager = new PageObjectManager(driver, scenario);
+		objectManager.getLogInAdminPanel().loginToCheckOutSupplierAdminPanel(userRole);
+		log.info(userRole + " logged in to admin panel");
+		
+	}
+
+	
 	@Given("User enter the admin url and logged in as a {string}")
 	public void user_enter_the_admin_url_and_logged_in_as_a(String userRole) throws MalformedURLException{
 	   
@@ -91,6 +100,14 @@ public class TestContext extends BrowserFactory {
 		launchURL(configReader.adminPanelUrl());
 		log.info(" User enters the Admin UI url");
 	}
+	
+	@Given("User launch the browser")
+	public void user_launch_the_browser() throws MalformedURLException {
+	    
+		this.driver = initiateDriver(configReader.getBrowserName(),scenario);
+		
+	}
+
 	
 	@Given("User login as {string} in admin panel")
 	public void user_login_as_in_admin_panel(String userRole) {

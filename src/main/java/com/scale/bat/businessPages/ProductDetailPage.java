@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.Map;
 import java.util.Random;
 import org.apache.log4j.Logger;
+import org.json.JSONObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -38,8 +39,8 @@ public class ProductDetailPage extends Actions {
 
 	private String updateButton = "Update";
 
-	//private String successfulMessage = "//*[@id='main-part']/div[2]/div[1]/div";
 	private String successfulMessage = "//*[@class='alert alert-success mx-2']";
+	//private String successfulMessage = "//body[@class='admin swal2-toast-shown swal2-toast-column swal2-shown']";
 	
 	@FindBy(xpath = "//*[@id='content']/form/div/div/a")
 	private WebElement cancelButton;
@@ -115,6 +116,26 @@ public class ProductDetailPage extends Actions {
 	}
 	
 	
+	public void updateProductPrice(JSONObject jObj1) {
+		
+		clearTextBox(productPrice);
+		String productActualPrice = jObj1.get("Price").toString();
+		double productActualPriceInt = Double.parseDouble(productActualPrice);
+		double productIncreasedPriceInt = productActualPriceInt+1;
+		String productIncreasedPriceString = Double.toString(productIncreasedPriceInt);
+		enterText(productPrice, productIncreasedPriceString);
+		
+	}
+	
+	public void enterActualProductPrice(JSONObject jObj1) {
+		
+		clearTextBox(productPrice);
+		String productActualPrice = jObj1.get("Price").toString();
+		enterText(productPrice, productActualPrice);
+		
+	}
+	
+	
 	public void updateStockQuantityAsPerJson(Map<String, Object> pDetails) {
 		clickByLinkText(stock);
 		clearTextBox(StockTextField);
@@ -123,6 +144,15 @@ public class ProductDetailPage extends Actions {
 		clickButton(updateButton);
 		existsElement(successfulMessage);
 	}
+	
+	public void updateActualStockCheckoutProduct(JSONObject jObj1) {
+		clickByLinkText(stock);
+		clearTextBox(StockTextField);
+		String localVolumeStock = jObj1.get("LocalStockVolume").toString();
+		enterText(StockTextField, localVolumeStock);
+		clickButton(updateButton);
+	}
+
 
 	public void checkWarningMessageOnStockField(String inputType) {
 		clickByLinkText(stock);
@@ -208,5 +238,13 @@ public class ProductDetailPage extends Actions {
 		assertTrue("Product is not updated successfully..", isElementPresent("successfully updated!"));
 
 	}
+	
+	
+	public void updateButton() {
+		clickButton(updateButton);
+		log.info("User clicked on update button successfully");
+		//assertTrue("Message is not displayed!! Please check the script", existsElement(errorMessage));
+	}
+	
 
 }

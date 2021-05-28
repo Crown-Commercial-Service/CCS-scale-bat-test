@@ -41,6 +41,7 @@ public class ProductCatalogueListPageStepDef {
 	public void user_clicks_on_show_link_to_view_products() {
 		objectManager.getProductCatalogueListPage().showProducts();
 	}
+
 	
 	@Given("Check if the product is present in a catalogue if yes then delete")
 	public void check_if_the_product_is_present_in_a_catalogue_if_yes_then_delete() {
@@ -262,11 +263,56 @@ public class ProductCatalogueListPageStepDef {
 	    objectManager.getproductDetailsPage().reduceStockQuantity(scenarioContext.productDetails);
 	}
 	
+	@When("User enters the Increased product price in Product Price textbox.")
+	public void user_enters_the_Increased_product_price_in_Product_Price_textbox() {
+		JSONObject jObj1 = new JSONObject(new JsonParser().convertJsonToString(scenarioContext.ScenarioDataFilePathSCA332Checkout))
+				.getJSONObject("Product2");
+		 objectManager.getproductDetailsPage().updateProductPrice(jObj1);
+		 
+		 
+	}
+	
+		
+	@When("User enters the actual product price in product price textbox")
+	public void user_enters_the_actual_product_price_in_product_price_textbox() {
+	    
+		JSONObject jObj1 = new JSONObject(new JsonParser().convertJsonToString(scenarioContext.ScenarioDataFilePathSCA332Checkout))
+				.getJSONObject("Product2");
+		 objectManager.getproductDetailsPage().enterActualProductPrice(jObj1);
+	}
+	
+	@When("User Clicks on Update button")
+	public void user_Clicks_on_Update_button() {
+	
+		objectManager.getproductDetailsPage().updateButton();
+	}
+	
+	
 	@When("User update the stock with actual previous stock")
 	public void user_update_the_stock_with_actual_previous_stock() {
 	   
 		objectManager.getproductDetailsPage().updateStockQuantityAsPerJson(scenarioContext.productDetails);
 	}
+	
+	@When("User updates the product with MPN {string} stock")
+	public void user_updates_the_product_with_MPN_stock(String mpn) {
+	    
+		if (mpn.equals("187749-001")) {
+
+			JSONObject jObj1 = new JSONObject(new JsonParser().convertJsonToString(scenarioContext.ScenarioDataFilePathSCA332Checkout))
+					.getJSONObject("Product1");
+
+			objectManager.getproductDetailsPage().updateActualStockCheckoutProduct(jObj1);
+			 
+		} else if (mpn.equals("195654-002")) {
+
+			JSONObject jObj1 = new JSONObject(new JsonParser().convertJsonToString(scenarioContext.ScenarioDataFilePathSCA332Checkout))
+					.getJSONObject("Product2");
+			objectManager.getproductDetailsPage().updateActualStockCheckoutProduct(jObj1);
+
+		}
+	}
+
 
 	@Then("Title of each catalogue should not have other supplier and catalogue name")
 	public void Title_of_each_catalogue_should_not_have_other_supplier_and_catalogue_name() {

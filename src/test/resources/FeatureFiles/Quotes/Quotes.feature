@@ -455,8 +455,6 @@ Feature: This User story covers the Firm quotes related scenarios
    	And User update the stock with actual previous stock
     Then A successful message should be displayed
     
-    
-    
    
    #[US-332 TC01(SCA-2676)]
    @confidence
@@ -465,8 +463,19 @@ Feature: This User story covers the Firm quotes related scenarios
     And user clears the basket
     And User gets a products ID for supplier1 with MPN "187749-001"
     And User adds a product with MPN "187749-001" of supplier1 in to the basket
+    #Admin UI Steps
+    And User launch the browser
+    And User enters the Admin UI url
+    And User logged in as supplier "supplierCheckout" in admin panel
+    And User click on "productcatalogues" link on main sidebar
+    And User clicks on show link to view products
+    And User selects the value "187749-001" from the filter "MPN"
+    When User clicks on Search button
+    When User clicks on edit button to view product details
+    And User updates the product with MPN "187749-001" stock
+    #Then A successful message should be displayed
     #UI Steps
-    And User navigates to BuyerUI
+    And User enters the buyers UI
     And User login to buyerUI with API User
     And User clicks on "Basket Link" in buyers UI
     #Basket page
@@ -487,7 +496,6 @@ Feature: This User story covers the Firm quotes related scenarios
     And User validates the Clear my Basket and add these items button & a text message is visible on above that button
     And User clicks on "Clear my basket and add these items" in buyers UI
     And User Validates the message "The quote was successfully converted into the basket."
-    #And User validates the supplier1 product total delivery total VAT and grand Total in basket for Standard UK Mainland
     And User validates the total delivery total VAT and grand Total of supplier1 in basket for "Standard UK Mainland"
    	#CheckOut
    	And User clicks on "Checkout" in buyers UI
@@ -502,7 +510,75 @@ Feature: This User story covers the Firm quotes related scenarios
    	And User validates the order
       
     
+   #[US-332 TC01(SCA-2678)]
+   @confidence
+   Scenario: TC_ Verify when buyers converts the firm quote into an order and stock is available then quote will be converted into order
+    #API Steps
+    And user clears the basket
+    And User gets a products ID for supplier1 with MPN "195654-002"
+    And User adds a product with MPN "195654-002" of supplier1 in to the basket
+    #Admin UI Steps
+    And User launch the browser
+    And User enters the Admin UI url
+    And User logged in as supplier "supplierCheckout" in admin panel
+    And User click on "productcatalogues" link on main sidebar
+    And User clicks on show link to view products
+    And User selects the value "195654-002" from the filter "MPN"
+    When User clicks on Search button
+    When User clicks on edit button to view product details
+    And User enters the actual product price in product price textbox
+    And User Clicks on Update button
+    #Then A successful message should be displayed
+    And User updates the product with MPN "195654-002" stock
+   	#Then A successful message should be displayed
+    #UI Steps
+    And User enters the buyers UI
+    And User login to buyerUI with API User
+    And User clicks on "Basket Link" in buyers UI
+    #Basket page
+    And User validates the generic message "Your basket has been updated."
+    And User select the Delivery option "Standard UK Mainland (3-5 days)"
+    And User get the supplier name and total amount of the products on Buyers UI
+    And User clicks on "Quote" in buyers UI
+    And User validated the Firm and Indicative quote label
+    And User enter Quote name as "AutoFirmquote"
+    And User create "Firm" quote
+    And User clicks on "Raise quote" in buyers UI
+    Then User get message "Quote raised successfully" on screen
+    #Admin UI Update Price
+    And User enters the Admin UI url
+    And User click on "productcatalogues" link on main sidebar
+    And User clicks on show link to view products
+    And User selects the value "195654-002" from the filter "MPN"
+    When User clicks on Search button
+    When User clicks on edit button to view product details
+    And User enters the Increased product price in Product Price textbox.
+    And User Clicks on Update button
+    #Then A successful message should be displayed
+    #Buyers UI
+    And User enters the buyers UI
+    And User clicks on "My Account link" in buyers UI
+    And User clicks on "Manage quotes Visit link" in buyers UI
+    And User validates the new Quote refrence no
+    And User enters the new Quote refrence in Quote reference textbox in buyers UI
+    And User clicks on "Manage quote Search button" in buyers UI
+    And User validates the new "Firm" Quote details in quotes table with default status as "Accepted" in Buyers UI
+    And User clicks on "Quote refrence link" in buyers UI
+    And User validates the Clear my Basket and add these items button & a text message is visible on above that button
+    And User clicks on "Clear my basket and add these items" in buyers UI
+    And User Validates the message "The quote was successfully converted into the basket."
+    And User validates the total delivery total VAT and grand Total of supplier1 in basket for "Standard UK Mainland"
+   	#CheckOut
+   	And User clicks on "Checkout" in buyers UI
+   	And User navigates to checkout payments page
+   	And User validates the Order summary of supplier1
+   	And User enters the PO number in the PO number textbox
+   	And User clicks on "Save and continue" in buyers UI
+   	And User navigates to checkout summary page
+   	And User validates the product details on checkout summary page
+   	And User click on Terms & Conditions checkbox
+   	And User clicks on "Place order" in buyers UI
+   	And User validates the order
     
     
     
-  
