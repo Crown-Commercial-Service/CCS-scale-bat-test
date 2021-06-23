@@ -460,6 +460,19 @@ public class BuyerUiStepDefs {
 		objectManager.getBuyersUIBasketpage().verifyProductDeliveryCostDetails(scenarioContext.productDetails);
 	}
 	
+	@Given("User checks {string} title on basket page")
+	public void user_checks_title_on_basket_page(String basketPageTitle) {
+		
+		objectManager.getBuyersUIBasketpage().checkTitelBasket(basketPageTitle);
+	}
+	
+	@Given("User validates the breadcrumbs {string} and {string} in basket page")
+	public void user_validates_the_breadcrumbs_and_in_basket_page(String Home, String Basket) {
+		
+		objectManager.getBuyersUIBasketpage().checkBreadcrumbsBasketPage(Home,Basket);
+	}
+
+	
 	@Given("User select the Delivery option {string}")
 	public void user_select_the_Delivery_option(String deliveryMethod) {
 	   

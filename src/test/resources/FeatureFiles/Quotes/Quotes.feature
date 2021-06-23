@@ -510,7 +510,7 @@ Feature: This User story covers the Firm quotes related scenarios
    	And User validates the order
       
     
-   #[US-332 TC01(SCA-2678)]
+   #[US-332 TC03(SCA-2678)]
    @confidence
    Scenario: TC_ Verify when buyers converts the firm quote into an order and stock is available then quote will be converted into order
     #API Steps

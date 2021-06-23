@@ -27,7 +27,7 @@ public class Auth extends APIBase {
         Response response = null;
         response = RestAssured.given().spec(setBaseURI()).contentType("application/x-www-form-urlencoded").body(obj).when().post("/spree_oauth/token");
         // response.prettyPrint();
-        //System.out.println("response"+response.statusCode());
+        System.out.println("response"+response.statusCode());
         ordertoken = response.then().extract().path("access_token");
         return ordertoken;
     }

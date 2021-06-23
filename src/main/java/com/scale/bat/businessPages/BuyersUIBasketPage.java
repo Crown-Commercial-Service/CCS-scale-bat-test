@@ -67,16 +67,16 @@ public class BuyersUIBasketPage extends Actions {
 	@FindBy(xpath = "//*[@class='bat-basket-item__title__mpn']")
 	private WebElement mpnBasket;
 
-	@FindBy(xpath = "//*[@class='bat-basket__footer__right']/ul/li[1]/span[2]")
+	@FindBy(xpath = "//*[@class='bat-basket__all-supplier-totals bat-basket-items-by-supplier__item__supplier__footer']/ul/li[1]/span[2]")
 	private WebElement productsTotal;
 
-	@FindBy(xpath = "//*[@class='bat-basket__footer__right']/ul/li[2]/span[2]")
+	@FindBy(xpath = "//*[@class='bat-basket__all-supplier-totals bat-basket-items-by-supplier__item__supplier__footer']/ul/li[2]/span[2]")
 	private WebElement deliveryTotal;
 
-	@FindBy(xpath = "//*[@class='bat-basket__footer__right']/ul/li[3]/span[2]")
+	@FindBy(xpath = "//*[@class='bat-basket__all-supplier-totals bat-basket-items-by-supplier__item__supplier__footer']/ul/li[3]/span[2]")
 	private WebElement vatTotal;
 
-	@FindBy(xpath = "//*[@class='bat-basket__footer__right']/ul/li[4]/span[2]")
+	@FindBy(xpath = "//*[@class='bat-basket__all-supplier-totals bat-basket-items-by-supplier__item__supplier__footer']/ul/li[4]/span[2]")
 	private WebElement grandTotal;
 
 	@FindBy(xpath = "//*[@class='govuk-notification-banner__heading']")
@@ -262,6 +262,135 @@ public class BuyersUIBasketPage extends Actions {
 	
 	String checksOnTermsAndConditionsStr="//input[@class='govuk-checkboxes__input']";
 	
+	//SCA-144 Checkout Locators 2 Supp and 2 Products
+	//Supplier1 (testsupplier039) Product 1
+	@FindBy(xpath = "//h3[text()='testsupplier039']")
+	private WebElement supplier1Name;
+	
+	@FindBy(xpath = "//h3[text()='testsupplier039']/following-sibling::ul/li[1]/div/form/div/div[1]/following-sibling::div/a")
+	private WebElement supplier1P1Name;
+	
+	@FindBy(xpath = "//h3[text()='testsupplier039']/following-sibling::ul/li[1]/div/form/div/div[1]/following-sibling::div/a/following-sibling::span[1]")
+	private WebElement supplier1P1MPN;
+	
+	@FindBy(xpath = "//h3[text()='testsupplier039']/following-sibling::ul/li[1]/div/form/div/div[1]/following-sibling::div/a/following-sibling::span[2]")
+	private WebElement supplier1P1SKU;
+	
+	@FindBy(xpath = "//h3[text()='testsupplier039']/following-sibling::ul/li[1]/div/form/div/div[1]/following-sibling::div[1]/following-sibling::div[1]")
+	private WebElement supplier1P1PriceEach;
+	
+	@FindBy(xpath = "//h3[text()='testsupplier039']/following-sibling::ul/li[1]/div/form/div/div[1]/following-sibling::div[1]/following-sibling::div[2]")
+	private WebElement supplier1P1PriceTotal;
+	
+	@FindBy(xpath = "//h3[text()='testsupplier039']/following-sibling::ul/li[1]/div/form/div/div[1]/following-sibling::div[1]/following-sibling::div[3]/div/label/following-sibling::input")
+	private WebElement supplier1P1Quantityty;
+	
+	// Supplier1 (testsupplier039) Product 2
+
+	@FindBy(xpath = "//h3[text()='testsupplier039']/following-sibling::ul/li[2]/div/form/div/div[1]/following-sibling::div/a")
+	private WebElement supplier1P2Name;
+
+	@FindBy(xpath = "//h3[text()='testsupplier039']/following-sibling::ul/li[2]/div/form/div/div[1]/following-sibling::div/a/following-sibling::span[1]")
+	private WebElement supplier1P2MPN;
+
+	@FindBy(xpath = "//h3[text()='testsupplier039']/following-sibling::ul/li[2]/div/form/div/div[1]/following-sibling::div/a/following-sibling::span[2]")
+	private WebElement supplier1P2SKU;
+
+	@FindBy(xpath = "//h3[text()='testsupplier039']/following-sibling::ul/li[2]/div/form/div/div[1]/following-sibling::div[1]/following-sibling::div[1]")
+	private WebElement supplier1P2PriceEach;
+
+	@FindBy(xpath = "//h3[text()='testsupplier039']/following-sibling::ul/li[2]/div/form/div/div[1]/following-sibling::div[1]/following-sibling::div[2]")
+	private WebElement supplier1P2PriceTotal;
+
+	@FindBy(xpath = "//h3[text()='testsupplier039']/following-sibling::ul/li[2]/div/form/div/div[1]/following-sibling::div[1]/following-sibling::div[3]/div/label/following-sibling::input")
+	private WebElement supplier1P2Quantityty;
+
+	// (Supplier1 P1 P2 Products Total:)
+	@FindBy(xpath = "//h3[text()='testsupplier039']/following-sibling::div/ul/li[1]/span[2]")
+	private WebElement supplier1P1P2ProduuctTotal;
+
+	@FindBy(xpath = "//h3[text()='testsupplier039']/following-sibling::div/ul/li[2]/span[2]")
+	private WebElement supplier1P1P2DeliveryTotal;
+
+	@FindBy(xpath = "//h3[text()='testsupplier039']/following-sibling::div/ul/li[3]/span[2]")
+	private WebElement supplier1P1P2VAT;
+
+	@FindBy(xpath = "//h3[text()='testsupplier039']/following-sibling::div/ul/li[4]/span[2]")
+	private WebElement supplier1P1P2GrandTotal;
+	
+	
+	// ########################
+	
+	//SCA-144 Checkout Locators 2 Supp and 2 Products
+		//Supplier2 (testsupplier040) Product 1
+		@FindBy(xpath = "//h3[text()='testsupplier040']")
+		private WebElement supplier2Name;
+		
+		@FindBy(xpath = "//h3[text()='testsupplier040']/following-sibling::ul/li[1]/div/form/div/div[1]/following-sibling::div/a")
+		private WebElement supplier2P1Name;
+		
+		@FindBy(xpath = "//h3[text()='testsupplier040']/following-sibling::ul/li[1]/div/form/div/div[1]/following-sibling::div/a/following-sibling::span[1]")
+		private WebElement supplier2P1MPN;
+		
+		@FindBy(xpath = "//h3[text()='testsupplier040']/following-sibling::ul/li[1]/div/form/div/div[1]/following-sibling::div/a/following-sibling::span[2]")
+		private WebElement supplier2P1SKU;
+		
+		@FindBy(xpath = "//h3[text()='testsupplier040']/following-sibling::ul/li[1]/div/form/div/div[1]/following-sibling::div[1]/following-sibling::div[1]")
+		private WebElement supplier2P1PriceEach;
+		
+		@FindBy(xpath = "//h3[text()='testsupplier040']/following-sibling::ul/li[1]/div/form/div/div[1]/following-sibling::div[1]/following-sibling::div[2]")
+		private WebElement supplier2P1PriceTotal;
+		
+		@FindBy(xpath = "//h3[text()='testsupplier040']/following-sibling::ul/li[1]/div/form/div/div[1]/following-sibling::div[1]/following-sibling::div[3]/div/label/following-sibling::input")
+		private WebElement supplier2P1Quantityty;
+		
+		// Supplier2 (testsupplier040) Product 2
+
+		@FindBy(xpath = "//h3[text()='testsupplier040']/following-sibling::ul/li[2]/div/form/div/div[1]/following-sibling::div/a")
+		private WebElement supplier2P2Name;
+
+		@FindBy(xpath = "//h3[text()='testsupplier040']/following-sibling::ul/li[2]/div/form/div/div[1]/following-sibling::div/a/following-sibling::span[1]")
+		private WebElement supplier2P2MPN;
+
+		@FindBy(xpath = "//h3[text()='testsupplier040']/following-sibling::ul/li[2]/div/form/div/div[1]/following-sibling::div/a/following-sibling::span[2]")
+		private WebElement supplier2P2SKU;
+
+		@FindBy(xpath = "//h3[text()='testsupplier040']/following-sibling::ul/li[2]/div/form/div/div[1]/following-sibling::div[1]/following-sibling::div[1]")
+		private WebElement supplier2P2PriceEach;
+
+		@FindBy(xpath = "//h3[text()='testsupplier040']/following-sibling::ul/li[2]/div/form/div/div[1]/following-sibling::div[1]/following-sibling::div[2]")
+		private WebElement supplier2P2PriceTotal;
+
+		@FindBy(xpath = "//h3[text()='testsupplier040']/following-sibling::ul/li[2]/div/form/div/div[1]/following-sibling::div[1]/following-sibling::div[3]/div/label/following-sibling::input")
+		private WebElement supplier2P2Quantityty;
+
+		// (Supplier2 P1 P2 Products Total:)
+		@FindBy(xpath = "//h3[text()='testsupplier040']/following-sibling::div/ul/li[1]/span[2]")
+		private WebElement supplier2P1P2ProduuctTotal;
+
+		@FindBy(xpath = "//h3[text()='testsupplier040']/following-sibling::div/ul/li[2]/span[2]")
+		private WebElement supplier2P1P2DeliveryTotal;
+
+		@FindBy(xpath = "//h3[text()='testsupplier040']/following-sibling::div/ul/li[3]/span[2]")
+		private WebElement supplier2P1P2VAT;
+
+		@FindBy(xpath = "//h3[text()='testsupplier040']/following-sibling::div/ul/li[4]/span[2]")
+		private WebElement supplier2P1P2GrandTotal;
+		
+		//Basket Page Title
+		@FindBy(xpath = "//h1[text()='Basket']")
+		private WebElement basketPageTitle;
+		
+		//Basket Page Breadcrumbs = Home
+		@FindBy(xpath = "//a[text()='Home']")
+		private WebElement basketPageBreadcrumbsHome;
+		
+		//Basket Page Breadcrumbs = Basket
+		@FindBy(xpath = "//li[text()='Basket']")
+		private WebElement basketPageBreadcrumBasket;
+		
+		
+		
 	
 	// Declare Variables
 	String productsTotalSplit[];
@@ -575,7 +704,7 @@ public class BuyersUIBasketPage extends Actions {
 		// Adding object in arraylist
 		listDeliveryOptions.add("Standard UK Mainland (3-5 days)");
 		listDeliveryOptions.add("Standard UK Non Mainland (3-5 days)");
-		listDeliveryOptions.add("Next Business Day (Orders after Midday)");
+		listDeliveryOptions.add("Next Business Day (Orders before Midday)");
 
 		// Loop to print one by one
 		for (int j = 0; j < allValues.size(); j++) {
@@ -633,6 +762,19 @@ public class BuyersUIBasketPage extends Actions {
 		waitForSeconds(1);
 		selectItemFromDropDown(webElementDeliveryMethodDropDown, deliveryMethod);
 		clickElement(basketUpdateButton);
+		waitForSeconds(1);
+	}
+	
+	public void checkTitelBasket(String basketTitle) {
+		waitForSeconds(1);
+		assertTrue(basketTitle.equals(getText(basketPageTitle)));
+		waitForSeconds(1);
+	}
+	
+	public void checkBreadcrumbsBasketPage(String Home, String Basket) {
+		waitForSeconds(1);
+		assertTrue(Home.equals(getText(basketPageBreadcrumbsHome)));
+		assertTrue(Basket.equals(getText(basketPageBreadcrumBasket)));
 		waitForSeconds(1);
 	}
 
@@ -1118,6 +1260,251 @@ public class BuyersUIBasketPage extends Actions {
 
 	}
 
+	public void validateSupplier1AndSupplier2ProductswithVATAndOtherDetailsForStandardUKMainland(JSONObject jObjSupp1Produt1VAT20,JSONObject jObjSupp1Produt2VAT0, JSONObject jObjSupp2Produt1VAT20, JSONObject jObjSupp2Produt2VAT0) {
+		waitForSeconds(2);
+
+		// Get Supplier1 Product1 Price value from Json VAT20%
+		String Sup1P1Price = jObjSupp1Produt1VAT20.get("Price").toString();
+		double intSup1P1Price = Double.parseDouble(Sup1P1Price);
+
+		// Get Supplier1 Product1 StandardChargeProductUKMainland value from Json
+		String Sup1P1StandardChargeProductUKMainland = jObjSupp1Produt1VAT20.get("StandardChargeProductUKMainland")
+				.toString();
+		double intSup1P1StandardChargeProductUKMainland = Double.parseDouble(Sup1P1StandardChargeProductUKMainland);
+
+		// Calculate Supplier1 Product1 VAT
+		double Sup1P1ProductVAT = intSup1P1Price * 20 / 100;
+
+		// Calculate Supplier1 Product1 DeliveryCharge
+		double Sup1P1ProductDeliveryChargesVAT = intSup1P1StandardChargeProductUKMainland * 20 / 100;
+
+		System.out.println(getText(supplier1Name));
+		System.out.println(getText(supplier1P1Name).split("\\r?\\n")[1]);
+		System.out.println(getText(supplier1P1MPN));
+		System.out.println(getText(supplier1P1SKU));
+		System.out.println(getText(supplier1P1PriceEach));
+		System.out.println(getText(supplier1P1PriceTotal));
+		System.out.println(getAttributeValue(supplier1P1Quantityty, "value"));
+
+		// Check the Supplier "testsupplier039" Product 1 Details i.e. Product Name,
+		// MPN, SKU, Price each, Price Total, and QTY
+		assertTrue(getText(supplier1Name).equals(jObjSupp1Produt1VAT20.get("SupplierName").toString()));
+		assertTrue(getText(supplier1P1Name).split("\\r?\\n")[1].equals(jObjSupp1Produt1VAT20.get("ProductName").toString()));
+		assertTrue(getText(supplier1P1MPN).equals("MPN: " + jObjSupp1Produt1VAT20.get("MPN").toString()));
+		assertTrue(getText(supplier1P1SKU).equals("SKU: " + jObjSupp1Produt1VAT20.get("SKU").toString()));
+		assertTrue(getText(supplier1P1PriceEach).equals("£" + jObjSupp1Produt1VAT20.get("Price").toString() + " each"));
+		assertTrue(getText(supplier1P1PriceTotal).equals("Total: £" + jObjSupp1Produt1VAT20.get("Price").toString()));
+		assertTrue(getAttributeValue(supplier1P1Quantityty, "value").equals("1"));
+
+		// ` Supplier 1 product 2 Details Validation
+		// ####### Get Supplier1 Product2 Price value from Json ###### VAT0%
+		String Sup1P2Price = jObjSupp1Produt2VAT0.get("Price").toString();
+		double intSup1P2Price = Double.parseDouble(Sup1P2Price);
+
+		// Get Supplier1 Product2 StandardChargeProductUKMainland value from Json
+		String Sup1P2StandardChargeProductUKMainland = jObjSupp1Produt2VAT0.get("StandardChargeProductUKMainland")
+				.toString();
+		double intSup1P2StandardChargeProductUKMainland = Double.parseDouble(Sup1P2StandardChargeProductUKMainland);
+
+		// Calculate Supplier1 Product2 VAT
+		double Sup1P2ProductVAT = intSup1P2Price * 0 / 100;
+
+		// Calculate Supplier1 Product2 DeliveryCharge
+		double Sup1P1Sup1P2ProductDeliveryChargesVATTotal = (intSup1P1StandardChargeProductUKMainland
+				+ intSup1P2StandardChargeProductUKMainland) * 20 / 100;
+
+		System.out.println(getText(supplier1P2Name).split("\\r?\\n")[1]);
+		System.out.println(getText(supplier1P2MPN));
+		System.out.println(getText(supplier1P2SKU));
+		System.out.println(getText(supplier1P2PriceEach));
+		System.out.println(getText(supplier1P2PriceTotal));
+		System.out.println(getAttributeValue(supplier1P2Quantityty, "value"));
+
+		// Check the Supplier "testsupplier039" Product 2 Details i.e. Product Name,
+		// MPN, SKU, Price each, Price Total, and QTY
+		assertTrue(getText(supplier1P2Name).split("\\r?\\n")[1].equals(jObjSupp1Produt2VAT0.get("ProductName").toString()));
+		assertTrue(getText(supplier1P2MPN).equals("MPN: " + jObjSupp1Produt2VAT0.get("MPN").toString()));
+		assertTrue(getText(supplier1P2SKU).equals("SKU: " + jObjSupp1Produt2VAT0.get("SKU").toString()));
+		assertTrue(getText(supplier1P2PriceEach).equals("£" + jObjSupp1Produt2VAT0.get("Price").toString() + " each"));
+		assertTrue(getText(supplier1P2PriceTotal).equals("Total: £" + jObjSupp1Produt2VAT0.get("Price").toString()));
+		assertTrue(getAttributeValue(supplier1P2Quantityty, "value").equals("1"));
+
+		// Calculate Products total, Delivery total and VAT from Json
+		double productsTotalDbl = intSup1P1Price + intSup1P2Price;
+		System.out.println(productsTotalDbl);
+		double deliveryTotalDbl = intSup1P1StandardChargeProductUKMainland + intSup1P2StandardChargeProductUKMainland;
+		System.out.println(deliveryTotalDbl);
+		double vatTotalDbl = Sup1P1ProductVAT + Sup1P2ProductVAT + Sup1P1Sup1P2ProductDeliveryChargesVATTotal;
+		System.out.println(vatTotalDbl);
+		double grandTotalDbl = productsTotalDbl + deliveryTotalDbl + vatTotalDbl;
+		System.out.println(grandTotalDbl);
+
+		// Now get the value of Supplier1 productsTotal, deliveryTotal, vatTotal and
+		// GrandTotal from Buyers UI
+		assertTrue(getText(supplier1ProductsTotal).equals("£" + String.valueOf(productsTotalDbl) + "0 ex. VAT"));
+		assertTrue(getText(supplier1DeliveryTotal).equals("£" + String.valueOf(deliveryTotalDbl) + "0 ex. VAT"));
+		assertTrue(getText(supplier1VatTotal).equals("£" + String.valueOf(vatTotalDbl).substring(0, 3) + "0"));
+		assertTrue(getText(supplier1GrandTotal).equals("£" + String.valueOf(grandTotalDbl) + "0 inc. VAT"));
+
+		// ############## Supplier 2 ##################################
+
+		// Get Supplier2 Product1 Price value from Json VAT20%
+		String Sup2P1Price = jObjSupp2Produt1VAT20.get("Price").toString();
+		double intSup2P1Price = Double.parseDouble(Sup2P1Price);
+
+		// Get Supplier2 Product1 StandardChargeProductUKMainland value from Json
+		String Sup2P1StandardChargeProductUKMainland = jObjSupp2Produt1VAT20.get("StandardChargeProductUKMainland")
+				.toString();
+		double intSup2P1StandardChargeProductUKMainland = Double.parseDouble(Sup2P1StandardChargeProductUKMainland);
+
+		// Calculate Supplier2 Product1 VAT
+		double Sup2P1ProductVAT = intSup2P1Price * 20 / 100;
+
+		// Calculate Supplier2 Product1 DeliveryCharge
+		double Sup2P1ProductDeliveryChargesVAT = intSup2P1StandardChargeProductUKMainland * 20 / 100;
+
+		System.out.println(getText(supplier2Name));
+		System.out.println(getText(supplier2P1Name).split("\\r?\\n")[1]);
+		System.out.println(getText(supplier2P1MPN));
+		System.out.println(getText(supplier2P1SKU));
+		System.out.println(getText(supplier2P1PriceEach));
+		System.out.println(getText(supplier2P1PriceTotal));
+		System.out.println(getAttributeValue(supplier2P1Quantityty, "value"));
+
+		// Check the Supplier "testsupplier040" Product 1 Details i.e. Product Name,
+		// MPN, SKU, Price each, Price Total, and QTY
+		assertTrue(getText(supplier2Name).equals(jObjSupp2Produt1VAT20.get("SupplierName").toString()));
+		assertTrue(getText(supplier2P1Name).split("\\r?\\n")[1].equals(jObjSupp2Produt1VAT20.get("ProductName").toString()));
+		assertTrue(getText(supplier2P1MPN).equals("MPN: " + jObjSupp2Produt1VAT20.get("MPN").toString()));
+		assertTrue(getText(supplier2P1SKU).equals("SKU: " + jObjSupp2Produt1VAT20.get("SKU").toString()));
+		assertTrue(getText(supplier2P1PriceEach).equals("£" + jObjSupp2Produt1VAT20.get("Price").toString() + " each"));
+		assertTrue(getText(supplier2P1PriceTotal).equals("Total: £" + jObjSupp2Produt1VAT20.get("Price").toString()));
+		assertTrue(getAttributeValue(supplier2P1Quantityty, "value").equals("1"));
+
+		// ` Supplier 2 product 2 Details Validation
+		// ####### Get Supplier2 Product2 Price value from Json ###### VAT0%
+		String Sup2P2Price = jObjSupp2Produt2VAT0.get("Price").toString();
+		double intSup2P2Price = Double.parseDouble(Sup2P2Price);
+
+		// Get Supplier2 Product2 StandardChargeProductUKMainland value from Json
+		String Sup2P2StandardChargeProductUKMainland = jObjSupp2Produt2VAT0.get("StandardChargeProductUKMainland")
+				.toString();
+		double intSup2P2StandardChargeProductUKMainland = Double.parseDouble(Sup2P2StandardChargeProductUKMainland);
+
+		// Calculate Supplier2 Product2 VAT
+		double Sup2P2ProductVAT = intSup2P2Price * 0 / 100;
+
+		// Calculate Supplier2 Product2 DeliveryCharge
+		double Sup2P1Sup1P2ProductDeliveryChargesVATTotal = (intSup2P1StandardChargeProductUKMainland
+				+ intSup2P2StandardChargeProductUKMainland) * 20 / 100;
+
+		System.out.println(getText(supplier2P2Name).split("\\r?\\n")[1]);
+		System.out.println(getText(supplier2P2MPN));
+		System.out.println(getText(supplier2P2SKU));
+		System.out.println(getText(supplier2P2PriceEach));
+		System.out.println(getText(supplier2P2PriceTotal));
+		System.out.println(getAttributeValue(supplier2P2Quantityty, "value"));
+
+		// Check the Supplier "testsupplier039" Product 2 Details i.e. Product Name,
+		// MPN, SKU, Price each, Price Total, and QTY
+		assertTrue(getText(supplier2P2Name).split("\\r?\\n")[1].equals(jObjSupp2Produt2VAT0.get("ProductName").toString()));
+		assertTrue(getText(supplier2P2MPN).equals("MPN: " + jObjSupp2Produt2VAT0.get("MPN").toString()));
+		assertTrue(getText(supplier2P2SKU).equals("SKU: " + jObjSupp2Produt2VAT0.get("SKU").toString()));
+		assertTrue(getText(supplier2P2PriceEach).equals("£" + jObjSupp2Produt2VAT0.get("Price").toString() + " each"));
+		assertTrue(getText(supplier2P2PriceTotal).equals("Total: £" + jObjSupp2Produt2VAT0.get("Price").toString()));
+		assertTrue(getAttributeValue(supplier2P2Quantityty, "value").equals("1"));
+
+		// Calculate Products total, Delivery total and VAT from Json
+		double productsTotalDblSup2 = intSup2P1Price + intSup2P2Price;
+		System.out.println(productsTotalDblSup2);
+		double deliveryTotalDblSup2 = intSup2P1StandardChargeProductUKMainland
+				+ intSup2P2StandardChargeProductUKMainland;
+		System.out.println(deliveryTotalDblSup2);
+		double vatTotalDblSup2 = Sup2P1ProductVAT + Sup2P2ProductVAT + Sup2P1Sup1P2ProductDeliveryChargesVATTotal;
+		System.out.println(vatTotalDblSup2);
+		double grandTotalDblSup2 = productsTotalDblSup2 + deliveryTotalDblSup2 + vatTotalDblSup2;
+		System.out.println(grandTotalDblSup2);
+
+		// Now get the value of Supplier1 productsTotal, deliveryTotal, vatTotal and
+		// GrandTotal from Buyers UI
+		assertTrue(getText(supplier2ProductsTotal).equals("£" + String.valueOf(productsTotalDblSup2) + "0 ex. VAT"));
+		assertTrue(getText(supplier2DeliveryTotal).equals("£" + String.valueOf(deliveryTotalDblSup2) + "0 ex. VAT"));
+		assertTrue(getText(supplier2VatTotal).equals("£" + String.valueOf(vatTotalDblSup2).substring(0, 3) + "0"));
+		assertTrue(getText(supplier2GrandTotal).equals("£" + String.valueOf(grandTotalDblSup2) + "0 inc. VAT"));
+
+		double grandProductsTotalDbl =productsTotalDbl + productsTotalDblSup2;
+		double grandDeliveryTotalDbl =deliveryTotalDbl + deliveryTotalDblSup2;
+		double grandVatTotalDbl =vatTotalDbl + vatTotalDblSup2;
+		double grandGrandTotalDbl =grandTotalDbl + grandTotalDblSup2;
+		
+			
+		// Now get the value of footer productsTotal, deliveryTotal, vatTotal and
+		// GrandTotal from Buyers UI
+		assertTrue(getText(productsTotal).equals("£" + String.valueOf(grandProductsTotalDbl) + "0 ex. VAT"));
+		assertTrue(getText(deliveryTotal).equals("£" + String.valueOf(grandDeliveryTotalDbl) + "0 ex. VAT"));
+		assertTrue(getText(vatTotal).equals("£" + String.valueOf(grandVatTotalDbl).substring(0,3) + "0"));
+		assertTrue(getText(grandTotal).equals("£" + String.valueOf(grandGrandTotalDbl) + "0 inc. VAT"));
+		
+		
+		//Add Products details in map "productDetailsCheckout" to check the details in Checkout and Order
+		//Supplier1 P1
+		productDetailsCheckout.put("supplier1Name", jObjSupp1Produt1VAT20.get("SupplierName").toString());
+		productDetailsCheckout.put("supplier1P1Name", jObjSupp1Produt1VAT20.get("ProductName").toString());
+		productDetailsCheckout.put("supplier1P1MPN", "MPN: " + jObjSupp1Produt1VAT20.get("MPN").toString());
+		productDetailsCheckout.put("supplier1P1SKU", "SKU: " + jObjSupp1Produt1VAT20.get("SKU").toString());
+		productDetailsCheckout.put("supplier1P1PriceEach", "£" + jObjSupp1Produt1VAT20.get("Price").toString() + " each");
+		productDetailsCheckout.put("supplier1P1Total", "Total: £" + jObjSupp1Produt1VAT20.get("Price").toString());
+		productDetailsCheckout.put("supplier1P1Qty","1");
+		
+		//Supplier1 P1
+		productDetailsCheckout.put("supplier1P2Name", jObjSupp1Produt2VAT0.get("ProductName").toString());
+		productDetailsCheckout.put("supplier2P1MPN", "MPN: " + jObjSupp1Produt2VAT0.get("MPN").toString());
+		productDetailsCheckout.put("supplier2P1SKU", "SKU: " + jObjSupp1Produt2VAT0.get("SKU").toString());
+		productDetailsCheckout.put("supplier2P1PriceEach", "£" + jObjSupp1Produt2VAT0.get("Price").toString() + " each");
+		productDetailsCheckout.put("supplier2P1Total", "Total: £" + jObjSupp1Produt2VAT0.get("Price").toString());
+		productDetailsCheckout.put("supplier2P1Qty", "1");
+		
+		//Supplier1 OverAll Total
+		productDetailsCheckout.put("productTotalSupp1", "£" + String.valueOf(productsTotalDbl) + "0 ex. VAT");
+		productDetailsCheckout.put("deliveryTotalSupp1", "£" + String.valueOf(deliveryTotalDbl) + "0 ex. VAT");
+		productDetailsCheckout.put("vatTotalSupp1", "£" + String.valueOf(vatTotalDbl).substring(0, 3) + "0");
+		productDetailsCheckout.put("grandTotalSupp1", "£" + String.valueOf(grandTotalDbl) + "0 inc. VAT");
+		
+		//####################### Supplier2 P1 ############################ 
+		
+		//Supplier2 P1
+		productDetailsCheckout.put("supplier1Name", jObjSupp2Produt1VAT20.get("SupplierName").toString());
+		productDetailsCheckout.put("supplier1P1Name", jObjSupp2Produt1VAT20.get("ProductName").toString());
+		productDetailsCheckout.put("supplier1P1MPN", "MPN: " + jObjSupp2Produt1VAT20.get("MPN").toString());
+		productDetailsCheckout.put("supplier1P1SKU", "SKU: " + jObjSupp2Produt1VAT20.get("SKU").toString());
+		productDetailsCheckout.put("supplier1P1PriceEach", "£" + jObjSupp2Produt1VAT20.get("Price").toString() + " each");
+		productDetailsCheckout.put("supplier1P1Total", "Total: £" + jObjSupp2Produt1VAT20.get("Price").toString());
+		productDetailsCheckout.put("supplier1P1Qty","1");
+		
+		//Supplier2 P1
+		productDetailsCheckout.put("supplier1P2Name", jObjSupp2Produt2VAT0.get("ProductName").toString());
+		productDetailsCheckout.put("supplier2P1MPN", "MPN: " + jObjSupp2Produt2VAT0.get("MPN").toString());
+		productDetailsCheckout.put("supplier2P1SKU", "SKU: " + jObjSupp2Produt2VAT0.get("SKU").toString());
+		productDetailsCheckout.put("supplier2P1PriceEach", "£" + jObjSupp2Produt2VAT0.get("Price").toString() + " each");
+		productDetailsCheckout.put("supplier2P1Total", "Total: £" + jObjSupp2Produt2VAT0.get("Price").toString());
+		productDetailsCheckout.put("supplier2P1Qty", "1");
+		
+		//Supplier2 OverAll Total
+		productDetailsCheckout.put("productTotalSupp1", "£" + String.valueOf(productsTotalDblSup2) + "0 ex. VAT");
+		productDetailsCheckout.put("deliveryTotalSupp1", "£" + String.valueOf(deliveryTotalDblSup2) + "0 ex. VAT");
+		productDetailsCheckout.put("vatTotalSupp1", "£" + String.valueOf(vatTotalDblSup2).substring(0, 3) + "0");
+		productDetailsCheckout.put("grandTotalSupp1", "£" + String.valueOf(grandTotalDblSup2) + "0 inc. VAT");
+		
+		
+		//Supplier1 Supplier2 Grand OverAll Total
+		productDetailsCheckout.put("grandBasketProductTotal", "£" + String.valueOf(grandProductsTotalDbl) + "0 ex. VAT");
+		productDetailsCheckout.put("grandBasketDeliveryTotal", "£" + String.valueOf(grandDeliveryTotalDbl) + "0 ex. VAT");
+		productDetailsCheckout.put("grandBasketVatTotal", "£" + String.valueOf(grandVatTotalDbl).substring(0,3) + "0");
+		productDetailsCheckout.put("grandBasketTotal", "£" + String.valueOf(grandGrandTotalDbl) + "0 inc. VAT");
+		
+	}
+	
+	
 	public void validateSupplier1Product1and2VATAndOtherDetailsForStandardUKNonMainland(JSONObject jObj1,
 			JSONObject jObj2) {
 		waitForSeconds(2);
@@ -1176,6 +1563,9 @@ public class BuyersUIBasketPage extends Actions {
 		assertTrue(getText(grandTotal).equals("£" + String.valueOf(grandTotalDbl) + "0 inc. VAT"));
 
 	}
+	
+	
+	
 	
 	public void verifyPaymentCheckOutPage() {
 

@@ -421,6 +421,33 @@ public class ProductCatalogueListPageStepDef {
 	}
 	
 	
+
+	@Given("User validates products details with VAT{int} and VAT{int} for supplier{int} and supplier{int} in basket page")
+	public void user_validates_products_details_with_VAT_and_VAT_for_supplier_and_supplier_in_basket_page(Integer int1,
+			Integer int2, Integer int3, Integer int4) {
+		
+		//Supplier1 Product1 VAT20
+		JSONObject jObjSupp1Produt1VAT20 = new JSONObject(new JsonParser().convertJsonToString(scenarioContext.ScenarioTestDataSCA144CheckoutComplete))
+				.getJSONObject("Supp1Product1VAT20");
+		
+		//Supplier1 Product2 VAT0
+		JSONObject jObjSupp1Produt2VAT0 = new JSONObject(new JsonParser().convertJsonToString(scenarioContext.ScenarioTestDataSCA144CheckoutComplete))
+				.getJSONObject("Supp1Product2VAT0");
+		
+		//Supplier2 Product1 VAT20
+		JSONObject jObjSupp2Produt1VAT20 = new JSONObject(new JsonParser().convertJsonToString(scenarioContext.ScenarioTestDataSCA144CheckoutComplete))
+				.getJSONObject("Supp2Product1VAT20");
+		
+		//Supplier2 Product2 VAT0
+		JSONObject jObjSupp2Produt2VAT0 = new JSONObject(new JsonParser().convertJsonToString(scenarioContext.ScenarioTestDataSCA144CheckoutComplete))
+				.getJSONObject("Supp2Product2VAT0");
+		
+		objectManager.getBuyersUIBasketpage().validateSupplier1AndSupplier2ProductswithVATAndOtherDetailsForStandardUKMainland(jObjSupp1Produt1VAT20,jObjSupp1Produt2VAT0,jObjSupp2Produt1VAT20,jObjSupp2Produt2VAT0);
+		
+				
+	}
+	
+	
 	@Then("User navigates to checkout payments page")
 	public void user_navigates_to_checkout_payments_page() {
 	 

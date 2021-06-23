@@ -8,6 +8,7 @@ import com.scale.bat.businessPages.BuyersUIPDPPage;
 import com.scale.bat.businessPages.BuyersUIQuotesPage;
 import com.scale.bat.businessPages.BuyersUIpage;
 import com.scale.bat.businessPages.CCSHomePage;
+import com.scale.bat.businessPages.CheckoutPage;
 import com.scale.bat.businessPages.LogInAdminPanel;
 import com.scale.bat.businessPages.ProductCatalogueListPage;
 import com.scale.bat.businessPages.ProductCataloguePage;
@@ -34,6 +35,7 @@ public class PageObjectManager {
 	private BuyersUIMyListPage buyersUIMyListPage;
 	private BuyersUIBasketPage buyersUIBasketPage;
 	private BuyersUIQuotesPage buyersUIQuotesPage;
+	private CheckoutPage checkoutPage;
 	private Auth auth;
 	
 	public PageObjectManager(WebDriver driver, Scenario scenario) {
@@ -93,6 +95,11 @@ public class PageObjectManager {
 	public BuyersUIQuotesPage getBuyersUIQuotespage() {
 		
 		return buyersUIQuotesPage == null ? buyersUIQuotesPage = new BuyersUIQuotesPage(driver,scenario) : buyersUIQuotesPage;
+	}
+	
+	
+	public CheckoutPage getCheckoutpage() {
+		return checkoutPage == null ? checkoutPage = new CheckoutPage(driver,scenario) : checkoutPage;
 	}
 	
 }

@@ -45,3 +45,7 @@ Feature: This User story validates the VAT amounts associated with products and 
     And User validates the supplier1 product total delivery total VAT and grand Total in basket for Standard UK Non Mainland
     
     
+    
+    
+    
+    

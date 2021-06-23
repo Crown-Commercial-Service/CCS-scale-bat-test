@@ -66,17 +66,18 @@ public class APIBase extends ConfigurationReader {
     public Response Requestpost(String URL, String jsonstring){
         response=null;
         String token=null;
-        response = RestAssured.given().spec(setBaseURI()).body(jsonstring).header("Authorization", "Bearer "+new Auth().Authenticaion()).contentType(setContentType())
-                .when().post(URL);
+        response = RestAssured.given().spec(setBaseURI()).header("Authorization", "Bearer "+new Auth().Authenticaion()).contentType(setContentType()).body(jsonstring).when().post(URL);
+        //response = RestAssured.given().spec(setBaseURI()).header("Authorization", "ordertoken "+new Auth().Authenticaion()).contentType(setContentType()).body(jsonstring).when().post(URL);
+        System.out.println("RequestDelete response:== " + response.getStatusCode());
         response.prettyPrint();
         return response;
     }
     
     public Response Requestpost(String URL, String jsonstring, String param){
     	
-        response=RestAssured.given().spec(setBaseURI()).header("Authorization", "Bearer "+new Auth().Authenticaion())
-       		.contentType(setContentType()).pathParams("access_hash",param).body(jsonstring).when().post(URL);
+        response=RestAssured.given().spec(setBaseURI()).header("Authorization", "Bearer "+new Auth().Authenticaion()).contentType(setContentType()).pathParams("access_hash",param).body(jsonstring).when().post(URL);
        //scenario.write(response.toString());
+      System.out.println("RequestDelete response:== " + response.getStatusCode());
         return response;
    }
 
@@ -103,7 +104,7 @@ public class APIBase extends ConfigurationReader {
         response=null;
         response = RestAssured.given().spec(setBaseURI()).header("Authorization", "Bearer "+new Auth().Authenticaion()).contentType(setContentType()).patch(URL);
         //log.info(response.prettyPrint().toString());
-        //System.out.println("RequestPatch response:== " + response.getStatusCode());
+        System.out.println("RequestPatch response:== " + response.getStatusCode());
         return response;
     }
 

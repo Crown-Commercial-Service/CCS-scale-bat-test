@@ -106,10 +106,10 @@ public class WishListServiceStepDefs {
 	@Given("User gets products IDs for supplier{int} and supplier{int}")
 	public void user_gets_products_IDs_for_supplier_and_supplier(Integer int1, Integer int2) {
 	    
-		//Get Supplier1 Product1 Product ID
+		//Get Supplier1 Product1 Product ID VAT20
 		jsonResponse = apibase.getRequest("/api/v2/storefront/products?filter[in_stock]=true&sort_by=available_on&filter[name]=242795-B21&filter[manufacturers]=15");
-		//String anc = jsonResponse.getBody().asString();
-		//System.out.println(anc);
+		String anc = jsonResponse.getBody().asString();
+		System.out.println(anc);
 		String Sup1firstProduct = apibase.getvaluefromresponse("data[0].id");
 		//System.out.println("Supplier1 Product1 ID: "+ Sup1firstProduct);
 		//Get Variant ID
@@ -118,8 +118,9 @@ public class WishListServiceStepDefs {
 		Supp1FirstProductVariantID = apibase.getvaluefromresponse("data.relationships.default_variant.data.id");
 		
 		
-		//Get Supplier1 Product2 Product ID
+		//Get Supplier1 Product2 Product ID VAT0
 		jsonResponse = apibase.getRequest("/api/v2/storefront/products?filter[in_stock]=true&sort_by=available_on&filter[name]=198425-005&filter[manufacturers]=15");
+		String anc1 = jsonResponse.getBody().asString();
 		String Sup1SecondProduct = apibase.getvaluefromresponse("data[0].id");
 		//Get Variant ID
 		jsonResponse = apibase.getRequest("/api/v2/storefront/products/"+Sup1SecondProduct+"?include=default_variant,default_variant.vendor,variants,variants.option_values,documents,variants.delivery_charges,variants.vendor,variants.catalog,option_types,product_properties,images,manufacturer");
@@ -127,8 +128,9 @@ public class WishListServiceStepDefs {
 		Supp1SecondProductVariantID = apibase.getvaluefromresponse("data.relationships.default_variant.data.id");
 		
 		
-		//Get Supplier3 Product3 Product ID
+		//Get Supplier1 Product3 Product ID VAT20
 		jsonResponse = apibase.getRequest("/api/v2/storefront/products?filter[in_stock]=true&sort_by=available_on&filter[name]=194753-001&filter[manufacturers]=15");
+		String anc2 = jsonResponse.getBody().asString();
 		String Sup1ThirdProduct = apibase.getvaluefromresponse("data[0].id");
 		//Get Variant ID
 		jsonResponse = apibase.getRequest("/api/v2/storefront/products/"+Sup1ThirdProduct+"?include=default_variant,default_variant.vendor,variants,variants.option_values,documents,variants.delivery_charges,variants.vendor,variants.catalog,option_types,product_properties,images,manufacturer");
@@ -136,7 +138,7 @@ public class WishListServiceStepDefs {
 		Supp1ThirdProductVariantID = apibase.getvaluefromresponse("data.relationships.default_variant.data.id");
 			
 		
-		//Get Supplier2 Product1 Product ID
+		//Get Supplier2 Product1 Product ID VAT20
 		jsonResponse = apibase.getRequest("/api/v2/storefront/products?filter[in_stock]=true&sort_by=available_on&filter[name]=189649-001&filter[manufacturers]=29");
 		String Sup2FirstProduct = apibase.getvaluefromresponse("data[0].id");
 		//Get Variant ID
@@ -145,7 +147,7 @@ public class WishListServiceStepDefs {
 		Supp2FirstProductVariantID = apibase.getvaluefromresponse("data.relationships.default_variant.data.id");
 		
 		
-		//Get Supplier2 Product2 Product ID
+		//Get Supplier2 Product2 Product ID VAT0
 		jsonResponse = apibase.getRequest("/api/v2/storefront/products?filter[in_stock]=true&sort_by=available_on&filter[name]=199506-001&filter[manufacturers]=15");
 		String Sup2SecondProduct = apibase.getvaluefromresponse("data[0].id");
 		//Get Variant ID
@@ -212,6 +214,14 @@ public class WishListServiceStepDefs {
 	   
 		apibase.Requestpatch("/api/v2/storefront/cart/empty");
 	}
+	
+	@Given("user creates a basket")
+	public void user_creates_a_basket() {
+		
+		String strjsonBody = "";
+	    
+		apibase.Requestpost("/api/v2/storefront/cart", strjsonBody);
+	}
 
 	@Given("user adds a product to basket")
 	public void user_adds_a_product_to_basket() {
@@ -260,7 +270,7 @@ public class WishListServiceStepDefs {
 		//Add Supplier1 Product1 with VAT 20%
 		String strjson ="{\"variant_id\":"+Supp1FirstProductVariantID+",\"quantity\": 1}";
 		apibase.Requestpost("/api/v2/storefront/cart/add_item", strjson);
-	}
+		}
 	
 	@Given("User adds two products from supplier{int} in to the basket with one having VAT{int} and second having VAT{int} percentage")
 	public void user_adds_two_products_from_supplier_in_to_the_basket_with_one_having_VAT_and_second_having_VAT_percentage(Integer int1, Integer int2, Integer int3) {
@@ -268,6 +278,7 @@ public class WishListServiceStepDefs {
 		//Add Supplier1 Product1 with VAT 20%
 		String strjson ="{\"variant_id\":"+Supp1FirstProductVariantID+",\"quantity\": 1}";
 		apibase.Requestpost("/api/v2/storefront/cart/add_item", strjson);
+		
 		
 		//Add Supplier1 Product2 with VAT 0%
 		String strjson1 ="{\"variant_id\":"+Supp1SecondProductVariantID+",\"quantity\": 1}";
@@ -299,6 +310,34 @@ public class WishListServiceStepDefs {
 		String strjson1 ="{\"variant_id\":"+Supp2FirstProductVariantID+",\"quantity\": 1}";
 		apibase.Requestpost("/api/v2/storefront/cart/add_item", strjson1);
 
+	}
+	
+	
+
+	@Given("User adds the products with VAT{int} and VAT{int} for supplier{int} and supplier{int}")
+	public void user_adds_the_products_with_VAT_and_VAT_for_supplier_and_supplier(Integer int1, Integer int2,
+			Integer int3, Integer int4) {
+		
+		// Add Supplier1 Product1 with VAT 20%
+		String strjsonBodyS1P1 = "{\"variant_id\":" + Supp1FirstProductVariantID + ",\"quantity\": 1}";
+		apibase.Requestpost("/api/v2/storefront/cart/add_item", strjsonBodyS1P1);
+		
+		
+		// Add Supplier1 Product1 with VAT 0%
+		String strjsonBodyS1P2 = "{\"variant_id\":" + Supp1SecondProductVariantID + ",\"quantity\": 1}";
+		apibase.Requestpost("/api/v2/storefront/cart/add_item", strjsonBodyS1P2);
+		
+
+		// Add Supplier2 Product1 with VAT 20%
+		String strjsonBodyS2P1 = "{\"variant_id\":" + Supp2FirstProductVariantID + ",\"quantity\": 1}";
+		apibase.Requestpost("/api/v2/storefront/cart/add_item", strjsonBodyS2P1);
+		
+
+		// Add Supplier2 Product2 with VAT 0%
+		String strjsonBodyS2P2 = "{\"variant_id\":" + Supp2SecondProductVariantID + ",\"quantity\": 1}";
+		apibase.Requestpost("/api/v2/storefront/cart/add_item", strjsonBodyS2P2);
+	
+	
 	}
 	
 	
