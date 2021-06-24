@@ -1160,15 +1160,14 @@ public class BuyersUIBasketPage extends Actions {
 		
 		
 		// Supplier2 "testsupplier039" Calculate Products total, Delivery total and VAT from Json
-				double productsTotalDblSup1 = intSup2P1Price;
-				System.out.println(productsTotalDblSup1);
-				double deliveryTotalDblSup1 = intSup2P1StandUKMainlandDeliveryCharges;
-				System.out.println(deliveryTotalDblSup1);
-				double vatTotalDblSup1 = Sup2P1ProductVAT + Sup2P1ProductDeliveryChargesVAT;
-				System.out.println(vatTotalDblSup1);
-				double grandTotalDblSup1 = productsTotalDblSup1 + deliveryTotalDblSup1 + vatTotalDblSup1;
-				System.out.println(grandTotalDblSup1);
-		
+		double productsTotalDblSup1 = intSup2P1Price;
+		System.out.println(productsTotalDblSup1);
+		double deliveryTotalDblSup1 = intSup2P1StandUKMainlandDeliveryCharges;
+		System.out.println(deliveryTotalDblSup1);
+		double vatTotalDblSup1 = Sup2P1ProductVAT + Sup2P1ProductDeliveryChargesVAT;
+		System.out.println(vatTotalDblSup1);
+		double grandTotalDblSup1 = productsTotalDblSup1 + deliveryTotalDblSup1 + vatTotalDblSup1;
+		System.out.println(grandTotalDblSup1);
 		
 		// Now get the value of Supplier1 productsTotal, deliveryTotal, vatTotal and
 		assertTrue(getText(supplier1ProductsTotal).equals("£" + String.valueOf(productsTotalDblSup1) + "0 ex. VAT"));
@@ -1458,11 +1457,11 @@ public class BuyersUIBasketPage extends Actions {
 		
 		//Supplier1 P1
 		productDetailsCheckout.put("supplier1P2Name", jObjSupp1Produt2VAT0.get("ProductName").toString());
-		productDetailsCheckout.put("supplier2P1MPN", "MPN: " + jObjSupp1Produt2VAT0.get("MPN").toString());
-		productDetailsCheckout.put("supplier2P1SKU", "SKU: " + jObjSupp1Produt2VAT0.get("SKU").toString());
-		productDetailsCheckout.put("supplier2P1PriceEach", "£" + jObjSupp1Produt2VAT0.get("Price").toString() + " each");
-		productDetailsCheckout.put("supplier2P1Total", "Total: £" + jObjSupp1Produt2VAT0.get("Price").toString());
-		productDetailsCheckout.put("supplier2P1Qty", "1");
+		productDetailsCheckout.put("supplier1P2MPN", "MPN: " + jObjSupp1Produt2VAT0.get("MPN").toString());
+		productDetailsCheckout.put("supplier1P2SKU", "SKU: " + jObjSupp1Produt2VAT0.get("SKU").toString());
+		productDetailsCheckout.put("supplier1P2PriceEach", "£" + jObjSupp1Produt2VAT0.get("Price").toString() + " each");
+		productDetailsCheckout.put("supplier1P2Total", "Total: £" + jObjSupp1Produt2VAT0.get("Price").toString());
+		productDetailsCheckout.put("supplier1P2Qty", "1");
 		
 		//Supplier1 OverAll Total
 		productDetailsCheckout.put("productTotalSupp1", "£" + String.valueOf(productsTotalDbl) + "0 ex. VAT");
@@ -1473,27 +1472,27 @@ public class BuyersUIBasketPage extends Actions {
 		//####################### Supplier2 P1 ############################ 
 		
 		//Supplier2 P1
-		productDetailsCheckout.put("supplier1Name", jObjSupp2Produt1VAT20.get("SupplierName").toString());
-		productDetailsCheckout.put("supplier1P1Name", jObjSupp2Produt1VAT20.get("ProductName").toString());
-		productDetailsCheckout.put("supplier1P1MPN", "MPN: " + jObjSupp2Produt1VAT20.get("MPN").toString());
-		productDetailsCheckout.put("supplier1P1SKU", "SKU: " + jObjSupp2Produt1VAT20.get("SKU").toString());
-		productDetailsCheckout.put("supplier1P1PriceEach", "£" + jObjSupp2Produt1VAT20.get("Price").toString() + " each");
-		productDetailsCheckout.put("supplier1P1Total", "Total: £" + jObjSupp2Produt1VAT20.get("Price").toString());
-		productDetailsCheckout.put("supplier1P1Qty","1");
+		productDetailsCheckout.put("supplier2Name", jObjSupp2Produt1VAT20.get("SupplierName").toString());
+		productDetailsCheckout.put("supplier2P1Name", jObjSupp2Produt1VAT20.get("ProductName").toString());
+		productDetailsCheckout.put("supplier2P1MPN", "MPN: " + jObjSupp2Produt1VAT20.get("MPN").toString());
+		productDetailsCheckout.put("supplier2P1SKU", "SKU: " + jObjSupp2Produt1VAT20.get("SKU").toString());
+		productDetailsCheckout.put("supplier2P1PriceEach", "£" + jObjSupp2Produt1VAT20.get("Price").toString() + " each");
+		productDetailsCheckout.put("supplier2P1Total", "Total: £" + jObjSupp2Produt1VAT20.get("Price").toString());
+		productDetailsCheckout.put("supplier2P1Qty","1");
 		
 		//Supplier2 P1
-		productDetailsCheckout.put("supplier1P2Name", jObjSupp2Produt2VAT0.get("ProductName").toString());
-		productDetailsCheckout.put("supplier2P1MPN", "MPN: " + jObjSupp2Produt2VAT0.get("MPN").toString());
-		productDetailsCheckout.put("supplier2P1SKU", "SKU: " + jObjSupp2Produt2VAT0.get("SKU").toString());
-		productDetailsCheckout.put("supplier2P1PriceEach", "£" + jObjSupp2Produt2VAT0.get("Price").toString() + " each");
-		productDetailsCheckout.put("supplier2P1Total", "Total: £" + jObjSupp2Produt2VAT0.get("Price").toString());
-		productDetailsCheckout.put("supplier2P1Qty", "1");
+		productDetailsCheckout.put("supplier2P2Name", jObjSupp2Produt2VAT0.get("ProductName").toString());
+		productDetailsCheckout.put("supplier2P2MPN", "MPN: " + jObjSupp2Produt2VAT0.get("MPN").toString());
+		productDetailsCheckout.put("supplier2P2SKU", "SKU: " + jObjSupp2Produt2VAT0.get("SKU").toString());
+		productDetailsCheckout.put("supplier2P2PriceEach", "£" + jObjSupp2Produt2VAT0.get("Price").toString() + " each");
+		productDetailsCheckout.put("supplier2P2Total", "Total: £" + jObjSupp2Produt2VAT0.get("Price").toString());
+		productDetailsCheckout.put("supplier2P2Qty", "1");
 		
 		//Supplier2 OverAll Total
-		productDetailsCheckout.put("productTotalSupp1", "£" + String.valueOf(productsTotalDblSup2) + "0 ex. VAT");
-		productDetailsCheckout.put("deliveryTotalSupp1", "£" + String.valueOf(deliveryTotalDblSup2) + "0 ex. VAT");
-		productDetailsCheckout.put("vatTotalSupp1", "£" + String.valueOf(vatTotalDblSup2).substring(0, 3) + "0");
-		productDetailsCheckout.put("grandTotalSupp1", "£" + String.valueOf(grandTotalDblSup2) + "0 inc. VAT");
+		productDetailsCheckout.put("productTotalSupp2", "£" + String.valueOf(productsTotalDblSup2) + "0 ex. VAT");
+		productDetailsCheckout.put("deliveryTotalSupp2", "£" + String.valueOf(deliveryTotalDblSup2) + "0 ex. VAT");
+		productDetailsCheckout.put("vatTotalSupp2", "£" + String.valueOf(vatTotalDblSup2).substring(0, 3) + "0");
+		productDetailsCheckout.put("grandTotalSupp2", "£" + String.valueOf(grandTotalDblSup2) + "0 inc. VAT");
 		
 		
 		//Supplier1 Supplier2 Grand OverAll Total

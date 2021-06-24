@@ -343,6 +343,11 @@ public class BuyerUiStepDefs {
 		
 	}
 	
+	@Given("User validates the message below Delivery method text")
+	public void user_validates_the_message_below_Delivery_method_text() {
+		objectManager.getBuyersUIBasketpage().validateWarningMessageIsVisiblenOnBasketPage();
+	}
+	
 	
 	@Given("User validates the message after Clear basket button clicked")
 	public void user_validates_the_message_after_Clear_basket_button_clicked() throws IOException {
