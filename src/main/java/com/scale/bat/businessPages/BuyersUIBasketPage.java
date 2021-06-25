@@ -1287,7 +1287,7 @@ public class BuyersUIBasketPage extends Actions {
 
 		// Check the Supplier "testsupplier039" Product 1 Details i.e. Product Name,
 		// MPN, SKU, Price each, Price Total, and QTY
-		assertTrue(getText(supplier1Name).equals(jObjSupp1Produt1VAT20.get("SupplierName").toString()));
+		assertTrue(getText(supplier1Name).split("\\r?\\n")[1].equals(jObjSupp1Produt1VAT20.get("SupplierName").toString()));
 		assertTrue(getText(supplier1P1Name).split("\\r?\\n")[1].equals(jObjSupp1Produt1VAT20.get("ProductName").toString()));
 		assertTrue(getText(supplier1P1MPN).equals("MPN: " + jObjSupp1Produt1VAT20.get("MPN").toString()));
 		assertTrue(getText(supplier1P1SKU).equals("SKU: " + jObjSupp1Produt1VAT20.get("SKU").toString()));
@@ -1372,7 +1372,7 @@ public class BuyersUIBasketPage extends Actions {
 
 		// Check the Supplier "testsupplier040" Product 1 Details i.e. Product Name,
 		// MPN, SKU, Price each, Price Total, and QTY
-		assertTrue(getText(supplier2Name).equals(jObjSupp2Produt1VAT20.get("SupplierName").toString()));
+		assertTrue(getText(supplier2Name).split("\\r?\\n")[1].equals(jObjSupp2Produt1VAT20.get("SupplierName").toString()));
 		assertTrue(getText(supplier2P1Name).split("\\r?\\n")[1].equals(jObjSupp2Produt1VAT20.get("ProductName").toString()));
 		assertTrue(getText(supplier2P1MPN).equals("MPN: " + jObjSupp2Produt1VAT20.get("MPN").toString()));
 		assertTrue(getText(supplier2P1SKU).equals("SKU: " + jObjSupp2Produt1VAT20.get("SKU").toString()));
