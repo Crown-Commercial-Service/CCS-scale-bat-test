@@ -209,6 +209,12 @@ public class BuyerUiStepDefs {
 			Thread.sleep(2000);
 		break;
 		
+		case "Edit the delivery note":
+			objectManager.getBuyersUIpage().clickElement(objectManager.getBuyersUIBasketpage().editDeliveryNote());
+			Thread.sleep(2000);
+		break;
+		
+		
 		
 		}
 	}

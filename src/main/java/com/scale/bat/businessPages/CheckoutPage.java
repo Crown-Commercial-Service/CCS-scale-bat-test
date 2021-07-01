@@ -249,7 +249,8 @@ public class CheckoutPage extends Actions{
 	
 	public String IAgreeToTheTermsAndConditionsCheckboxStr="//input[@class='govuk-checkboxes__input']";
 	
-	
+	@FindBy(xpath = "//p[@class='govuk-body bat-checkout-summary__special-instructions']")
+	private WebElement deliveryNoteText;
 	
 		
 		
@@ -281,6 +282,12 @@ public class CheckoutPage extends Actions{
 		waitForSeconds(1);
 		assertTrue(getText(checkOutHeading).equals("Checkout"));
 		assertTrue(getText(confirmationHeading).equals("Confirmation"));
+	}
+	
+	public void validateDeliveryNoteTextInCheckoutConfirmation(String deliveryNoteTextStr) {
+		waitForSeconds(1);
+		assertTrue(getText(deliveryNoteText).equals(deliveryNoteTextStr));
+		log.info("Delivery Note Text is validated successfully in Checkout Confirmation page");
 	}
 	
 	public void validateTermsAndConditionLinkAndText() {

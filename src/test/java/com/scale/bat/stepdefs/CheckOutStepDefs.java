@@ -60,6 +60,12 @@ public class CheckOutStepDefs {
 		
 		objectManager.getCheckoutpage().validateTitleCheckoutConfirmation();   
 	}
+	
+	@Given("User validates the Delivery note text {string} in checkout confirmation page")
+	public void user_validates_the_Delivery_note_text_in_checkout_confirmation_page(String deliveryNoteText) {
+		objectManager.getCheckoutpage().validateDeliveryNoteTextInCheckoutConfirmation(deliveryNoteText);  
+	}
+
 
 	@Given("User validates the Delivery and Invoice address with Delivery note in checkout confirmation page")
 	public void user_validates_the_Delivery_and_Invoice_address_with_Delivery_note_in_checkout_confirmation_page() {

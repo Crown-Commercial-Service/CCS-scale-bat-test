@@ -401,13 +401,25 @@ public class BuyersUIBasketPage extends Actions {
 		
 		String deliveryNote = "Add a delivery note";
 		
+		String editdeliveryNote ="Edit the delivery note";
+		
 		@FindBy(xpath = ".//*[contains(text(),'You have 150 characters remaining')]")
 		private WebElement deliveryNoteCharacterLimitMsg;
 		
 		@FindBy(xpath = ".//div[@id='special-instructions-info']")
 		private WebElement errorMsgDeliveryNote;
 		
+		@FindBy(xpath = ".//*[contains(text(),'Edit the delivery note')]")
+		private WebElement editTheDeliveryNoteLink;
+		
 		String cancelButton="Cancel";
+		
+		String saveButton="Save";
+		
+		@FindBy(xpath = ".//*[@class='govuk-body govuk-!-margin-bottom-3 bat-basket__delivery-note']")
+		private WebElement deliveryNoteText;
+		
+		
 				
 	
 	// Declare Variables
@@ -1640,6 +1652,12 @@ public class BuyersUIBasketPage extends Actions {
 		return deliveryNote;
 	}
 	
+	public String editDeliveryNote() {
+		return editdeliveryNote;
+	}
+	
+	
+	
 	public void verifyProductDetailsOnOrderPage() {
 
 		log.info("Product details validated sucessfully on Order page");
@@ -1673,6 +1691,12 @@ public class BuyersUIBasketPage extends Actions {
 	   log.info("Message 'You have 150 characters remaining' is validated sucessfully");
 	}
    
+   public void clearDeliveryNote() {
+
+	   enterText(deliveryNoteTextareaIsVisible, "");
+	   log.info("DeliveryNote Text clears sucessfully");
+	}
+   
    public void vlidateCharacterLimitMsgAfterEnteredText(String charLength, String characterLimitMsg) {
 	   
 	   if(charLength.equals("146")) {
@@ -1686,7 +1710,20 @@ public class BuyersUIBasketPage extends Actions {
 		   enterText(deliveryNoteTextareaIsVisible,configReaderObj.get("deliveryTextAreaInput174Char"));
 		   assertEquals(getText(errorMsgDeliveryNote), characterLimitMsg);
 		   log.info("Message 'You have X characters too many' is validated sucessfully");
+		   
+	   }else if(charLength.equals("13")) {
+		   
+		   enterText(deliveryNoteTextareaIsVisible,configReaderObj.get("deliveryTextAreaInput13Char"));
+		   assertEquals(getText(errorMsgDeliveryNote), characterLimitMsg);
+		   log.info("Message 'You have X characters too many' is validated sucessfully");
+		   
+	   }else if(charLength.equals("23")) {
+		   
+		   enterText(deliveryNoteTextareaIsVisible,configReaderObj.get("deliveryTextAreaInput23Char"));
+		   assertEquals(getText(errorMsgDeliveryNote), characterLimitMsg);
+		   log.info("Message 'You have X characters too many' is validated sucessfully");
 	   }
+	   
 	   
 	}
    
@@ -1697,10 +1734,28 @@ public class BuyersUIBasketPage extends Actions {
 	
 	}
    
+   
+   public void clickOnSaveButton() {
+		clickElement(saveButton);
+		log.info("Sucessfully clicked on Save button");
+	
+	}
+   
    public void validateAddDeliveryNoteLink() {
 	   assertTrue("Delivery Note Textarea filed is present", isElementPresentByXpath(deliveryNotePageHeader));
 	   log.info("Sucessfully clicked on Cancel button");
 	
+	}
+   
+   public void validateEditTheDeliveryNoteLinkLink() {
+	   assertTrue("EditTheDeliveryNote link is present", isElementPresentByXpath(editTheDeliveryNoteLink));
+	   log.info("EditTheDeliveryNote link is present");
+	
+	}
+   
+   public void validateDeliveryNoteTextInBasketPage(String deliveryNote) {
+	   assertEquals(getText(deliveryNoteText), deliveryNote);
+	   log.info("Delivery Note Text is validated successfully");
 	}
 	
 

@@ -515,9 +515,20 @@ public class ProductCatalogueListPageStepDef {
 		objectManager.getBuyersUIBasketpage().vlidateCharacterLimitMsgAfterEnteredText(charLength,characterLimitMsg);
 	}
 	
+	@Given("User clears the Delivery note")
+	public void user_clears_the_Delivery_note() {
+	    
+		objectManager.getBuyersUIBasketpage().clearDeliveryNote();
+	}
+	
 	@Given("User clicks on Cancel button")
 	public void user_clicks_on_Cancel_button() {
 		objectManager.getBuyersUIBasketpage().clickOnCancleButton();
+	}
+	
+	@Given("User clicks on Save button")
+	public void user_clicks_on_Save_button() {
+		objectManager.getBuyersUIBasketpage().clickOnSaveButton();
 	}
 
 	@Given("User navigates back to Basket page")
@@ -529,6 +540,17 @@ public class ProductCatalogueListPageStepDef {
 	public void user_Validates_the_link_on_basket_page(String string) {
 		objectManager.getBuyersUIBasketpage().validateAddDeliveryNoteLink();
 		
+	}
+	
+	@Given("User validates the Delivery note text {string} in basket page")
+	public void user_validates_the_Delivery_note_text_in_basket_page(String deliveryNoteText) {
+		objectManager.getBuyersUIBasketpage().validateDeliveryNoteTextInBasketPage(deliveryNoteText);
+	}
+
+	
+	@Given("User validates the {string} link is visible")
+	public void user_validates_the_link_is_visible(String string) {
+		objectManager.getBuyersUIBasketpage().validateEditTheDeliveryNoteLinkLink();
 	}
 
 
