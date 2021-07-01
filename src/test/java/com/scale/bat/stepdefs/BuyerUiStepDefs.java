@@ -204,6 +204,11 @@ public class BuyerUiStepDefs {
 			objectManager.getBuyersUIpage().clickElement(objectManager.getBuyersUIQuotespage().placeOrderCheckout());
 		break;
 		
+		case "Add a delivery note":
+			objectManager.getBuyersUIpage().clickElement(objectManager.getBuyersUIBasketpage().clickDeliveryNote());
+			Thread.sleep(2000);
+		break;
+		
 		
 		}
 	}

@@ -491,6 +491,47 @@ public class ProductCatalogueListPageStepDef {
 	    
 		objectManager.getBuyersUIBasketpage().verifyProductDetailsOnOrderPage();
 	}
+	
+
+	@Given("User navigates to {string} page")
+	public void user_navigates_to_page(String deliveryNoteHeader) {
+	 
+		objectManager.getBuyersUIBasketpage().vlidateAddDeliveryNotePageHeader(deliveryNoteHeader);
+	}
+
+	@Given("User is able is able to see text field with label {string} below {string} header")
+	public void user_is_able_is_able_to_see_text_field_with_label_below_header(String deliveryNoteTextboxLabel, String deliveryNoteHeader) {
+		objectManager.getBuyersUIBasketpage().vlidateDeliveryNoteTextboxIsVisible(deliveryNoteTextboxLabel,deliveryNoteHeader);
+	}
+
+	@Given("User is able to see the message {string} below text field")
+	public void user_is_able_to_see_the_message_below_text_field(String characterLimitMsg) {
+		objectManager.getBuyersUIBasketpage().vlidateCharacterLimitMsg(characterLimitMsg);
+	    
+	}
+	
+	@Given("User enters {string} character length text in Delivery note text field and validates message {string}")
+	public void user_enters_character_length_text_in_Delivery_note_text_field_and_validates_message(String charLength, String characterLimitMsg) {
+		objectManager.getBuyersUIBasketpage().vlidateCharacterLimitMsgAfterEnteredText(charLength,characterLimitMsg);
+	}
+	
+	@Given("User clicks on Cancel button")
+	public void user_clicks_on_Cancel_button() {
+		objectManager.getBuyersUIBasketpage().clickOnCancleButton();
+	}
+
+	@Given("User navigates back to Basket page")
+	public void user_navigates_back_to_Basket_page() {
+	    
+	}
+
+	@Given("User Validates the {string} link on basket page")
+	public void user_Validates_the_link_on_basket_page(String string) {
+		objectManager.getBuyersUIBasketpage().validateAddDeliveryNoteLink();
+		
+	}
+
+
 
 
 

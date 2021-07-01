@@ -2,13 +2,7 @@ Feature: As a Buyer,
   I MUST be able to submit my Order to a Supplier by selecting to pay for the Order offline, 
   So that I can purchase my products without paying immediately
 
-  Scenario: TC_Verify that user is able to submit the order by paying offlines
-    Given User navigates to BuyerUI
-    And User login to buyerUI
-    When User add 1 product in basket
-    Then User completes the checkOut proccess
-    
-  
+
   #[US-144=(TC SCA-755, 756, 760, 766, 773, 2776, 2777, 2780, 2778)]
   #[US-1137=(TC SCA-2543, 2547)]
   #[US-156=(TC SCA-1466)]
@@ -17,8 +11,9 @@ Feature: As a Buyer,
   #[US-212=(TC SCA-2858)]
   #[US-2665=(TC SCA-2907)]
   #[US-2377=(TC SCA-2592)]
+  #Supplier Order journey with checkout process
   @confidence
-  Scenario: TC_Verify VAT is displayed in basket for products with VAT0 and VAT20 for supplier1 when delivery method is set to Standard UK Mainland
+  Scenario: TC_Verify product details with VAT0 and VAT20 for supplier1 and Supplier2 is displayed in Basket, Checkout and Order page  
     #API Steps
     Given user clears the basket
     And user creates a basket
@@ -54,16 +49,4 @@ Feature: As a Buyer,
     And User navigates back to Order page
     And User open and validates the OrderTwo
     
-    
-     
-    
-    
-    
-    
-   
-    
-    
-    
-    
-    
-    
+  

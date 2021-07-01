@@ -389,8 +389,26 @@ public class BuyersUIBasketPage extends Actions {
 		@FindBy(xpath = "//li[text()='Basket']")
 		private WebElement basketPageBreadcrumBasket;
 		
+		//Add delivery note Locators
+		@FindBy(xpath = ".//label[contains(text(),'    Delivery note (optional)')]")
+		private WebElement deliveryNoteTextLabel;
+			
+		@FindBy(xpath = ".//label[contains(text(),'    Delivery note (optional)')]/following-sibling::textarea")
+		private WebElement deliveryNoteTextareaIsVisible;
+			
+		@FindBy(xpath = ".//*[contains(text(),'Add a delivery note')]")
+		private WebElement deliveryNotePageHeader;
 		
+		String deliveryNote = "Add a delivery note";
 		
+		@FindBy(xpath = ".//*[contains(text(),'You have 150 characters remaining')]")
+		private WebElement deliveryNoteCharacterLimitMsg;
+		
+		@FindBy(xpath = ".//div[@id='special-instructions-info']")
+		private WebElement errorMsgDeliveryNote;
+		
+		String cancelButton="Cancel";
+				
 	
 	// Declare Variables
 	String productsTotalSplit[];
@@ -1618,6 +1636,10 @@ public class BuyersUIBasketPage extends Actions {
 		
 	}
 	
+	public String clickDeliveryNote() {
+		return deliveryNote;
+	}
+	
 	public void verifyProductDetailsOnOrderPage() {
 
 		log.info("Product details validated sucessfully on Order page");
@@ -1628,6 +1650,57 @@ public class BuyersUIBasketPage extends Actions {
 		assertEquals(getText(checkOutOrderSummaryAllProductsGrandTotal), productDetailsCheckout.get("grandTotal"));
 		log.info("Product details validated sucessfully on checkout summary page");*/
 		
+	}
+	
+	public void vlidateAddDeliveryNotePageHeader(String deliveryNoteHeader) {
+
+		assertEquals(getText(deliveryNotePageHeader), deliveryNoteHeader);
+		log.info("'Add a delivery note' page Header is validated sucessfully");
+	}
+	
+	public void vlidateDeliveryNoteTextboxIsVisible(String deliveryNoteTextboxLabel,String deliveryNoteHeader) {
+
+		
+		assertEquals(getText(deliveryNoteTextLabel), deliveryNoteTextboxLabel);
+		assertTrue("Delivery Note Textarea filed is present", isElementPresentByXpath(deliveryNoteTextareaIsVisible));
+		log.info("Delivery Note Textbox with label And Header validated sucessfully on Add a delivery note page");
+	}
+	
+	
+   public void vlidateCharacterLimitMsg(String characterLimitMsg) {
+
+	   assertEquals(getText(deliveryNoteCharacterLimitMsg), characterLimitMsg);
+	   log.info("Message 'You have 150 characters remaining' is validated sucessfully");
+	}
+   
+   public void vlidateCharacterLimitMsgAfterEnteredText(String charLength, String characterLimitMsg) {
+	   
+	   if(charLength.equals("146")) {
+		   
+		   enterText(deliveryNoteTextareaIsVisible,configReaderObj.get("deliveryTextAreaInput146Char"));
+		   assertEquals(getText(errorMsgDeliveryNote), characterLimitMsg);
+		   log.info("Message 'You have 4 characters remaining' is validated sucessfully");
+		   
+	   }else if(charLength.equals("174")) {
+		   
+		   enterText(deliveryNoteTextareaIsVisible,configReaderObj.get("deliveryTextAreaInput174Char"));
+		   assertEquals(getText(errorMsgDeliveryNote), characterLimitMsg);
+		   log.info("Message 'You have X characters too many' is validated sucessfully");
+	   }
+	   
+	}
+   
+   
+   public void clickOnCancleButton() {
+		clickElement(cancelButton);
+		log.info("Sucessfully clicked on Cancel button");
+	
+	}
+   
+   public void validateAddDeliveryNoteLink() {
+	   assertTrue("Delivery Note Textarea filed is present", isElementPresentByXpath(deliveryNotePageHeader));
+	   log.info("Sucessfully clicked on Cancel button");
+	
 	}
 	
 
