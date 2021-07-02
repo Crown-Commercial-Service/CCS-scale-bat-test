@@ -17,11 +17,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="var" path="M2_REPO/org/seleniumhq/selenium/selenium-chrome-driver/3.141.59/selenium-chrome-driver-3.141.59.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/seleniumhq/selenium/selenium-api/3.141.59/selenium-api-3.141.59.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/seleniumhq/selenium/selenium-remote-driver/3.141.59/selenium-remote-driver-3.141.59.jar"/>
@@ -63,8 +58,6 @@
 	<classpathentry kind="var" path="M2_REPO/joda-time/joda-time/2.10.1/joda-time-2.10.1.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/apache/commons/commons-lang3/3.8.1/commons-lang3-3.8.1.jar"/>
 	<classpathentry kind="var" path="M2_REPO/commons-io/commons-io/2.6/commons-io-2.6.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/codehaus/plexus/plexus-utils/3.1.1/plexus-utils-3.1.1.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/jsoup/jsoup/1.11.3/jsoup-1.11.3.jar"/>
 	<classpathentry kind="var" path="M2_REPO/com/googlecode/owasp-java-html-sanitizer/owasp-java-html-sanitizer/20190325.1/owasp-java-html-sanitizer-20190325.1.jar"/>
 	<classpathentry kind="var" path="M2_REPO/commons-configuration/commons-configuration/1.10/commons-configuration-1.10.jar"/>
 	<classpathentry kind="var" path="M2_REPO/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar"/>
@@ -110,7 +103,6 @@
 	<classpathentry kind="var" path="M2_REPO/org/jboss/aerogear/aerogear-otp-java/1.0.0/aerogear-otp-java-1.0.0.jar"/>
 	<classpathentry kind="var" path="M2_REPO/io/github/bonigarcia/webdrivermanager/3.6.2/webdrivermanager-3.6.2.jar" sourcepath="M2_REPO/io/github/bonigarcia/webdrivermanager/3.6.2/webdrivermanager-3.6.2-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/rauschig/jarchivelib/1.0.0/jarchivelib-1.0.0.jar"/>
 	<classpathentry kind="var" path="M2_REPO/com/googlecode/json-simple/json-simple/1.1/json-simple-1.1.jar"/>
 	<classpathentry kind="var" path="M2_REPO/com/assertthat/selenium-shutterbug/0.8/selenium-shutterbug-0.8.jar"/>
 	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
@@ -123,5 +115,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.8.0_251"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

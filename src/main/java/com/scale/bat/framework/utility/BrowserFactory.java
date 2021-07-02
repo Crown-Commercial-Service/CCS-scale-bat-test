@@ -1,5 +1,7 @@
 package com.scale.bat.framework.utility;
 
+import java.awt.AWTException;
+import java.awt.Robot;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -7,7 +9,9 @@ import java.net.URL;
 import java.util.HashMap;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Capabilities;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -19,6 +23,8 @@ import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
+
+import com.sun.glass.events.KeyEvent;
 
 import cucumber.api.Scenario;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -54,6 +60,24 @@ public class BrowserFactory {
 			option.addArguments("--ignore-ssl-errors=yes");
 			driver = new ChromeDriver(option);
 			driver.manage().window().maximize();
+			log.info("Open the Chrome Browser");
+			/*for(int i=0; i<5; i++){
+		        Robot robot = null;
+				try {
+					robot = new Robot();
+				} catch (AWTException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		        robot.keyPress(KeyEvent.VK_CONTROL);
+		        robot.keyPress(KeyEvent.VK_MINUS);
+		        robot.keyRelease(KeyEvent.VK_CONTROL);
+		        robot.keyRelease(KeyEvent.VK_MINUS);
+		        }*/
+			/*for(int i=0; i<2; i++){
+				   driver.findElement(By.tagName("html")).sendKeys(Keys.chord(Keys.CONTROL, Keys.SUBTRACT));
+				  }*/
+			
 			break;
 		case "IE":
 			WebDriverManager.iedriver().setup();
@@ -135,7 +159,7 @@ public class BrowserFactory {
 			caps.setCapability("browserstack.local", "false");
 			caps.setCapability("browserstack.selenium_version", "3.14.0");			
 			caps.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
-			
+			log.info("Open the Chrome Browser");
 			
 			
 			
