@@ -9,6 +9,7 @@ Feature: This User story covers the Basket default delivery methods related scen
   Scenario: TC_Verify Basket Default delivery option with other options available in Delivery method dropdown
   #API Steps
   Given user clears the basket
+  And user creates a basket
   And user gets all the available products list
   And identify products which needs to be add in the list.
   And get the products variant ids
@@ -20,12 +21,13 @@ Feature: This User story covers the Basket default delivery methods related scen
   And User Validated a product details on basket page
   And User validates the Delivery method drop down options
   #And User validates the default delivery option should be pre-populated as "Standard UK Mainland (3-5 days)"
-  And User select the Delivery option "Next Business Day (Orders after Midday)"
+  And User select the Delivery option "Next Business Day (Orders before Midday)"
   And User clicks on "Clear basket" in buyers UI
 	And User validates the message after Clear basket button clicked
 	And User clicks on "My Account link" in buyers UI
   #API Steps
   Given user clears the basket
+  And user creates a basket
   And user gets all the available products list
   And identify products which needs to be add in the list.
   And get the products variant ids
@@ -42,6 +44,7 @@ Feature: This User story covers the Basket default delivery methods related scen
 	@confidence
   Scenario: TC_Verify Basket shows always previously selected delivery method to buyers when adds a new product to basket
   Given user clears the basket
+  And user creates a basket
   And user gets all the available products list
   And identify products which needs to be add in the list.
   And get the products variant ids
@@ -63,6 +66,7 @@ Feature: This User story covers the Basket default delivery methods related scen
   ##UI Steps
   #And User clicks on "Basket Link" in buyers UI
   #And User validates the default delivery option should be pre-populated as "Next Business Day (Orders after Midday)"
+  And User selects the address "1, GAIRLOCH PARK, HOLYWOOD, BT18 0LZ"
   And User select the Delivery option "Standard UK Non Mainland (3-5 days)"
   And User clicks on "My Account link" in buyers UI
   #API Steps
@@ -73,6 +77,7 @@ Feature: This User story covers the Basket default delivery methods related scen
   #UI Steps
   And User clicks on "Basket Link" in buyers UI
   And User validates the default delivery option should be pre-populated as "Standard UK Non Mainland (3-5 days)"
+  And User selects the address "45 John Stree, Glasgow, G1 1JE"
   And User select the Delivery option "Standard UK Mainland (3-5 days)"
   And User clicks on "My Account link" in buyers UI
   #API Steps

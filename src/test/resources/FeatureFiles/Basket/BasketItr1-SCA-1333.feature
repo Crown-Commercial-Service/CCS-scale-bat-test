@@ -22,8 +22,7 @@ Feature: This User story covers the Warning Message related to Next Day Delivery
     And User validates the generic message "Your basket has been updated."
     #TC 02 Fail defect SCA-2165
     #And User validates warning message should be hidden when all delivery methods are available on Basket page
-    And User select the Delivery option "Next Business Day (Orders after Midday)" 
-    
+    And User select the Delivery option "Next Business Day (Orders before Midday)" 
     And User enters the Admin UI url
     And User click on "productcatalogues" link on main sidebar
     And User clicks on show link to view products
@@ -97,8 +96,6 @@ Feature: This User story covers the Warning Message related to Next Day Delivery
   	And identify products which needs to be add in the list.
   	And get the products variant ids
   	And user adds a product to basket
-   
-    
     And User enters the Admin UI url
     And User login as "supplier" in admin panel
     And User click on "productcatalogues" link on main sidebar

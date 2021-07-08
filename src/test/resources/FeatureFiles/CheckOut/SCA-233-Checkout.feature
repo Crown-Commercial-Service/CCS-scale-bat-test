@@ -12,6 +12,8 @@ Feature: As a Buyer,
   #[US-2665=(TC SCA-2907)]
   #[US-2377=(TC SCA-2592)]
   #[US-208=(TC1 SCA-1102)(TC2 SCA-1103)(TC3 SCA-1104)(TC5 SCA-1109)]
+  #[US-108=TC3 SCA-2865]
+  #[US-152=TC3 SCA-2803, SCA-2085]
   #Supplier Order journey with checkout process
   @confidence
   Scenario: TC_Verify product details with VAT0 and VAT20 for supplier1 and Supplier2 is displayed in Basket, Checkout and Order page  

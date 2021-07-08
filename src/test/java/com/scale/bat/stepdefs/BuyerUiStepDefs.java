@@ -495,6 +495,12 @@ public class BuyerUiStepDefs {
 		objectManager.getBuyersUIBasketpage().selectTheDeliveryMethod(deliveryMethod);
 	}
 	
+	@Given("User selects the address {string}")
+	public void user_selects_the_address(String address) {
+	    
+		objectManager.getBuyersUIBasketpage().selectTheAddress(address);
+	}
+	
 	@When("User update the product quantity by {string}.")
 	public void user_update_the_product_quantity_by(String quantity) {
 	   

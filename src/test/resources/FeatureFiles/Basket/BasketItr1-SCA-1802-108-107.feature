@@ -7,6 +7,7 @@ Feature: This User story covers the My List related scenarios
   Scenario: TC_Verify the message All products were removed from the basket when clicks on the Clear basket button 
   	#API Steps
   	Given user clears the basket
+  	And user creates a basket
  		And user gets all the available products list
 		And identify products which needs to be add in the list.
 		And get the products variant ids 
@@ -27,6 +28,7 @@ Feature: This User story covers the My List related scenarios
 	@confidence
   Scenario: TC_Verify Your basket is empty message in basket page
   Given user clears the basket
+  And user creates a basket
   #UI Steps
 	And User navigates to BuyerUI
 	And User login to buyerUI with API User
@@ -45,6 +47,7 @@ Feature: This User story covers the My List related scenarios
   Scenario: TC_Verify Buyer always be shown up-to-date product prices and delivery costs in basket page
   	#API Steps
   	Given user clears the basket
+  	And user creates a basket
   	#UI Steps
   	And User logged in as "supplier" in admin panel
     And User click on "productcatalogues" link on main sidebar

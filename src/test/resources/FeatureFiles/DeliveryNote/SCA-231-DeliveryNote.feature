@@ -1,6 +1,7 @@
 Feature: As a Buyer,  I must be able to add Delivery Note on basket page
 
-  #[US-231=(TC1 SCA-1032)(TC3 SCA-2901)(TC4 SCA-2902)(TC6 SCA-2904)(TC2 SCA-1033)(TC5 SCA-2903)(TC7 SCA-2905)]
+  #[US-231=(TC1 SCA-1032)(TC3 SCA-2901)(TC4 SCA-2902)(TC6 SCA-2904)
+  #(TC2 SCA-1033)(TC5 SCA-2903)(TC7 SCA-2905)]
   @confidence
   Scenario: TC_Verify buyer is able to add Delivery Note on basket page
     #API Steps

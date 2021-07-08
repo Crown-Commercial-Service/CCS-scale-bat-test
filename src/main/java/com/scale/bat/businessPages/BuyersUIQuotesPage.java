@@ -33,7 +33,6 @@ public class BuyersUIQuotesPage extends Actions{
 	public BuyersUIQuotesPage(WebDriver driver, Scenario scenario) {
 		super.driver = driver;
 		this.scenario = scenario;
-		
 		PageFactory.initElements(driver, this);
 		this.wait = new WebDriverWait(super.driver, 30);
 		configReaderObj = new ConfigurationReader();

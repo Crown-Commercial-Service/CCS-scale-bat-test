@@ -124,6 +124,9 @@ public class BuyersUIBasketPage extends Actions {
 
 	@FindBy(xpath = "//button[@class='govuk-button govuk-button--secondary govuk-!-width-one-quarter']")
 	private WebElement basketUpdateButton;
+		
+	@FindBy(xpath = "//*[@id='main-content']/div[2]/div/div/form[1]/button")
+	private WebElement basketUpdateDeliveryAndInvoiceChoicesBtn;
 
 	// PRODUCT 3
 	@FindBy(xpath = "//ul[@class='govuk-list bat-basket-items-by-supplier']/li[3]/div/ul/li/div/form/div/div[2]/a")
@@ -150,6 +153,10 @@ public class BuyersUIBasketPage extends Actions {
 
 	@FindBy(xpath = "//select[@id='shipping_method_id']")
 	private WebElement webElementDeliveryMethodDropDown;
+	
+	
+	@FindBy(xpath = "//select[@name='shippingAddressId']")
+	private WebElement deliveryAddressDropDown;
 
 	@FindBy(xpath = "//div[@id='shipping_method_id-hint']")
 	private WebElement basketWarningMsgOfNextDayDelivery;
@@ -174,10 +181,10 @@ public class BuyersUIBasketPage extends Actions {
 	@FindBy(xpath = "//*[@class='govuk-list bat-basket-items-by-supplier']/li[1]/div/div/ul/li[1]/span[2]")
 	private WebElement supplier1ProductsTotal;
 
-	@FindBy(xpath = "//*[@class='govuk-list bat-basket-items-by-supplier']/li/div/ul/li[1]/div/form/div/div[4]/div/label/following-sibling::input")
+	@FindBy(xpath = "//*[@class='govuk-list bat-basket-items-by-supplier']/li/div/ul/li[1]/div/form/div/div[5]/div/label/following-sibling::input")
 	private WebElement supplier1P1Qty;
 
-	@FindBy(xpath = "//*[@class='govuk-list bat-basket-items-by-supplier']/li/div/ul/li[2]/div/form/div/div[4]/div/label/following-sibling::input")
+	@FindBy(xpath = "//*[@class='govuk-list bat-basket-items-by-supplier']/li/div/ul/li[2]/div/form/div/div[5]/div/label/following-sibling::input")
 	private WebElement supplier1P2Qty;
 
 	@FindBy(xpath = "//*[@class='govuk-list bat-basket-items-by-supplier']/li/div/ul/li[1]/div/form/div/div[3]")
@@ -623,7 +630,7 @@ public class BuyersUIBasketPage extends Actions {
 	}
 
 	public void verifyProductMessageOnBasketPage() throws IOException {
-		waitForSeconds(2);
+		waitForSeconds(4);
 		// Product Price UI
 		assertTrue(getText(basketPageMsgAfterClearBasket).equals("All products were removed from the basket."));
 		boolean checkProductNotPresent = isElementPresentByXpath(checkProductPresentOrNot);
@@ -644,11 +651,9 @@ public class BuyersUIBasketPage extends Actions {
 	public void verifyBlueBanneredBox(Map<String, Object> pDetails) throws IOException {
 		waitForSeconds(2);
 		assertTrue(getText(notificationBlueBanner).equals("Important"));
-		assertTrue(getText(notificationBlueBannerSummaryText)
-				.equals(configReaderObj.get("notificationBlueBannerSummaryTextMsg")));
+		assertTrue(getText(notificationBlueBannerSummaryText).equals(configReaderObj.get("notificationBlueBannerSummaryTextMsg")));
 		clickElementXpath(notificationBlueBannerSummaryText);
-		assertTrue(getText(notificationBlueBannerProductDetail).equals(pDetails.get("ProductName").toString()
-				+ " from sftpsupplier2021 had it's stock reduced from 5 to the maximum stock available from suppliers. The suppliers providing the product were updated."));
+		assertTrue(getText(notificationBlueBannerProductDetail).equals(pDetails.get("ProductName").toString()+ " from sftpsupplier2021 had it's stock reduced from 5 to the maximum stock available from suppliers. The suppliers providing the product were updated."));
 	}
 
 	public void verifyProductReducedQuantityOnBasketPage() throws IOException {
@@ -792,6 +797,13 @@ public class BuyersUIBasketPage extends Actions {
 		waitForSeconds(1);
 		selectItemFromDropDown(webElementDeliveryMethodDropDown, deliveryMethod);
 		clickElement(basketUpdateButton);
+		waitForSeconds(1);
+	}
+	
+	public void selectTheAddress(String address) {
+		waitForSeconds(1);
+		selectItemFromDropDown(deliveryAddressDropDown, address);
+		clickElement(basketUpdateDeliveryAndInvoiceChoicesBtn);
 		waitForSeconds(1);
 	}
 	
@@ -1548,11 +1560,19 @@ public class BuyersUIBasketPage extends Actions {
 
 		// Calculate Supplier1 Product1 VAT
 		double Sup1P1ProductVAT = intSup1P1Price * 0 / 100;
+		String Sup1P1ProductVATStr = Double. toString(Sup1P1ProductVAT);
 
 		// Calculate Supplier1 Product1 DeliveryCharge
 		double Sup1P1ProductDeliveryChargesVAT = intSup1P1NextDayChargeProduct * 20 / 100;
-
-		// Get Supplier1 Product2 Price value from Json
+		
+		double Sup1Product1VATTotal=Sup1P1ProductVAT+Sup1P1ProductDeliveryChargesVAT;
+		String Sup1Product1VATTotalStr=Double. toString(Sup1Product1VATTotal);
+		
+		
+		double supplier1Product1Total= intSup1P1Price+intSup1P1NextDayChargeProduct+Sup1P1ProductDeliveryChargesVAT+Sup1P1ProductVAT;
+		String supplier1Product1TotalStr = Double. toString(supplier1Product1Total);
+		
+		// Get Supplier2 Product1 Price value from Json
 		String Sup1P2Price = jObj2.get("Price").toString();
 		double intSup1P2Price = Double.parseDouble(Sup1P2Price);
 
@@ -1565,7 +1585,16 @@ public class BuyersUIBasketPage extends Actions {
 
 		// Calculate Supplier1 Product2 DeliveryCharge
 		double Sup1P2ProductDeliveryChargesVAT = intSup1P2NextDayChargeProduct * 20 / 100;
-
+		
+		double Sup1Product2VATTotal=Sup1P2ProductVAT+Sup1P2ProductDeliveryChargesVAT;
+		String Sup1Product2VATTotalStr=Double. toString(Sup1Product2VATTotal);
+				
+		double supplier1Product2Total= intSup1P2Price+intSup1P2NextDayChargeProduct+Sup1P2ProductDeliveryChargesVAT+Sup1P2ProductVAT;
+		String supplier1Product2TotalStr = Double.toString(supplier1Product2Total);
+		
+		
+		
+		
 		// Calculate Products total, Delivery total and VAT from Json
 		double productsTotalDbl = intSup1P1Price + intSup1P2Price;
 		System.out.println(productsTotalDbl);
@@ -1576,13 +1605,19 @@ public class BuyersUIBasketPage extends Actions {
 		System.out.println(vatTotalDbl);
 		double grandTotalDbl = productsTotalDbl + deliveryTotalDbl + vatTotalDbl;
 		System.out.println(grandTotalDbl);
+		
+		
+		// Now get the value of Supplier1 Product1 productsTotal, deliveryTotal, vatTotal and Total
+		assertTrue(getText(supplier1ProductsTotal).equals("£" + String.valueOf(Sup1P1Price) + " ex. VAT"));
+		assertTrue(getText(supplier1DeliveryTotal).equals("£" + String.valueOf(Sup1P1NextDayChargeProduct) + " ex. VAT"));
+		assertTrue(getText(supplier1VatTotal).equals("£" + String.valueOf(Sup1Product1VATTotalStr) + "0"));
+		assertTrue(getText(supplier1GrandTotal).equals("£" + String.valueOf(supplier1Product1TotalStr) + "0 inc. VAT"));
 
-		// Now get the value of Supplier1 productsTotal, deliveryTotal, vatTotal and
-		// GrandTotal from Buyers UI
-		assertTrue(getText(supplier1ProductsTotal).equals("£" + String.valueOf(productsTotalDbl) + "0 ex. VAT"));
-		assertTrue(getText(supplier1DeliveryTotal).equals("£" + String.valueOf(deliveryTotalDbl) + "0 ex. VAT"));
-		assertTrue(getText(supplier1VatTotal).equals("£" + String.valueOf(vatTotalDbl) + "0"));
-		assertTrue(getText(supplier1GrandTotal).equals("£" + String.valueOf(grandTotalDbl) + "0 inc. VAT"));
+		// Now get the value of Supplier1 Product2 productsTotal, deliveryTotal, vatTotal and Total
+		assertTrue(getText(supplier2ProductsTotal).equals("£" + String.valueOf(Sup1P2Price) + " ex. VAT"));
+		assertTrue(getText(supplier2DeliveryTotal).equals("£" + String.valueOf(Sup1P2NextDayChargeProduct) + " ex. VAT"));
+		assertTrue(getText(supplier2VatTotal).equals("£" + String.valueOf(Sup1Product2VATTotalStr) + "0"));
+		assertTrue(getText(supplier2GrandTotal).equals("£" + String.valueOf(supplier1Product2TotalStr) + "0 inc. VAT"));
 
 		// Now get the value of footer productsTotal, deliveryTotal, vatTotal and
 		// GrandTotal from Buyers UI

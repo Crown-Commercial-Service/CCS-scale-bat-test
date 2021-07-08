@@ -39,8 +39,12 @@ public class ProductDetailPage extends Actions {
 
 	private String updateButton = "Update";
 
-	private String successfulMessage = "//*[@class='alert alert-success mx-2']";
+	//private String successfulMessage = "//*[@class='alert alert-success mx-2']";
+	private String successfulMessage = "//h2[text()='Stock item has been successfully created!']";
 	//private String successfulMessage = "//body[@class='admin swal2-toast-shown swal2-toast-column swal2-shown']";
+	
+	private String successfulMessageAfterUpdat = "//h2[contains(text(),'has been successfully updated!')]";
+	
 	
 	@FindBy(xpath = "//*[@id='content']/form/div/div/a")
 	private WebElement cancelButton;
@@ -96,7 +100,7 @@ public class ProductDetailPage extends Actions {
 	public void removeTheNextDayOption() {
 		clickElementXpath(nextDayDeliveryCheckbox);
 		clickButton(updateButton);
-		existsElement(successfulMessage);
+		existsElement(successfulMessageAfterUpdat);
 	}
 	
 	

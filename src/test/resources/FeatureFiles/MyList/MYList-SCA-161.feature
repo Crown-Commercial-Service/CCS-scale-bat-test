@@ -7,6 +7,7 @@ Feature: My List related scenarios Testcases
     Given user access the webservice of GetWishList
     And deletes the products from the WishList
     And user clears the basket
+    And user creates a basket
     And user gets all the available products list
     And identify products which needs to be add in the list.
     And get the products variant ids
@@ -26,6 +27,7 @@ Feature: My List related scenarios Testcases
   @confidence
   Scenario: TC_Verify Buyer can add all products after clicking Clear my basket and add these items button in the My list page clears the basket and adds all products in the My list page to the basket
     Given user clears the basket
+    And user creates a basket
     And user gets all the available products list
     And identify products which needs to be add in the list.
     And get the products variant ids
@@ -47,9 +49,10 @@ Feature: My List related scenarios Testcases
     And User Validated multiple products details on basket page
 
   #[US-161 (TC08) (TC07)]
-  @confidence
+  @confidence2021
   Scenario: TC_Verify after clicking Add these items to current basket button in My list page DOES NOT deletes and clear the basket before adding wish list items to basket
     Given user clears the basket
+    And user creates a basket
     And user gets all the available products list
     And identify products which needs to be add in the list.
     And get the products variant ids
@@ -75,6 +78,7 @@ Feature: My List related scenarios Testcases
   Scenario: TC_Verify Buyer can search for a product using Search bar on PLP & should be able to add the product to the My List page from PDP
     #API Steps
     And user clears the basket
+    And user creates a basket
     And user access the webservice of GetWishList
     And deletes the products from the WishList
     #Admin UI Steps
@@ -118,6 +122,7 @@ Feature: My List related scenarios Testcases
   Scenario: TC_Verify Buyer can search for a product using Search bar on PLP & should be able to add the product to the My List page from comparison page
     #API Steps
     And user clears the basket
+    And user creates a basket
     And user access the webservice of GetWishList
     And deletes the products from the WishList
     #UI Steps
@@ -226,6 +231,7 @@ Feature: My List related scenarios Testcases
     Given user access the webservice of GetWishList
     And deletes the products from the WishList
     And user clears the basket
+    And user creates a basket
     And user gets all the available products list
     And identify products which needs to be add in the list.
     And get the products variant ids

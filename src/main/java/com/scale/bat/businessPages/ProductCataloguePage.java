@@ -104,7 +104,7 @@ public class ProductCataloguePage extends Actions {
 	private String updateButton = "Update";
 
 	//private String successfulMessage = "//*[@id='main-part']/div[2]/div[1]/div";
-	private String successfulMessage = "//*[@class='alert alert-success mx-2']";
+	private String successfulMessage = "//h2[contains(text(),'has been successfully updated!')]";
 
 	
 	
