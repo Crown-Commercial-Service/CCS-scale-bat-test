@@ -30,6 +30,7 @@ Feature: As a Buyer,
 		And User validates the breadcrumbs "Home" and "Basket" in basket page
 		And User validates the Delivery method drop down options
 		And User validates the message below Delivery method text
+		And User selects the address "45 John Stree, Glasgow, G1 1JE"
 		And User select the Delivery option "Standard UK Mainland (3-5 days)"
     And User validates products details with VAT0 and VAT20 for supplier1 and supplier2 in basket page
     And User clicks on "Checkout" in buyers UI

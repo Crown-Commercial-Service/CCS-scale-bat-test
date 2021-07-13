@@ -40,7 +40,9 @@ public class ProductDetailPage extends Actions {
 	private String updateButton = "Update";
 
 	//private String successfulMessage = "//*[@class='alert alert-success mx-2']";
-	private String successfulMessage = "//h2[text()='Stock item has been successfully created!']";
+	private String successfulMessage = "//h2[contains(text(),'has been successfully updated!')]";
+	
+	private String successfulMessageStockUpdate = "//h2[contains(text(),'has been successfully created!')]";
 	//private String successfulMessage = "//body[@class='admin swal2-toast-shown swal2-toast-column swal2-shown']";
 	
 	private String successfulMessageAfterUpdat = "//h2[contains(text(),'has been successfully updated!')]";
@@ -94,7 +96,7 @@ public class ProductDetailPage extends Actions {
 		String qty = String.valueOf(randomBunmber(10));
 		enterText(StockTextField, qty);
 		clickButton(updateButton);
-		existsElement(successfulMessage);
+		existsElement(successfulMessageStockUpdate);
 	}
 	
 	public void removeTheNextDayOption() {
@@ -116,7 +118,7 @@ public class ProductDetailPage extends Actions {
 		localreducedStockString = Integer.toString(localreducedStockInt);
 		enterText(StockTextField, localreducedStockString);
 		clickButton(updateButton);
-		existsElement(successfulMessage);
+		existsElement(successfulMessageStockUpdate);
 	}
 	
 	
@@ -146,7 +148,7 @@ public class ProductDetailPage extends Actions {
 		String localVolumeStock = pDetails.get("LocalStockVolume").toString();
 		enterText(StockTextField, localVolumeStock);
 		clickButton(updateButton);
-		existsElement(successfulMessage);
+		existsElement(successfulMessageStockUpdate);
 	}
 	
 	public void updateActualStockCheckoutProduct(JSONObject jObj1) {
@@ -221,7 +223,11 @@ public class ProductDetailPage extends Actions {
 	}
 
 	public void validateSuccessfulMessage() {
-		assertTrue("Message is not displayed!! Please check the script", existsElement(successfulMessage));
+		assertTrue("Message is not displayed!! Please check the script", existsElement(successfulMessageStockUpdate));
+	}
+	
+	public void validateSuccessfulMessageAferUpdatingUnspsc() {
+		assertTrue("Message is not displayed!! Please check the script", existsElement(successfulMessageAfterUpdat));
 	}
 
 	public void validateErrorMessage() {

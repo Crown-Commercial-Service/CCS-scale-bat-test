@@ -1,7 +1,7 @@
 Feature: This User story covers the Warning Message related to Next Day Delivery method related scenarios
 
   #[US-109 (TC01)(TC02)(TC03)]
-   @confidence
+   @confidence2021
   Scenario: TC_Verify product desired quantity is no longer available then a warning message should appear in a blue bannered box
     #API Steps
     And user clears the basket

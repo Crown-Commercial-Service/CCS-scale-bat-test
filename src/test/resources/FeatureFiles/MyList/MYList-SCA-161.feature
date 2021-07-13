@@ -49,7 +49,7 @@ Feature: My List related scenarios Testcases
     And User Validated multiple products details on basket page
 
   #[US-161 (TC08) (TC07)]
-  @confidence2021
+  @confidence
   Scenario: TC_Verify after clicking Add these items to current basket button in My list page DOES NOT deletes and clear the basket before adding wish list items to basket
     Given user clears the basket
     And user creates a basket

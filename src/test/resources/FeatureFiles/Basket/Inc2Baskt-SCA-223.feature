@@ -12,6 +12,7 @@ Feature: This User story validates the VAT amounts associated with products and 
     And User navigates to BuyerUI
 		And User login to buyerUI with API User
 		And User clicks on "Basket Link" in buyers UI
+		And User selects the address "45 John Stree, Glasgow, G1 1JE"
 		And User select the Delivery option "Standard UK Mainland (3-5 days)"
     And User validates the supplier1 product total delivery total VAT and grand Total in basket for Standard UK Mainland
     
@@ -28,6 +29,7 @@ Feature: This User story validates the VAT amounts associated with products and 
     And User navigates to BuyerUI
 		And User login to buyerUI with API User
 		And User clicks on "Basket Link" in buyers UI
+		And User selects the address "45 John Stree, Glasgow, G1 1JE"
 		And User select the Delivery option "Next Business Day (Orders before Midday)"
 	  And User validates the supplier1 product total delivery total VAT and grand Total in basket for Next Business Day
     
@@ -44,9 +46,9 @@ Feature: This User story validates the VAT amounts associated with products and 
     And User navigates to BuyerUI
 		And User login to buyerUI with API User
 		And User clicks on "Basket Link" in buyers UI
-		And User select the Delivery option "Standard UK Non Mainland (3-5 days)"
 		And User selects the address "1, GAIRLOCH PARK, HOLYWOOD, BT18 0LZ"
-    And User validates the supplier1 product total delivery total VAT and grand Total in basket for Standard UK Non Mainland
+		And User select the Delivery option "Standard UK Non Mainland (3-5 days)"
+		And User validates the supplier1 product total delivery total VAT and grand Total in basket for Standard UK Non Mainland
     
     
     

@@ -172,7 +172,7 @@ public class BuyersUIQuotesPageStepdefs {
 	@Then("User validets the error message of insufficient stock on quotes page")
 	public void user_validets_the_error_message_of_insufficient_stock_on_quotes_page() {
 	    
-		objectManager.getBuyersUIQuotespage().validateTheErrorMessageOfInsufficientStockOnQuotes();
+		objectManager.getBuyersUIQuotespage().validateTheErrorMessageOfInsufficientStockOnIndicativeQuotes();
 	}
 	
 	@Then("User validates the Add to basket button")

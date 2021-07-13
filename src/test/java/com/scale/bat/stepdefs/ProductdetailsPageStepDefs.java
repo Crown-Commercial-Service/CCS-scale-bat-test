@@ -80,6 +80,12 @@ public class ProductdetailsPageStepDefs {
 	public void successful_message() {
 		objectManager.getproductDetailsPage().validateSuccessfulMessage();
 	}
+	
+	@Then("A successful message should display after updating the {string}")
+	public void a_successful_message_should_display_after_updating_the(String string) {
+	    
+		objectManager.getproductDetailsPage().validateSuccessfulMessageAferUpdatingUnspsc();
+	}
 
 	@And("An error message should be displayed")
 	public void error_message() {

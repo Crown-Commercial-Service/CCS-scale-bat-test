@@ -70,6 +70,9 @@ public class BuyersUIMyListPage extends Actions  {
 		@FindBy(xpath ="//*[@class='govuk-input govuk-input--width-4']")
 		private WebElement quantityTextBoxAddToList;
 		
+		@FindBy(xpath ="//*[@class='govuk-input govuk-input--width-2']")
+		private WebElement quantityTextBoxAddToListNew;
+		
 		@FindBy(xpath ="//*[@class='govuk-warning-text__text']")
 		private WebElement OOSQtyMessage;
 		
@@ -211,13 +214,25 @@ public class BuyersUIMyListPage extends Actions  {
 		int localVolumeStockInt = Integer.parseInt(localVolumeStock);
 		int localVolumeStockIntOOS = localVolumeStockInt+100;
 		String localVolumeStockStrOOS = Integer.toString(localVolumeStockIntOOS);
-		enterText(quantityTextBoxAddToList,localVolumeStockStrOOS);
-		boolean quantityBoolean =isElementPresentByXpath(quantityTextBoxAddToListString);
+		enterText(quantityTextBoxAddToListNew,localVolumeStockStrOOS);
+		boolean quantityBoolean =isElementPresentByXpath(quantityTextBoxAddToListNew);
 		assertTrue("Buyer is able to enter the total stock of the product ", quantityBoolean);
 		log.info("Buyer is able to enter the total stock of the product");
 		
 	}
 	
+	public void enterTheProductFullQtyOnQtyTextOnItemAddedToYourBasketPage(Map<String, Object> pDetails) {
+
+		String localVolumeStock = pDetails.get("LocalStockVolume").toString();
+		int localVolumeStockInt = Integer.parseInt(localVolumeStock);
+		int localVolumeStockIntOOS = localVolumeStockInt + 100;
+		String localVolumeStockStrOOS = Integer.toString(localVolumeStockIntOOS);
+		enterText(quantityTextBoxAddToList, localVolumeStockStrOOS);
+		boolean quantityBoolean = isElementPresentByXpath(quantityTextBoxAddToList);
+		assertTrue("Buyer is able to enter the total stock of the product ", quantityBoolean);
+		log.info("Buyer is able to enter the total stock of the product");
+
+	}
 	
 	public void validateUnableToSupplyQtyMessaseInAddToList() {
 		assertTrue(getText(OOSQtyMessage).contains("Unable to supply"));

@@ -26,7 +26,7 @@ Feature: As a Buyer,
     Then "PLP" is shown to the buyer
 
 	# @buyer
-  @confidence 
+  @confidence
   Scenario: TC-727_Verify that buyer is navigated back to PLP from confirmation screen on clicking back button from browser
     Given User navigates to BuyerUI
     #And Authorisation dialoxg box is handled

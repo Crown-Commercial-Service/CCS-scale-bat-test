@@ -22,7 +22,8 @@ public class BuyersUIpage extends Actions {
 
 	private String signIn = "Sign in";
 	private String logInButton = "Log in";
-	private String mobileDevices = "Output Accessories";
+	//private String mobileDevices = "Output Accessories";
+	private String mobileDevices = "Notebook & Tablet Accessories";
 	private String PLPScreenText = "The purchasing platform";
 	private String basketText = "Basket";
 	private String basketLink = "Basket";
@@ -33,6 +34,9 @@ public class BuyersUIpage extends Actions {
 
 	private String continueShoppingLinkOnBasketPage = "Continue shopping";
 	private String addToBasket = "  Add ";
+	
+	@FindBy(xpath = ".//*[@class='govuk-button govuk-button--primary bat-product__button bat-product__add-to-basket-button']")
+	private WebElement addToBasketButton;
 
 	@FindBy(xpath = "//*[@class='govuk-button govuk-button--secondary']")
 	private WebElement continueShopping;
@@ -82,13 +86,13 @@ public class BuyersUIpage extends Actions {
 	@FindBy(xpath = "//a[@href='/wishlist']")
 	private WebElement myAccountMyListVisitButton;
 	
-	@FindBy(xpath = "//*[@class='bat-wished-product__delete']/button")
+	@FindBy(xpath = "//*[@class='govuk-button govuk-button govuk-button--secondary bat-wished-product__button']")
 	private WebElement myListDeleteProductButton;
 	
-	@FindBy(xpath = "//*[@id='main-content']/div[1]/div/table/thead/tr/th[2]/div/div[2]/form[2]/button")
+	@FindBy(xpath = "//*[@id='main-content']/div[1]/div/table/thead/tr/th[2]/div/div[2]/form[3]/button")
 	private WebElement removeLink;
 	
-	@FindBy(xpath = "//*[@class='govuk-width-container ']/a")
+	@FindBy(xpath = "//*[@class='govuk-width-container ']/nav/a")
 	private WebElement backLink;
 	
 	@FindBy(xpath = "//*[@class='govuk-button govuk-button--secondary bat-product-preview__compare']")
@@ -214,6 +218,11 @@ public class BuyersUIpage extends Actions {
 	
 	public void addElementToBasket() {
 		clickElement(addToBasket);
+		isElementPresent("Item added to your basket");
+	}
+	
+	public void addToBasketButton() {
+		clickElement(addToBasketButton);
 		isElementPresent("Item added to your basket");
 	}
 

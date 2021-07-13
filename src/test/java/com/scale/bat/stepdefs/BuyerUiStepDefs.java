@@ -249,6 +249,12 @@ public class BuyerUiStepDefs {
 		objectManager.getBuyersUIpage().searchProduct(scenarioContext.productDetails.get("SKU").toString());
 	}
 	
+	@When("User clicks on Add to basket button")
+	public void user_clicks_on_Add_to_basket_button() {
+	    
+		objectManager.getBuyersUIpage().addToBasketButton();
+	}
+	
 	@And("User clears the basket")
 	public void user_clears_the_basket() {
 	    
@@ -572,6 +578,12 @@ public class BuyerUiStepDefs {
 	public void user_adjust_the_products_quantity_on_the_Added_to_wishlist_page() {
 	    
 		objectManager.getBuyersUIMyListpage().enterTheProductFullQuantity(scenarioContext.productDetails);
+	}
+	
+	@When("User adjust the products quantity on {string} page")
+	public void user_adjust_the_products_quantity_on_page(String string) {
+	    
+		objectManager.getBuyersUIMyListpage().enterTheProductFullQtyOnQtyTextOnItemAddedToYourBasketPage(scenarioContext.productDetails);
 	}
 	
 	@When("User validates the OOS message")

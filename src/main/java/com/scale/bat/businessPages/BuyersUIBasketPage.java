@@ -129,13 +129,13 @@ public class BuyersUIBasketPage extends Actions {
 	private WebElement basketUpdateDeliveryAndInvoiceChoicesBtn;
 
 	// PRODUCT 3
-	@FindBy(xpath = "//ul[@class='govuk-list bat-basket-items-by-supplier']/li[3]/div/ul/li/div/form/div/div[2]/a")
+	@FindBy(xpath = "//ul[@class='govuk-list bat-basket-items-by-supplier']/li[2]/div/ul/li[2]/div/form/div/div[2]/a")
 	private WebElement productName3;
 
-	@FindBy(xpath = "//ul[@class='govuk-list bat-basket-items-by-supplier']/li[3]/div/ul/li/div/form/div/div[2]/span[1]")
+	@FindBy(xpath = "//ul[@class='govuk-list bat-basket-items-by-supplier']/li[2]/div/ul/li[2]/div/form/div/div[2]/span[1]")
 	private WebElement mpn3;
 
-	@FindBy(xpath = "//ul[@class='govuk-list bat-basket-items-by-supplier']/li[3]/div/ul/li/div/form/div/div[2]/following-sibling::div[1]")
+	@FindBy(xpath = "//ul[@class='govuk-list bat-basket-items-by-supplier']/li[2]/div/ul/li[2]/div/form/div/div[2]/following-sibling::div[1]")
 	private WebElement productPrice3;
 
 	// Basket page
@@ -1058,12 +1058,31 @@ public class BuyersUIBasketPage extends Actions {
 		assertTrue(getAttributeValue(supplier1P1Qty).equals("1"));
 		assertTrue(getAttributeValue(supplier1P2Qty).equals("1"));
 
-		// Product Price for qty 1
+		// We added below if condition twice because while adding the product to Basket
+		// we don't know which product will come in first position P1 or P2. Its position will keep on changing, 
+		// every time we add into the basket
+		
+		// Product1 Price for qty 1
 		String[] supplier1P1PriceSplit = getText(supplier1P1Price).split(" ");
+				
+		if(supplier1P1PriceSplit[0].equals("£2.00")) {
+			assertTrue(supplier1P1PriceSplit[0].equals("£" + jObj1.get("Price").toString()));
+			
+		}else{
+			assertTrue(supplier1P1PriceSplit[0].equals("£" + jObj2.get("Price").toString()));
+		}
+		
+		// Product2 Price for qty 1
 		String[] supplier1P2PriceSplit = getText(supplier1P2Price).split(" ");
-		assertTrue(supplier1P1PriceSplit[0].equals("£" + jObj1.get("Price").toString()));
-		assertTrue(supplier1P2PriceSplit[0].equals("£" + jObj2.get("Price").toString()));
-
+		
+		if(supplier1P2PriceSplit[0].equals("£2.00")) {
+			assertTrue(supplier1P1PriceSplit[0].equals("£" + jObj1.get("Price").toString()));
+			
+		}else{
+				
+			assertTrue(supplier1P2PriceSplit[0].equals("£" + jObj2.get("Price").toString()));
+		}
+	
 	}
 	
 	

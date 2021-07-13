@@ -22,7 +22,8 @@ Feature: This User story covers the Firm quotes related scenarios
     And User login to buyerUI with API User
     When User search a product with SKU number
     And User clicks on "PLP image" in buyers UI
-    And User clicks on "Add to basket" in buyers UI
+    #And User clicks on "Add to basket" in buyers UI
+    And User clicks on Add to basket button
     And User clicks on "Proceed to basket" in buyers UI
     And User validates the generic message "Your basket has been updated."
     And User get the supplier name and total amount of the products on Buyers UI
@@ -62,6 +63,7 @@ Feature: This User story covers the Firm quotes related scenarios
   Scenario: TC-Verify user is able to create Indicative quote and verify label for Indicative quote radio button is displayed correctly.
     #API Steps
     Given user clears the basket
+    And user creates a basket
     And user gets all the available products list
     And identify products which needs to be add in the list.
     And get the products variant ids
@@ -92,6 +94,7 @@ Feature: This User story covers the Firm quotes related scenarios
   Scenario: TC-Verify when quote is created, its status automatically assigned as Accepted
     #API Steps
     Given user clears the basket
+    And user creates a basket
     And user gets all the available products list
     And identify products which needs to be add in the list.
     And get the products variant ids
@@ -118,6 +121,7 @@ Feature: This User story covers the Firm quotes related scenarios
   Scenario: TC-Verify Buyer is able to search firm quote using partial Quote Reference
     #API Steps
     Given user clears the basket
+    And user creates a basket
     And user gets all the available products list
     And identify products which needs to be add in the list.
     And get the products variant ids
@@ -144,6 +148,7 @@ Feature: This User story covers the Firm quotes related scenarios
   Scenario: TC-Verify Buyer is able to search indicative quote using partial Quote Reference
     #API Steps
     Given user clears the basket
+    And user creates a basket
     And user gets all the available products list
     And identify products which needs to be add in the list.
     And get the products variant ids
@@ -182,6 +187,7 @@ Feature: This User story covers the Firm quotes related scenarios
   Scenario: TC-Verify Supplier is able to search accepted quote using partial Quote Reference
     #API
     Given user clears the basket
+    And user creates a basket
     ##Admin UI
     Given User logged in as "supplier" in admin panel
     And User click on "productcatalogues" link on main sidebar
@@ -258,12 +264,14 @@ Feature: This User story covers the Firm quotes related scenarios
   Scenario: TC_Verify buyers must be able to reach the Manage quotes page by selecting My account from and able to see their created quotes firm and Indicative
     #API Steps
     Given user clears the basket
+    And user creates a basket
     And User gets products IDs for supplier1 and supplier2
     And User adds two products from supplier1 in to the basket with one having VAT0 and second having VAT20 percentage
     #Buyers UI Steps
     And User navigates to BuyerUI
     And User login to buyerUI with API User
     And User clicks on "Basket Link" in buyers UI
+    And User selects the address "45 John Stree, Glasgow, G1 1JE"
     And User select the Delivery option "Standard UK Mainland (3-5 days)"
     And User clicks on "Quote" in buyers UI
     And User enter Quote name as "Firmquote"
@@ -279,6 +287,8 @@ Feature: This User story covers the Firm quotes related scenarios
     And User validates the Clear my Basket and add these items button & a text message is visible on above that button
     And User clicks on "Clear my basket and add these items" in buyers UI
     And User Validates the message "The quote was successfully converted into the basket."
+    And User selects the address "45 John Stree, Glasgow, G1 1JE"
+    And User select the Delivery option "Standard UK Mainland (3-5 days)"
     And User validates the supplier1 product total delivery total VAT and grand Total in basket for Standard UK Mainland
 
   #[US-97 TC01(SCA-2594) & TC07(SCA-2600) & TC08(SCA-2601)]
@@ -286,12 +296,14 @@ Feature: This User story covers the Firm quotes related scenarios
   Scenario: TC_ Verify Buyer is able to view and click a Add to basket button for Indicative quotes
     #API Steps
     Given user clears the basket
+    And user creates a basket
     And User gets products IDs for supplier1 and supplier2
     And User adds two products from supplier1 in to the basket with one having VAT0 and second having VAT20 percentage
     #Buyers UI Steps
     And User navigates to BuyerUI
     And User login to buyerUI with API User
     And User clicks on "Basket Link" in buyers UI
+    And User selects the address "45 John Stree, Glasgow, G1 1JE"
     And User select the Delivery option "Standard UK Mainland (3-5 days)"
     And User clicks on "Quote" in buyers UI
     And User enter Quote name as "Indicativequote"
@@ -305,6 +317,8 @@ Feature: This User story covers the Firm quotes related scenarios
     And User validates the Add to basket button
     And User clicks on "Add to basket button on Indicative quote" in buyers UI
     And User Validates the message "The quote was successfully converted into the basket."
+    And User selects the address "45 John Stree, Glasgow, G1 1JE"
+    And User select the Delivery option "Standard UK Mainland (3-5 days)"
     And User validates the supplier1 product total delivery total VAT and grand Total in basket for Standard UK Mainland
     
     
@@ -313,12 +327,14 @@ Feature: This User story covers the Firm quotes related scenarios
   Scenario: TC_Verify if basket already contains any products it must remain in the basket and the products of Indicative quote will be added to basket
     #API Steps
     Given user clears the basket
+    And user creates a basket
     And User gets products IDs for supplier1 and supplier2
     And User adds two products from supplier1 in to the basket with one having VAT0 and second having VAT20 percentage
     #Buyers UI Steps
     And User navigates to BuyerUI
     And User login to buyerUI with API User
     And User clicks on "Basket Link" in buyers UI
+    And User selects the address "45 John Stree, Glasgow, G1 1JE"
     And User select the Delivery option "Standard UK Mainland (3-5 days)"
     And User clicks on "Quote" in buyers UI
     And User enter Quote name as "Indicativequote"
@@ -333,6 +349,8 @@ Feature: This User story covers the Firm quotes related scenarios
     And User validates the Add to basket button
     And User clicks on "Add to basket button on Indicative quote" in buyers UI
     And User Validates the message "The quote was successfully converted into the basket."
+    And User selects the address "45 John Stree, Glasgow, G1 1JE"
+    And User select the Delivery option "Standard UK Mainland (3-5 days)"
     And User validates the products in Indicative quote is added with the product already present in the basket
     
     
@@ -343,6 +361,7 @@ Feature: This User story covers the Firm quotes related scenarios
    Scenario: TC_Verify if quantity contained on a Firm Quote for any product is not available a warning message should display on basket.
     #API Steps
     And user clears the basket
+    And user creates a basket
     #Buyers UI Steps
     Given User logged in as "supplier" in admin panel
     And User click on "productcatalogues" link on main sidebar
@@ -362,6 +381,7 @@ Feature: This User story covers the Firm quotes related scenarios
     And User clicks on "Proceed to basket" in buyers UI
     #Basket page
     And User validates the generic message "Your basket has been updated."
+    And User selects the address "45 John Stree, Glasgow, G1 1JE"
     And User select the Delivery option "Standard UK Mainland (3-5 days)"
     #Quotes page
     And User clicks on "Quote" in buyers UI
@@ -402,6 +422,7 @@ Feature: This User story covers the Firm quotes related scenarios
    Scenario: TC_Verify if quantity conta	ined on a Indicative Quote for any product is not available a warning message should display on basket.
     #API Steps
     And user clears the basket
+    And user creates a basket
     #Buyers UI Steps
     Given User logged in as "supplier" in admin panel
     And User click on "productcatalogues" link on main sidebar
@@ -415,12 +436,14 @@ Feature: This User story covers the Firm quotes related scenarios
     When User search a product with SKU number
     And User clicks on "PLP image" in buyers UI
     And User clicks on "Add to basket" in buyers UI
-    And User adjust the products quantity on the Added to wishlist page
+    #And User adjust the products quantity on the Added to wishlist page
+    And User adjust the products quantity on "Item added to your basket" page
     And User clicks on "Update Link" in buyers UI
     And User validates the OOS message
     And User clicks on "Proceed to basket" in buyers UI
     #Basket page
     And User validates the generic message "Your basket has been updated."
+    And User selects the address "45 John Stree, Glasgow, G1 1JE"
     And User select the Delivery option "Standard UK Mainland (3-5 days)"
     #Quotes page
     And User clicks on "Quote" in buyers UI
@@ -461,6 +484,7 @@ Feature: This User story covers the Firm quotes related scenarios
    Scenario: TC_ Verify when buyers converts the firm quote into an order and stock is available then quote will be converted into order
     #API Steps
     And user clears the basket
+    And user creates a basket
     And User gets a products ID for supplier1 with MPN "187749-001"
     And User adds a product with MPN "187749-001" of supplier1 in to the basket
     #Admin UI Steps
@@ -480,6 +504,7 @@ Feature: This User story covers the Firm quotes related scenarios
     And User clicks on "Basket Link" in buyers UI
     #Basket page
     And User validates the generic message "Your basket has been updated."
+    And User selects the address "45 John Stree, Glasgow, G1 1JE"
     And User select the Delivery option "Standard UK Mainland (3-5 days)"
     And User get the supplier name and total amount of the products on Buyers UI
     And User clicks on "Quote" in buyers UI
@@ -496,6 +521,8 @@ Feature: This User story covers the Firm quotes related scenarios
     And User validates the Clear my Basket and add these items button & a text message is visible on above that button
     And User clicks on "Clear my basket and add these items" in buyers UI
     And User Validates the message "The quote was successfully converted into the basket."
+   	And User selects the address "45 John Stree, Glasgow, G1 1JE"
+    And User select the Delivery option "Standard UK Mainland (3-5 days)"
     And User validates the total delivery total VAT and grand Total of supplier1 in basket for "Standard UK Mainland"
    	#CheckOut
    	And User clicks on "Checkout" in buyers UI
@@ -512,9 +539,10 @@ Feature: This User story covers the Firm quotes related scenarios
     
    #[US-332 TC03(SCA-2678)]
    @confidence
-   Scenario: TC_ Verify when buyers converts the firm quote into an order and stock is available then quote will be converted into order
+   Scenario: TC_ Verify supplier increase or decrease product price before converting a Firm Quote into an order products price in the placed order must be same as per the price locked in a firm quote
     #API Steps
     And user clears the basket
+    And user creates a basket
     And User gets a products ID for supplier1 with MPN "195654-002"
     And User adds a product with MPN "195654-002" of supplier1 in to the basket
     #Admin UI Steps
@@ -537,6 +565,7 @@ Feature: This User story covers the Firm quotes related scenarios
     And User clicks on "Basket Link" in buyers UI
     #Basket page
     And User validates the generic message "Your basket has been updated."
+    And User selects the address "45 John Stree, Glasgow, G1 1JE"
     And User select the Delivery option "Standard UK Mainland (3-5 days)"
     And User get the supplier name and total amount of the products on Buyers UI
     And User clicks on "Quote" in buyers UI

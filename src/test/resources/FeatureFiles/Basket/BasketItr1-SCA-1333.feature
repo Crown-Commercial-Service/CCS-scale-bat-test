@@ -22,6 +22,7 @@ Feature: This User story covers the Warning Message related to Next Day Delivery
     And User validates the generic message "Your basket has been updated."
     #TC 02 Fail defect SCA-2165
     #And User validates warning message should be hidden when all delivery methods are available on Basket page
+    And User selects the address "45 John Stree, Glasgow, G1 1JE"
     And User select the Delivery option "Next Business Day (Orders before Midday)" 
     And User enters the Admin UI url
     And User click on "productcatalogues" link on main sidebar
@@ -33,12 +34,13 @@ Feature: This User story covers the Warning Message related to Next Day Delivery
     #TC 05
     And User validates the Clear basket button and 'Your basket is empty' message on basket page
     And User validates the basket count "0"
-    #
+    #Admin UI
     And User enters the Admin UI url
     And User click on "productcatalogues" link on main sidebar
     And User clicks on show link to view products
     When User clicks on edit button to view product details
     And User adds the Next Day Delivery option
+    #Buyers UI
     And User enters the buyers UI
     When User search a product with SKU number
     And User clicks on "PLP image" in buyers UI
@@ -72,7 +74,6 @@ Feature: This User story covers the Warning Message related to Next Day Delivery
     And User validates the generic message "Your basket has been updated."
     #TC 02 Fail defect SCA-2165
     #And User validates warning message should be hidden when all delivery methods are available on Basket page
-        
     And User enters the Admin UI url
     And User click on "productcatalogues" link on main sidebar
     And User clicks on show link to view products

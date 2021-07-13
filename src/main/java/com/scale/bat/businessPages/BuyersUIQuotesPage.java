@@ -82,7 +82,7 @@ public class BuyersUIQuotesPage extends Actions{
 	 private WebElement getSupplierNameBasketPage;
 	
 	//@FindBy(xpath = "//div[@class='bat-basket__footer']/div[2]/ul/li[3]/span[2]")
-	@FindBy(xpath = "//*[@id='main-content']/div[2]/div/div/div/div[2]/ul/li[4]/span[2]")
+	@FindBy(xpath = "//div[@class='bat-basket__all-supplier-totals bat-basket-items-by-supplier__item__supplier__footer']/ul/li[4]/span[2]")
 	 private WebElement getTotalPriceBasketPage;
 	
 	@FindBy(xpath = "//input[@value='firm']/following-sibling::div")
@@ -195,6 +195,14 @@ public class BuyersUIQuotesPage extends Actions{
 	@FindBy(xpath = "//div[@class='govuk-error-summary__body']/ul/li")
 	private WebElement errorMsgInsufficientStockQuotes;
 	
+	@FindBy(xpath = "//strong[@class='govuk-warning-text__text']")
+	private WebElement errorMsgInsufficientStockIndicativeQuotes;
+	
+	@FindBy(xpath = "//strong[@class='govuk-warning-text__text']/ul/li")
+	private WebElement errorMsgInsufficientStockIndicativeQuotesProductName;
+	
+	
+	
 	@FindBy(xpath = "//button[@class='govuk-button bat-checkout-next']")
 	private WebElement saveAndContinueBtnOnPayentCheckout;
 	
@@ -228,8 +236,8 @@ public class BuyersUIQuotesPage extends Actions{
 	
 	public void getSupplierNameAndTotalAmountOnBasketPage() {
 		
-		supplierNameBasketPage = getText(getSupplierNameBasketPage);
 		totalPriceBasketPage = getText(getTotalPriceBasketPage);
+		supplierNameBasketPage = getText(getSupplierNameBasketPage).split(":")[1].replaceAll("\\s+", "");
 		totalPriceBasketPage = totalPriceBasketPage.replace(" inc. VAT", "");
 		totalPriceBasketPage = totalPriceBasketPage.trim();
 		log.info(" Supplier name " +supplierNameBasketPage+ " and Total price " +totalPriceBasketPage+ " in basket page ");
@@ -306,7 +314,7 @@ public class BuyersUIQuotesPage extends Actions{
 		String Currenntday = new DateTimeUtils().dateWithSpecificFormatt("dd/MM/yyyy");
 		String supplierNameUI = getText(getFirstRowSupplierName);
 		String[] splitSupplierName = supplierNameUI.split("\\r?\\n");
-		String actualSupplierNameUI=splitSupplierName[0];
+		String actualSupplierNameUI=splitSupplierName[0].replaceAll("\\s+", "");
 		
 		String[] splitTotalPriceBasketPage = totalPriceBasketPage.split("\\s+");
 		actualTotalPriceBasketPage=splitTotalPriceBasketPage[0];
@@ -377,10 +385,20 @@ public class BuyersUIQuotesPage extends Actions{
 	}
 	
   public void validateTheErrorMessageOfInsufficientStockOnQuotes() {
-	  
+	  	waitForSeconds(3);
 		System.out.println(getText(errorMsgInsufficientStockQuotes));
 		assertEquals(getText(errorMsgInsufficientStockQuotes), configReaderObj.get("errorMsgInsufficientStockQuotePage"));
 		log.info("Validated success error message on quotes page: "+ configReaderObj.get("errorMsgInsufficientStockQuotePage"));
+		
+	}
+  
+  public void validateTheErrorMessageOfInsufficientStockOnIndicativeQuotes() {
+	  	waitForSeconds(3);
+		System.out.println(getText(errorMsgInsufficientStockIndicativeQuotes).split("\\r?\\n|\\r"));
+		assertEquals(getText(errorMsgInsufficientStockIndicativeQuotes).split("\\r?\\n|\\r")[1], configReaderObj.get("warningMsgExceedQtyWhenClickAddTheseItemBtn01"));
+		assertEquals(getText(errorMsgInsufficientStockIndicativeQuotes).split("\\r?\\n|\\r")[2], configReaderObj.get("WarningMsgReduceQtyWhenClickAddTheseItemBtnProductName"));
+		assertEquals(getText(errorMsgInsufficientStockIndicativeQuotes).split("\\r?\\n|\\r")[3], configReaderObj.get("warningMsgReduceQtyWhenClickAddTheseItemBtn2"));
+		log.info("Validated error message for Indicative quotes on basket page when stock is not available !");
 		
 	}
 	

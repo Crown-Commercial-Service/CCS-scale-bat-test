@@ -12,7 +12,8 @@ Feature: As a supplier,
     And User clicks on edit button to view product details
     When User "updates" the "unspsc" of a product
     #Assert the values in database
-    Then A successful message should be displayed
+    Then A successful message should display after updating the "unspsc"
+    
 
   @confidence
   Scenario: SCA-525_Verify that error message is displayed when a empty field is updated on a mandatory field

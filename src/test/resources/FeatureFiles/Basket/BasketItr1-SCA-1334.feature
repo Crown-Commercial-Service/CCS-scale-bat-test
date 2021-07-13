@@ -21,6 +21,7 @@ Feature: This User story covers the Basket default delivery methods related scen
   And User Validated a product details on basket page
   And User validates the Delivery method drop down options
   #And User validates the default delivery option should be pre-populated as "Standard UK Mainland (3-5 days)"
+  And User selects the address "45 John Stree, Glasgow, G1 1JE"
   And User select the Delivery option "Next Business Day (Orders before Midday)"
   And User clicks on "Clear basket" in buyers UI
 	And User validates the message after Clear basket button clicked
